@@ -5,9 +5,11 @@
 
 .btn-primary {
   background-color: #081E3C;
+  border-color: black;
 }
 .btn-primary:hover {
   background-color: #F88A00;
+  border-color: #ac5f00;
 }
 
 .text-primary {
@@ -160,10 +162,6 @@ footer .social-icons a:hover, footer .social-icons a:focus {
 }
 
 @media (min-width: 576px) {
-  #landing .content .brand {
-    width: 350px;
-    height: 350px;
-  }
   #landing .primary-nav li {
     display: inline-block;
   }
@@ -185,6 +183,10 @@ footer .social-icons a:hover, footer .social-icons a:focus {
     display: table-cell;
     vertical-align: middle;
   }
+  #landing .content .brand {
+    width: 350px;
+    height: 350px;
+  }
   #landing .content p.tagline {
     font-size: 1rem;
   }
@@ -202,6 +204,9 @@ nav a {
 }
 nav a:hover {
   color: #F88A00;
+}
+nav h3 {
+  font-size: 1rem;
 }
 nav .navbar-brand {
   color: #fff;
@@ -237,10 +242,6 @@ nav .navbar-brand:hover {
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
-}
-#games .game .game-container .game-preview-container,
-#games .game .game-container .game-overview-container {
-  flex-basis: 100%;
 }
 #games .game .game-container .game-preview-container {
   display: flex;
@@ -501,23 +502,6 @@ nav .navbar-brand:hover {
 .block-container .block .block-trailer {
   margin-left: auto;
   margin-right: auto;
-}
-
-.carousel-item {
-  height: 65vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position-y: 100%;
-}
-
-.carousel-item-next,
-.carousel-item-prev,
-.carousel-item.active {
-  display: block !important;
 }
 
 @media (min-width: 992px) {
