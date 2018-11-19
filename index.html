@@ -1,157 +1,333 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
+    <!-- BEGIN: source/partials/_head.ejs -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Manbeardgames">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>ManBeardGames - Ophidian</title>
+<title>ManBeardGames Site</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Theme CSS -->
-    <link href="css/freelancer.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
+
+
+<link rel="stylesheet" href="/css/site.css">
+
+
+<script type="text/javascript" src="/vendor/jquery/jquery.js"></script>
+<!-- END: source/partials/_head.ejs -->
 
 </head>
 
-<body id="page-top" class="index">
-<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+<body data-spy="scroll" data-target=".sidebar">
+    <div id="flex-wrap">
+        <header>
+            <!-- BEGIN: source/partials/_header.ejs -->
+<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="#page-top">Ophidian</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-					<li class="page-scroll">
-						<a href="http://forums.manbeardgames.com">Forums</a>
-					</li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- Header -->
-    <header>
-        <div class="container" id="maincontent" tabindex="-1">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--<iframe width="853" height="480" src="https://www.youtube.com/embed/J6_-QnbyfME?rel=0" frameborder="0" allowfullscreen></iframe> -->
-					<!-- 16:9 aspect ratio -->
-					<div class="embed-responsive embed-responsive-16by9">
-						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/J6_-QnbyfME?rel=0"></iframe>
-					</div>
-
-					<!-- 4:3 aspect ratio 
-					<div class="embed-responsive embed-responsive-4by3">
-						<iframe class="embed-responsive-item" src="..."></iframe>
-					</div> -->
-                    <div class="intro-text">
-                        <!--<h1 class="name">Man.Beard.Games</h1> -->
-                        <!--<hr class="star-light"> -->
-                        <!--<span class="skills">One man, one beard</span> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-					<div class="col-lg-12">
-                        <ul class="list-inline">
-                            <li>
-                                <a href="https://www.facebook.com/manbeardgames/" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="www.twitter.com/manbeardgames" class="btn-social btn-outline"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="www.twitch.tv/manbeardgames" class="btn-social btn-outline"><span class="sr-only">Twitch</span><i class="fa fa-fw fa-twitch"></i></a>
-                            </li>
-                            <li>
-                                <a href="www.reddit.com/r/manbeardgames" class="btn-social btn-outline"><span class="sr-only">Reddit</span><i class="fa fa-fw fa-reddit"></i></a>
-                            </li>
-                        </ul>
-						<p>Copyright &copy; ManBeardGames 2017</p>
-					</div>
-                    <!--<div class="col-lg-12">
-                        Copyright &copy; ManBeardGames 2017
-                    </div>-->
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
+    <a class="navbar-brand" href="/"></a>
+    
+    <h3 class="text-white">ManBeardGames</h3>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/#games">Games</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
+            <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
+        </ul>
+        
     </div>
 
+</nav>
+<!-- End: source/partials/_header.ejs -->
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+        </header>
+        <main>
+            <!-- BEGIN: source/partials/_landing.ejs -->
+<div id="landing">
+  <div class="content">
+    <h1 class="brand">Man Beard Games</h1>
+    <div id="info" class="hidefirst">
+      <p class="tagline">Indie Game Dev | Web Dev | Twitch Streamer</p>
+      <ul class="primary-nav">
+        <li><a id="animtescroll" href="#games">Games</a></li>
+        <li><a href="/tutorials">Tutorials</a></li>
+        <li><a href="/dev-blog">Dev Blog</a></li>
+        
+      </ul>
+    </div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  </div>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+</div>
+<!-- END: source/partials/_landing.ejs -->
+<div class="content">
+<div id="swap"></div>
+  <div class="container-fluid m-0 p-0">
+    <div id="games">
+      <!-- BEGIN: source/partials/_games.ejs -->
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="js/freelancer.min.js"></script>
-	
-	
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<section class="game" id="game_ophidian">
 
-  ga('create', 'UA-63802407-1', 'auto');
-  ga('send', 'pageview');
+        <div class="game-container">
+            <div class="game-preview-container">
+                <img class="img-responsive img-thumbnail" src="img/games/ophidian/game_preview.png" alt="...">
+            </div>
 
-</script>	
+            <div class="game-overview-container">
+                <h3>
+                    Ophidian
+                </h3>
+                <p>
+                    Arcade puzzle game insprited by classic snake gameplay.
+                </p>
 
+                <div class="block-platforms">
+                    
+                        <div class="platform">
+                            <a href="https://store.steampowered.com/app/697710/Ophidian/" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/steam-badge.png');">
+                                </div> 
+                            </a>
+                        </div>
+                    
+                         
+                                                      
+                                            
+                </div>          
+                <a class="btn btn-primary btn-large" href="/ophidian">More Info</a>
+            </div>
+        </div>
+</section>
+
+
+<section class="game" id="game_beats">
+
+        <div class="game-container">
+            <div class="game-preview-container">
+                <img class="img-responsive img-thumbnail" src="img/games/beats/game_preview.png" alt="...">
+            </div>
+
+            <div class="game-overview-container">
+                <h3>
+                    Beats
+                </h3>
+                <p>
+                    One button music rhythm game made for the One Mechanic Game Jam 5
+                </p>
+
+                <div class="block-platforms">
+                    
+                    
+                        <div class="platform">
+                            <a href="https://manbeardgames.itch.io/beats" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                         
+                                                      
+                    
+                        <div class="platform">
+                            <a href="https://itch.io/jam/omgjam5/rate/326293" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/omgjam-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                                            
+                </div>          
+                <a class="btn btn-primary btn-large" href="/beats">More Info</a>
+            </div>
+        </div>
+</section>
+
+
+<section class="game" id="game_echo">
+
+        <div class="game-container">
+            <div class="game-preview-container">
+                <img class="img-responsive img-thumbnail" src="img/games/echo/game_preview.png" alt="...">
+            </div>
+
+            <div class="game-overview-container">
+                <h3>
+                    Echo
+                </h3>
+                <p>
+                    Waking up, trapped in a room with the ceiling closing in.  Death is ensured, but how long can you survive. Made for Ludum Dare 42
+                </p>
+
+                <div class="block-platforms">
+                    
+                    
+                        <div class="platform">
+                            <a href="https://manbeardgames.itch.io/echo" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                         
+                    
+                        <div class="platform">
+                            <a href="https://ldjam.com/events/ludum-dare/42/echo" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                                                      
+                                            
+                </div>          
+                <a class="btn btn-primary btn-large" href="/echo">More Info</a>
+            </div>
+        </div>
+</section>
+
+
+<section class="game" id="game_slime-battle-royale">
+
+        <div class="game-container">
+            <div class="game-preview-container">
+                <img class="img-responsive img-thumbnail" src="img/games/slime-battle-royale/game_preview.png" alt="...">
+            </div>
+
+            <div class="game-overview-container">
+                <h3>
+                    Slime Battle Royale
+                </h3>
+                <p>
+                    The rules are simple, only one slime can leave. Made for Ludum Dare 41
+                </p>
+
+                <div class="block-platforms">
+                    
+                    
+                        <div class="platform">
+                            <a href="https://manbeardgames.itch.io/slime-battle-royale" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                         
+                    
+                        <div class="platform">
+                            <a href="https://ldjam.com/events/ludum-dare/41/slime-battle-royale" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                                                      
+                                            
+                </div>          
+                <a class="btn btn-primary btn-large" href="/slime-battle-royale">More Info</a>
+            </div>
+        </div>
+</section>
+
+
+<section class="game" id="game_droplet">
+
+        <div class="game-container">
+            <div class="game-preview-container">
+                <img class="img-responsive img-thumbnail" src="img/games/droplet/game_preview.png" alt="...">
+            </div>
+
+            <div class="game-overview-container">
+                <h3>
+                    Droplet
+                </h3>
+                <p>
+                    Tiny and insignificant, you are not discourage from dreaming big. Consume those around you, but remember there is always someone bigger waiting. Made for Ludum Dare 40.
+                </p>
+
+                <div class="block-platforms">
+                    
+                    
+                        <div class="platform">
+                            <a href="https://manbeardgames.itch.io/droplet" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                         
+                    
+                        <div class="platform">
+                            <a href="https://ldjam.com/events/ludum-dare/40/droplet" target="_blank">
+                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');">
+                                </div>
+                            </a>                            
+                        </div>
+                                                      
+                                            
+                </div>          
+                <a class="btn btn-primary btn-large" href="/droplet">More Info</a>
+            </div>
+        </div>
+</section>
+
+<!-- END: source/partials/_games.ejs -->
+
+
+
+    </div>
+  </div>
+</div>
+        </main>
+
+        <footer>
+            <!-- BEGIN: source/partials/_footer.ejs -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <h4>ManBeardGames <span>&copy; 2018</span></h4>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <small>ManBeardGames logo created by <a href="https://www.twitch.tv/cookie042" target="_blank">cookie042</a></small>
+    </div>
+
+    <div class="col-md-4 social-icons justify-content-center text-center">
+      <a href="https://www.twitter.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-twitter"></i>
+      </a>
+      <a href="https://www.gitlab.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-gitlab"></i>
+      </a>
+      <a href="https://store.steampowered.com/search/?publisher=ManBeardGames" target="_blank">
+        <i class="mdi mdi-36px mdi-steam"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="brand-container">
+</div>
+
+
+<div class="social-icons">
+</div> -->
+
+<!-- END: source/partials/_footer.ejs -->
+        </footer>
+
+        <!-- Bootstrap JS -->
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Site JS -->
+<script type="text/javascript" src="/js/site.js"></script>
+    </div>
 </body>
 
 </html>
