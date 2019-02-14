@@ -1,0 +1,176 @@
+
+<!doctype html>
+<html>
+
+<head>
+    
+
+
+<!-- BEGIN: source/partials/_head.ejs -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Manbeardgames">
+
+<!-- SEO Title -->
+<meta name="title" content="ManBeardGames Setting Up MonoGame">
+<!-- SEO Description -->
+<meta name="description" contnet="">
+
+<!-- Open Graph Type -->
+<meta property="og:type" content="website">
+<!-- Open Graph Title -->
+<meta property="og:title" content="Setting Up Monogame">
+<!-- Opeh Graph Image -->
+<meta property="og:image" content="https://manbeardgames.com/img/ogmbg.png">
+<!-- Opeh Graph Site Name -->
+<meta property="og:site_name" content="ManBeardGames">
+<!-- Open Graph Description -->
+<meta property="og:description" content="How to setup your environment to get ready to make games with MonoGame.">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+
+
+<title>Setting Up MonoGame</title>
+
+<!-- Bootstrap 4.0 CSS -->
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
+
+<!-- Material Design Icons CSS -->
+<link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="/css/site.css">
+
+<!-- jQuery JS -->
+<script type="text/javascript" src="/vendor/jquery/js/jquery.js"></script>
+
+<!-- PrismJS Style Theme CSS -->
+<link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-63802407-1');
+</script>
+
+<!-- END: source/partials/_head.ejs -->
+
+</head>
+
+<body>
+    <div id="flex-wrap">
+        <header>
+            
+
+<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+    <!-- Navbar brand background image is supplied by the CSS style -->
+    <a class="navbar-brand" href="/"></a>
+    <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
+        aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>    
+    <h3 class="text-white"></h3>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/#games">Games</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
+            <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+        </header>
+        <main>
+            <div class="container post">
+
+
+            <h1 class="title" id=setting-up-monogame>Setting Up MonoGame</h1<p>So you&#39;re ready to get started with MonoGame, but have no idea what to do to start. Well the first step would be to get the 
+neccessary software installed.    All of the software needed to get started is completely free. We&#39;re going to need</p>
+<ul>
+<li>Visual Studio</li>
+<li>MonoGame  </li>
+</ul>
+<p>That&#39;s it. So let&#39;s get started</p>
+
+            <h2 class="heading" id=visual-studio>Visual Studio</h2<p>The first thing we&#39;re going to need is Visual Studio.  Visual Studio is an IDE, or Integrated Development Environment, from Microsoft. 
+As of this writing, we&#39;ll be downloading Visual Studio 2017.  This is the application we&#39;ll be using to create our game projects and write 
+the code for our games.</p>
+
+            <h3 class="sub-heading" id=download-visual-studio>Download Visual Studio</h3<p>You can download Visual Studio on its download page at <a target="_blank" href="https://visualstudio.microsoft.com/downloads/">https://visualstudio.microsoft.com/downloads/</a>.  There are three editions to choose from
+but for the purpose of these tutorials, I will suggest the <strong>Community Edition</strong>, as it&#39;s free. If you would like to learn more about the different
+editions of Visual Studio, you can view a breakdown of the differences between each version on the <a target="_blank" href="https://visualstudio.microsoft.com/vs/compare/">Compare Visual Studio 2017 IDE</a> page.</p>
+
+            <h3 class="sub-heading" id=install-visual-studio>Install Visual Studio</h3<p>Once the download finishes, run the installer to begin installing Visual Studio.  It will ask you which components and workloads you want to install as part of the process.  Look over this list to see what&#39;s there, and if there is anything you thing you may have interest in, you can choose it now.  If you don&#39;t choose something now, you can always add it later by rerunning the installer which will allow you to modify your installation and choose additional workloads and components.  For now, the only thing we need at minimum is the <strong>.NET Desktop Development</strong> workload.  See the image below for reference on where this workload is on the list. </p>
+<p><img class="img-fluid" src="img\tutorials\setting-up-monogame\visual-studio-installer.png" alt="null" /></p>
+
+            <h2 class="heading" id=monogame>MonoGame</h2<p>MonoGame is the game framework we&#39;ll use to create our games.  MonoGame is the open source implementation of Microsoft&#39;s XNA framework.  It&#39;s also completely free to use.<br>If you&#39;d like to read more on the history of MonoGame, you can check out there <a target="_blank" href="http://www.monogame.net/about/">about page</a>.  </p>
+
+            <h3 class="sub-heading" id=download-monogame>Download MonoGame</h3<p>MonoGame isn&#39;t a seperate application that is installed that you&#39;ll run, instead the installation will install project templetes for us to choose from 
+in Visual Studio when we create a new game project.  To download MonoGame, head over to the  download page at <a target="_blank" href="http://www.monogame.net/downloads/">http://www.monogame.net/downloads/</a> and 
+chooose to download, as of the writing of this tutorial, <strong>MonoGame 3.7</strong>.  This will take you to the MonoGame community forum post with the different 
+installers.  You&#39;ll want the <strong>MonoGame 3.7 for Visual Studio</strong> installer.</p>
+
+            <h3 class="sub-heading" id=install-monogame>Install MonoGame</h3<p>To install MonoGame, just run the intaller that was just downloaded.  MonoGame isn&#39;t a seperate application that we&#39;ll be running, instead the installation will install
+project templetes for us to choose from in Visual Studio when we go to make a new game. </p>
+
+            <h2 class="heading" id=finished>Finished</h2<p>With Visual Studio and MonoGame installed, we&#39;re all ready to get started making games. In the next tutorial, we&#39;ll go over creating a new project
+Now that we have Visual Stuido and MonoGame installed, we can begin making games.  We&#39;ll cover some of the core concepts for MonoGame in the next tutorial.</p>
+</div>
+        </main>
+
+        <footer>
+            
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <h4>ManBeardGames <span>&copy; 2018</span></h4>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <small>ManBeardGames logo created by <a href="https://www.twitch.tv/cookie042" target="_blank">cookie042</a></small>
+    </div>
+
+    <div class="col-md-4 social-icons justify-content-center text-center">
+      <a href="https://www.twitter.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-twitter"></i>
+      </a>
+      <a href="https://www.gitlab.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-gitlab"></i>
+      </a>
+      <a href="https://store.steampowered.com/search/?publisher=ManBeardGames" target="_blank">
+        <i class="mdi mdi-36px mdi-steam"></i>
+      </a>
+    </div>
+  </div>
+</div>
+        </footer>
+
+        
+
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Popper JS -->
+<script type="text/javascript" src="/vendor/popper.js/js/popper.js"></script>
+
+<!-- Site JS -->
+<script type="text/javascript" src="/js/site.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+    </div>
+</body>
+
+</html>
