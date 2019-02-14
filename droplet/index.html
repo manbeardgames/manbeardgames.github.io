@@ -1,43 +1,54 @@
+
+
 <!doctype html>
 <html>
+    <head>
+        
 
-<head>
-    <!-- BEGIN: source/partials/_head.ejs -->
+
+<!-- BEGIN: source/partials/_head.ejs -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Manbeardgames">
 
-<meta name="title" content="ManBeardGames Droplet">
-<meta name="description" contnet="Tiny and insignificant, you are not discourage from dreaming big. Consume those around you, but remember there is always someone bigger waiting. Made for Ludum Dare 40.">
+<!-- SEO Title -->
+<meta name="title" content="ManBeardGames ">
+<!-- SEO Description -->
+<meta name="description" contnet="">
 
+<!-- Open Graph Type -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Droplet">
-<meta property="og:image" content="https://manbeardgames.com/img/games/droplet/screenshots/001.png">
+<!-- Open Graph Title -->
+<meta property="og:title" content="">
+<!-- Opeh Graph Image -->
+<meta property="og:image" content="">
+<!-- Opeh Graph Site Name -->
 <meta property="og:site_name" content="ManBeardGames">
-<meta property="og:description" content="Tiny and insignificant, you are not discourage from dreaming big. Consume those around you, but remember there is always someone bigger waiting. Made for Ludum Dare 40.">
+<!-- Open Graph Description -->
+<meta property="og:description" content="">
 
-
-
-
+<!-- Favicon -->
 <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 
-<title>Droplet</title>
+<title></title>
 
-
+<!-- Bootstrap 4.0 CSS -->
 <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
 
-
+<!-- Material Design Icons CSS -->
 <link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
 
-
+<!-- Site CSS -->
 <link rel="stylesheet" href="/css/site.css">
 
+<!-- jQuery JS -->
+<script type="text/javascript" src="/vendor/jquery/js/jquery.js"></script>
 
-<script type="text/javascript" src="/vendor/jquery/jquery.js"></script>
-
+<!-- PrismJS Style Theme CSS -->
+<link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
@@ -51,16 +62,19 @@
 
 <!-- END: source/partials/_head.ejs -->
 
-</head>
+    </head>
 
-<body data-spy="scroll" data-target=".sidebar">
-    <!-- BEGIN: source/partials/_header.ejs -->
+    <body>
+        
+
 <nav class="navbar navbar-expand-lg fixed-top" id="topNav">
-
+    <!-- Navbar brand background image is supplied by the CSS style -->
     <a class="navbar-brand" href="/"></a>
-    
+    <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
+        aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>    
     <h3 class="text-white">Droplet</h3>
-    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -71,15 +85,16 @@
             <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
             <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
         </ul>
-        
     </div>
-
 </nav>
-<!-- End: source/partials/_header.ejs -->
 
-    <header>
-    <div class="block-container">
-    <div class="block" style="background-image: url('/img/games/droplet/screenshots/001.png')">
+
+        
+        <header>
+            
+
+<div class="block-container">
+    <div class="block" style="background-image: url('img/games/droplet/cover.png')">
         <div class="row">
             <div class="col-md-6 ml-auto mr-auto">
                 <div class="block-trailer img-thumbnail" >
@@ -94,57 +109,54 @@
             </div>
         </div>      
     </div>
-
-    
 </div>
-    </header>
-    
-    <main id="game-main">
-    <div class="block-container">
+        </header>
+
+        <main id="game-main">
+            
+
+<div class="block-container">
     <div class="block">
         <h3 class="block-header">Droplet</h3>
         <hr />
         <div class="block-description">
             
             <p>
-                You are a small, tiny insignificant droplet.  Small as you may be, this doesn&#39;t discourage you from dreaming to be a bigger droplet.  As you consume those that stand in your way, you watch yourself grow.  But dont&#39; let your ego blind you, as there are always others out there, bigger and better than you, waiting to grow by consuming you.
+                You are a small, tiny insignificant droplet. Small as you may be, this doesn&#39;t discourage you from dreaming to be a bigger droplet. As you consume those that stand in your way, you watch yourself grow. But dont&#39; let your ego blind you, as there are always others out there, bigger and better than you, waiting to grow by consuming you.
             </p>
             
             <p>
-                Droplet was made for Ludum Dare 40 with the theme &#34;The more you have, the worse it is&#34;.  In droplet, players can consume other droplets that are smaller than themselves.  Consuming those of the same color will allow you to grow, while those of the opposite color will allow you to shrink.  The goal is to grow as large as you can, however, the bigger you get, the slower you move.
+                Droplet was made for Ludum Dare 40 with the theme &#34;The more you have, the worse it is&#34;. In droplet, players can consume other droplets that are smaller than themselves. Consuming those of the same color will allow you to grow, while those of the opposite color will allow you to shrink. The goal is to grow as large as you can, however, the bigger you get, the slower you move.
             </p>
             
         </div>
     </div>
 </div>
-    <div class="block-container">
+            
+<div class="block-container">
     <div class="block">
         <div class="block-platforms">
-            
-            
+             
                 <div class="platform">
                     <a href="https://manbeardgames.itch.io/droplet" target="_blank">
-                        <div class="platform-badge" style="background-image: url('/img/badges/itch-badge.png');">
-                        </div>
-                    </a>                            
+                        <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');"></div>
+                    </a>
                 </div>
-               
-            
-            <div class="platform">
-                <a href="https://ldjam.com/events/ludum-dare/40/droplet" target="_blank">
-                    <div class="platform-badge" style="background-image: url('/img/badges/ludum-badge.png');">
-                    </div>
-                </a>                            
-            </div>
              
-                                              
+                <div class="platform">
+                    <a href="https://ldjam.com/events/ludum-dare/40/droplet" target="_blank">
+                        <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');"></div>
+                    </a>
+                </div>
+                                    
         </div>
     </div>
 </div>
-    </main>
+        </main>
 
-    <footer>
-        <!-- BEGIN: source/partials/_footer.ejs -->
+        <footer>
+            
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4 d-flex flex-column text-center justify-content-center">
@@ -168,22 +180,18 @@
     </div>
   </div>
 </div>
+        </footer>
+        
 
-<!-- <div class="brand-container">
-</div>
-
-
-<div class="social-icons">
-</div> -->
-
-<!-- END: source/partials/_footer.ejs -->
-    </footer>
-
-    <!-- Bootstrap JS -->
+<!-- Bootstrap JS -->
 <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Popper JS -->
+<script type="text/javascript" src="/vendor/popper.js/js/popper.js"></script>
 
 <!-- Site JS -->
 <script type="text/javascript" src="/js/site.js"></script>
-</body>
 
+<script>hljs.initHighlightingOnLoad();</script>
+    </body>
 </html>

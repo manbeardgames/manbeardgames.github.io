@@ -14,26 +14,26 @@
 <meta name="apple-mobile-web-app-title" content="Manbeardgames">
 
 <!-- SEO Title -->
-<meta name="title" content="ManBeardGames Why Do I Use MonoGame">
+<meta name="title" content="ManBeardGames Drawing a Line">
 <!-- SEO Description -->
 <meta name="description" contnet="">
 
 <!-- Open Graph Type -->
 <meta property="og:type" content="website">
 <!-- Open Graph Title -->
-<meta property="og:title" content="Why I use MonoGame">
+<meta property="og:title" content="Drawing a Line">
 <!-- Opeh Graph Image -->
 <meta property="og:image" content="https://manbeardgames.com/img/ogmbg.png">
 <!-- Opeh Graph Site Name -->
 <meta property="og:site_name" content="ManBeardGames">
 <!-- Open Graph Description -->
-<meta property="og:description" content="I'm often asked this question. Hopefully this will provide an answer.">
+<meta property="og:description" content="MonoGame has no native way of drawing a line from a starting point to an end point.  In this post, I'll explore one method of doing this.">
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 
-<title>Why Do I Use MonoGame</title>
+<title>Drawing a Line</title>
 
 <!-- Bootstrap 4.0 CSS -->
 <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
@@ -96,7 +96,13 @@
             <div class="container post">
 
 
-            <h1 id=why-do-i-use-monogame>Why Do I Use MonoGame</h1><hr>
+            <h1 id=drawing-a-line>Drawing a Line</h1><hr>
+<p>MonoGame has no native way of drawing a line from a starting point to an end point. This means we&#39;ll have to roll a solution of our own
+to perform this task.  MonoGame does provide ways of drawing textures using SpriteBatch, and creating a texture in code with the Texture2D
+class, so we should be able to combine those to achieve the results we want.</p>
+
+            <h4 id=getting-started>Getting Started</h4><hr>
+<p>To get started, we&#39;re going to create a blank </p>
 <p>I get asked this question a lot.  So much that I started joking on my stream that I
 should write a formal statement about it on my website to link to.  I could provide
 a pros and cons list of using <a href="https://www.google.com/search?q=Monogame+vs">MonoGame vs <em>insert game engine of choice here</em></a> but that

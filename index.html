@@ -1,43 +1,54 @@
+
 <!doctype html>
 <html>
 
 <head>
-    <!-- BEGIN: source/partials/_head.ejs -->
+    
+
+
+<!-- BEGIN: source/partials/_head.ejs -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Manbeardgames">
 
-<meta name="title" content="ManBeardGames ManBeardGames">
-<meta name="description" contnet="ManBeardGames is an indie game developer, web developer, and twitch streamer.">
+<!-- SEO Title -->
+<meta name="title" content="ManBeardGames ">
+<!-- SEO Description -->
+<meta name="description" contnet="">
 
+<!-- Open Graph Type -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="ManBeardGames">
-<meta property="og:image" content="https://manbeardgames.com/img/ogmbg.png">
+<!-- Open Graph Title -->
+<meta property="og:title" content="">
+<!-- Opeh Graph Image -->
+<meta property="og:image" content="">
+<!-- Opeh Graph Site Name -->
 <meta property="og:site_name" content="ManBeardGames">
-<meta property="og:description" content="ManBeardGames is an indie game developer, web developer, and twitch streamer.">
+<!-- Open Graph Description -->
+<meta property="og:description" content="">
 
-
-
-
+<!-- Favicon -->
 <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 
-<title>ManBeardGames</title>
+<title></title>
 
-
+<!-- Bootstrap 4.0 CSS -->
 <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
 
-
+<!-- Material Design Icons CSS -->
 <link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
 
-
+<!-- Site CSS -->
 <link rel="stylesheet" href="/css/site.css">
 
+<!-- jQuery JS -->
+<script type="text/javascript" src="/vendor/jquery/js/jquery.js"></script>
 
-<script type="text/javascript" src="/vendor/jquery/jquery.js"></script>
-
+<!-- PrismJS Style Theme CSS -->
+<link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
@@ -53,16 +64,19 @@
 
 </head>
 
-<body data-spy="scroll" data-target=".sidebar">
+<body>
     <div id="flex-wrap">
         <header>
-            <!-- BEGIN: source/partials/_header.ejs -->
-<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+            
 
+<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+    <!-- Navbar brand background image is supplied by the CSS style -->
     <a class="navbar-brand" href="/"></a>
-    
+    <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
+        aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>    
     <h3 class="text-white">ManBeardGames</h3>
-    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -73,11 +87,9 @@
             <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
             <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
         </ul>
-        
     </div>
-
 </nav>
-<!-- End: source/partials/_header.ejs -->
+
 
         </header>
         <main>
@@ -88,10 +100,9 @@
     <div id="info" class="hidefirst">
       <p class="tagline">Indie Game Dev | Web Dev | Twitch Streamer</p>
       <ul class="primary-nav">
-        <li><a id="animtescroll" href="#games">Games</a></li>
+        <li><a id="animatescroll" href="#games">Games</a></li>
         <li><a href="/tutorials">Tutorials</a></li>
         <li><a href="/dev-blog">Dev Blog</a></li>
-        
       </ul>
     </div>
 
@@ -125,14 +136,10 @@
                     
                         <div class="platform">
                             <a href="https://store.steampowered.com/app/697710/Ophidian/" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/steam-badge.png');">
-                                </div> 
+                                <div class="platform-badge" style="background-image: url('img/badges/steam-badge.png');"></div>
                             </a>
                         </div>
-                    
-                         
-                                                      
-                                            
+                               
                 </div>          
                 <a class="btn btn-primary btn-large" href="/ophidian">More Info</a>
             </div>
@@ -157,23 +164,18 @@
 
                 <div class="block-platforms">
                     
-                    
                         <div class="platform">
                             <a href="https://manbeardgames.itch.io/beats" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');"></div>
+                            </a>
                         </div>
-                         
-                                                      
                     
                         <div class="platform">
                             <a href="https://itch.io/jam/omgjam5/rate/326293" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/omgjam-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/omgjam-badge.png');"></div>
+                            </a>
                         </div>
-                                            
+                               
                 </div>          
                 <a class="btn btn-primary btn-large" href="/beats">More Info</a>
             </div>
@@ -193,28 +195,23 @@
                     Echo
                 </h3>
                 <p>
-                    Waking up, trapped in a room with the ceiling closing in.  Death is ensured, but how long can you survive. Made for Ludum Dare 42
+                    Waking up, trapped in a room with the ceiling closing in. Death is ensured, but how long can you survive. Made for Ludum Dare 42
                 </p>
 
                 <div class="block-platforms">
                     
-                    
                         <div class="platform">
                             <a href="https://manbeardgames.itch.io/echo" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');"></div>
+                            </a>
                         </div>
-                         
                     
                         <div class="platform">
                             <a href="https://ldjam.com/events/ludum-dare/42/echo" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');"></div>
+                            </a>
                         </div>
-                                                      
-                                            
+                               
                 </div>          
                 <a class="btn btn-primary btn-large" href="/echo">More Info</a>
             </div>
@@ -239,23 +236,18 @@
 
                 <div class="block-platforms">
                     
-                    
                         <div class="platform">
                             <a href="https://manbeardgames.itch.io/slime-battle-royale" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');"></div>
+                            </a>
                         </div>
-                         
                     
                         <div class="platform">
                             <a href="https://ldjam.com/events/ludum-dare/41/slime-battle-royale" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');"></div>
+                            </a>
                         </div>
-                                                      
-                                            
+                               
                 </div>          
                 <a class="btn btn-primary btn-large" href="/slime-battle-royale">More Info</a>
             </div>
@@ -280,23 +272,18 @@
 
                 <div class="block-platforms">
                     
-                    
                         <div class="platform">
                             <a href="https://manbeardgames.itch.io/droplet" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/itch-badge.png');"></div>
+                            </a>
                         </div>
-                         
                     
                         <div class="platform">
                             <a href="https://ldjam.com/events/ludum-dare/40/droplet" target="_blank">
-                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');">
-                                </div>
-                            </a>                            
+                                <div class="platform-badge" style="background-image: url('img/badges/ludum-badge.png');"></div>
+                            </a>
                         </div>
-                                                      
-                                            
+                               
                 </div>          
                 <a class="btn btn-primary btn-large" href="/droplet">More Info</a>
             </div>
@@ -305,15 +292,14 @@
 
 <!-- END: source/partials/_games.ejs -->
 
-
-
     </div>
   </div>
 </div>
         </main>
 
         <footer>
-            <!-- BEGIN: source/partials/_footer.ejs -->
+            
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4 d-flex flex-column text-center justify-content-center">
@@ -337,22 +323,20 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="brand-container">
-</div>
-
-
-<div class="social-icons">
-</div> -->
-
-<!-- END: source/partials/_footer.ejs -->
         </footer>
 
-        <!-- Bootstrap JS -->
+        
+
+<!-- Bootstrap JS -->
 <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Popper JS -->
+<script type="text/javascript" src="/vendor/popper.js/js/popper.js"></script>
 
 <!-- Site JS -->
 <script type="text/javascript" src="/js/site.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
     </div>
 </body>
 

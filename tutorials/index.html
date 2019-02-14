@@ -1,43 +1,54 @@
+
 <!doctype html>
 <html>
 
 <head>
-    <!-- BEGIN: source/partials/_head.ejs -->
+    
+
+
+<!-- BEGIN: source/partials/_head.ejs -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Manbeardgames">
 
-<meta name="title" content="ManBeardGames Tutorials">
+<!-- SEO Title -->
+<meta name="title" content="ManBeardGames ">
+<!-- SEO Description -->
 <meta name="description" contnet="">
 
+<!-- Open Graph Type -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="ManBeardGames">
-<meta property="og:image" content="https://manbeardgames.com/img/ogmbg.png">
+<!-- Open Graph Title -->
+<meta property="og:title" content="">
+<!-- Opeh Graph Image -->
+<meta property="og:image" content="">
+<!-- Opeh Graph Site Name -->
 <meta property="og:site_name" content="ManBeardGames">
-<meta property="og:description" content="ManBeardGames is an indie game developer, web developer, and twitch streamer. These are tutorials written on game development.">
+<!-- Open Graph Description -->
+<meta property="og:description" content="">
 
-
-
-
+<!-- Favicon -->
 <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 
 
-<title>Tutorials</title>
+<title></title>
 
-
+<!-- Bootstrap 4.0 CSS -->
 <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
 
-
+<!-- Material Design Icons CSS -->
 <link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
 
-
+<!-- Site CSS -->
 <link rel="stylesheet" href="/css/site.css">
 
+<!-- jQuery JS -->
+<script type="text/javascript" src="/vendor/jquery/js/jquery.js"></script>
 
-<script type="text/javascript" src="/vendor/jquery/jquery.js"></script>
-
+<!-- PrismJS Style Theme CSS -->
+<link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
@@ -53,16 +64,19 @@
 
 </head>
 
-<body data-spy="scroll" data-target=".sidebar">
+<body>
     <div id="flex-wrap">
         <header>
-            <!-- BEGIN: source/partials/_header.ejs -->
-<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+            
 
+<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+    <!-- Navbar brand background image is supplied by the CSS style -->
     <a class="navbar-brand" href="/"></a>
-    
-    <h3 class="text-white">ManBeardGames</h3>
-    
+    <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
+        aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>    
+    <h3 class="text-white"></h3>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -73,25 +87,57 @@
             <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
             <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
         </ul>
-        
     </div>
-
 </nav>
-<!-- End: source/partials/_header.ejs -->
+
 
         </header>
         <main>
-            <div class="container post">
+            <div class="content">
+    <div class="container">
+        <h1 class="my-4">MonoGame Tutorials</h1>
+        
+        
+    
+        <div class="row">
+            <div class="col-md-7">
+                <a href="/tutorials/getting-started">
+                    <img class="img-fluid img-thubnail rounded mb-3 mb-md-0" src="/img/tutorials/getting-started/series-cover.png" alt="" />
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Getting Started</h3>
+                <p>These tutorials will walk you through all you need to get started with MonoGame. From downloading and installing the neccessary tools, to creating a small sample project.</p>
+                <a class="btn btn-primary" href="/tutorials/getting-started">View Tutorials</a>
+            </div>
+        </div>
 
+        
+            <hr />
+        
+    
+        <div class="row">
+            <div class="col-md-7">
+                <a href="/tutorials/test-two">
+                    <img class="img-fluid img-thubnail rounded mb-3 mb-md-0" src="/img/tutorials/test-two/series-cover.png" alt="" />
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Test Two</h3>
+                <p>This is just a test</p>
+                <a class="btn btn-primary" href="/tutorials/test-two">View Tutorials</a>
+            </div>
+        </div>
 
-            <h1 id=tutorials>Tutorials</h1><p>Tutorials will be up very soon. I have a bunch of stuff planned for this on different things with
-MonoGame. I hope you&#39;ll be as excited about it as I am.  When tutorials as posted, I&#39;ll be announcing that
-on my <a href="https://www.twitter.com/manbeardgames">twitter</a>, so be sure to follow me there.</p>
+        
+    
+    </div>
 </div>
         </main>
 
         <footer>
-            <!-- BEGIN: source/partials/_footer.ejs -->
+            
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4 d-flex flex-column text-center justify-content-center">
@@ -115,22 +161,20 @@ on my <a href="https://www.twitter.com/manbeardgames">twitter</a>, so be sure to
     </div>
   </div>
 </div>
-
-<!-- <div class="brand-container">
-</div>
-
-
-<div class="social-icons">
-</div> -->
-
-<!-- END: source/partials/_footer.ejs -->
         </footer>
 
-        <!-- Bootstrap JS -->
+        
+
+<!-- Bootstrap JS -->
 <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Popper JS -->
+<script type="text/javascript" src="/vendor/popper.js/js/popper.js"></script>
 
 <!-- Site JS -->
 <script type="text/javascript" src="/js/site.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
     </div>
 </body>
 
