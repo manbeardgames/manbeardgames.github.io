@@ -1,0 +1,185 @@
+
+<!doctype html>
+<html>
+
+<head>
+    
+
+
+<!-- BEGIN: source/partials/_head.ejs -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Manbeardgames">
+
+<!-- SEO Title -->
+<meta name="title" content="ManBeardGames Adding Content">
+<!-- SEO Description -->
+<meta name="description" contnet="">
+
+<!-- Open Graph Type -->
+<meta property="og:type" content="website">
+<!-- Open Graph Title -->
+<meta property="og:title" content="Adding Content">
+<!-- Opeh Graph Image -->
+<meta property="og:image" content="https://manbeardgames.com/img/ogmbg.png">
+<!-- Opeh Graph Site Name -->
+<meta property="og:site_name" content="ManBeardGames">
+<!-- Open Graph Description -->
+<meta property="og:description" content="This tutorial briefly goes over adding content, such as images, sounds, and fonts, to your game">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+
+
+<title>Adding Content</title>
+
+<!-- Bootstrap 4.0 CSS -->
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
+
+<!-- Material Design Icons CSS -->
+<link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="/css/site.css">
+
+<!-- jQuery JS -->
+<script type="text/javascript" src="/vendor/jquery/js/jquery.js"></script>
+
+<!-- PrismJS Style Theme CSS -->
+<link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-63802407-1');
+</script>
+
+<!-- END: source/partials/_head.ejs -->
+
+</head>
+
+<body>
+    <div id="flex-wrap">
+        <header>
+            
+
+<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+    <!-- Navbar brand background image is supplied by the CSS style -->
+    <a class="navbar-brand" href="/"></a>
+    <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
+        aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>    
+    <h3 class="text-white"></h3>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/#games">Games</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
+            <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+        </header>
+        <main>
+            <div class="container post">
+
+
+            <h1 id=adding-content>Adding Content</h1><hr>
+<p>No matter what game your making, you&#39;re going to need some content added to your game.  Content can be images such as sprite, fonts, sound effects, or music to name a few.  When using the MonoGame framework, adding content to your game is simplified with the Content Pipeline Tool.</p>
+
+            <h2 id=why-do-we-need-this-tool>Why Do We Need This Tool</h2><hr>
+<p>Let&#39;s create a scenario.  You&#39;re using MonoGame to develop the next big indie sensation.  You&#39;ve created some really awesome sprites to use in the game, and now you need a way to get them in the game.  You have your file <em>reallyCoolSprite.png</em> in your project folder.  You know that you have to use the SpriteBatch to draw a Texture2D object to the screen, but how do you turn your image file into a Texture2D object in code?</p>
+<p>One way could be to use the <code>Texture2D.FromStream()</code> method.  This method takes two parameters, a <em>GraphicsDevice</em> object and a <em>System.IO.Stream</em> object of the image file. The GraphicsDevice object would be the one found in you base Game class&#39;s <em>GraphicsDeviceManager</em>.</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Game1</span> <span class="token punctuation">:</span> <span class="token class-name">Game</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  This is the Graphics Device Manager in you Game class</span>
+    <span class="token class-name">GraphicsDeviceManager</span> graphics<span class="token punctuation">;</span>
+    <span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Game1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        graphics <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GraphicsDeviceManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Content<span class="token punctuation">.</span>RootDirectory <span class="token operator">=</span> <span class="token string">"Content"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>Ok, so now you could do something like this to load your image file in the <code>LoadContent</code> method</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">//  The idle sprite of the player</span>
+<span class="token class-name">Texture2D</span> playerIdle<span class="token punctuation">;</span>
+
+<span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">LoadContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Create a new SpriteBatch, which can be used to draw textures.</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>spriteBatch <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SpriteBatch</span><span class="token punctuation">(</span>GraphicsDevice<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment">//  Determine the path to the image file.</span>
+    <span class="token keyword">string</span> imageFilePath <span class="token operator">=</span> Path<span class="token punctuation">.</span><span class="token function">Combine</span><span class="token punctuation">(</span>Environment<span class="token punctuation">.</span>CurrentDirectory<span class="token punctuation">,</span> <span class="token string">"player_idle.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//  Use a FileStream to get the stream of the image file.</span>
+    <span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name">FileStream</span> stream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileStream</span><span class="token punctuation">(</span>imageFilePath<span class="token punctuation">,</span> FileMode<span class="token punctuation">.</span>Open<span class="token punctuation">,</span> FileAccess<span class="token punctuation">.</span>Read<span class="token punctuation">,</span> FileShare<span class="token punctuation">.</span>Read<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  Create the playerIdle Texture2D using the file stream</span>
+        playerIdle <span class="token operator">=</span> Texture2D<span class="token punctuation">.</span><span class="token function">FromStream</span><span class="token punctuation">(</span>graphics<span class="token punctuation">.</span>GraphicsDevice<span class="token punctuation">,</span> stream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>That is all a bit cumbersome just to load in one image.  We have to create file streams whenever we want to load our images in?  We have to know the exact path to the file. Plus, the file has to be deployed with your game in a completely open format.</p>
+<p>There&#39;s a better way...</p>
+</div>
+        </main>
+
+        <footer>
+            
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <h4>ManBeardGames <span>&copy; 2019</span></h4>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <small>ManBeardGames logo created by <a href="https://www.twitch.tv/cookie042" target="_blank">cookie042</a></small>
+    </div>
+
+    <div class="col-md-4 social-icons justify-content-center text-center">
+      <a href="https://www.twitter.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-twitter"></i>
+      </a>
+      <a href="https://www.gitlab.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-gitlab"></i>
+      </a>
+      <a href="https://store.steampowered.com/search/?publisher=ManBeardGames" target="_blank">
+        <i class="mdi mdi-36px mdi-steam"></i>
+      </a>
+    </div>
+  </div>
+</div>
+        </footer>
+
+        
+
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Popper JS -->
+<script type="text/javascript" src="/vendor/popper.js/js/popper.js"></script>
+
+<!-- Site JS -->
+<script type="text/javascript" src="/js/site.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+    </div>
+</body>
+
+</html>
