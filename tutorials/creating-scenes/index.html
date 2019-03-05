@@ -1,0 +1,895 @@
+
+<!doctype html>
+<html>
+
+<head>
+    
+
+
+<!-- BEGIN: source/partials/_head.ejs -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Manbeardgames">
+
+<!-- SEO Title -->
+<meta name="title" content="ManBeardGames Creating Scenes">
+<!-- SEO Description -->
+<meta name="description" contnet="">
+
+<!-- Open Graph Type -->
+<meta property="og:type" content="website">
+<!-- Open Graph Title -->
+<meta property="og:title" content="Creating Scenes">
+<!-- Opeh Graph Image -->
+<meta property="og:image" content="https://manbeardgames.com/img/tutorials/adding-content/tutorial-cover.png">
+<!-- Opeh Graph Site Name -->
+<meta property="og:site_name" content="ManBeardGames">
+<!-- Open Graph Description -->
+<meta property="og:description" content="In this tutorial, we'll discuss creating the concept of Scenes in MonoGame">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+
+
+<title>Creating Scenes</title>
+
+<!-- Bootstrap 4.0 CSS -->
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
+
+<!-- Material Design Icons CSS -->
+<link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="/css/site.css">
+
+<!-- jQuery JS -->
+<script type="text/javascript" src="/vendor/jquery/js/jquery.js"></script>
+
+<!-- PrismJS Style Theme CSS -->
+<link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-63802407-1');
+</script>
+
+<!-- END: source/partials/_head.ejs -->
+
+</head>
+
+<body>
+    <div id="flex-wrap">
+        <header>
+            
+
+<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+    <!-- Navbar brand background image is supplied by the CSS style -->
+    <a class="navbar-brand" href="/"></a>
+    <!-- <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
+        aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>     -->
+    <h3 class="text-white"></h3>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/#games">Games</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
+            <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+        </header>
+        <main>
+            <div class="container post">
+
+
+            <h1 id=overview>Overview</h1><hr>
+<p>When first starting a new MonoGame project, you&#39;re given the Game1.cs templete. When starting out, this is good for experimenting and learning the core concepts in MonoGame.  As your game projects grow, eventually the Game1 templete will need to be broken out into logical groupings of levels or screens in order to better manage your code.  </p>
+<p>This tutorial will go over one way of doing this, by creating what we&#39;ll call Scenes.</p>
+
+            <h1 id=project-files>Project Files</h1><hr>
+<p>If you would like to follow along with this tutorial using the same files and assets I use, you can find them <a target="_blank" href="https://github.com/manbeardgames/manbeardgames-site-tutorials/tree/master/tutorials/creating-scenes">here on github</a>.</p>
+
+            <h2 id=what-is-a-scene>What is a Scene</h2><hr>
+<p>You can think of a Scene as the individual screens of your game. This could be things such as your title screen or you individual levels within your game.  A Scene&#39;s primary purpose is to emulate what we do in the Game1 class such as updating and rendering, but on a per scene bases to help us better organize and manage our code.  </p>
+<p>We can further expand this idea of a Scene by implementing the idea of Game Objects or Entities, and Components.  This setup would be similar to something like Scenes in Unity in that each Scene contains game objects, and you attach component scripts to the game objects.  </p>
+<div class="card text-white bg-dark mb-3">
+    <div class="card-header">
+        <span class="lead">
+            Note:
+        </span>
+    </div>
+    <div class="card-body">
+        <p>In this concept, we'll have Scenes that are composed of game objects, and game object's will be composed of components.  This is not to be confused with an Entity-Component-System (ECS) architecure, which works in a fundimentally different way.
+    </div>
+</div>
+
+
+
+
+            <h2 id=the-scene-class>The Scene Class</h2><hr>
+<p>Let&#39;s dive right into this. To get started, open Visual Studio and create a new MonoGame Cross Platform Desktop project.  For this tutorial, we&#39;ll call it SceneExample.  Once the project is created, add a new class called <code>Scene</code>. This is going to be the base class for all scenes that are created for our game.</p>
+<p>Let&#39;s add two new methods to our Scene class, the <code>Update</code> and <code>Draw</code> methods.</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span></code></pre><p>The <code>Update()</code> is where we can place all of the update logic for our scene.  The <code>Draw(SpriteBatch spriteBatch)</code> method is where we&#39;ll do all of our rendering for the scene. Both of these methods are <code>virtual</code> so that we can override them in the actual classes we create to implement our scene.  Pretty straight forward so far.</p>
+<p>We&#39;ll come back to the Scene class, but for now, lets move on to our next concept we&#39;ll introduce</p>
+
+            <h2 id=the-entity-class>The Entity Class</h2><hr>
+<p>Our scenes are going to be comprised our our game objects that will get updated and rendered from the scene they belong to.  We&#39;re going to call these Entities.  Entities further on are going to be comprised of Component scripts, which we&#39;ll talk about in the next section.  The Component scripts are going to provide rendering capabiliies and logic to our Entities.  </p>
+<p>For now, lets create the base of our Entity class.  Create a new class called Entity and add the following</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Entity</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Is the entity active (can it be updated)</span>
+    <span class="token keyword">public</span> <span class="token keyword">bool</span> Active <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//  Is the entity visible (can it be rendered)</span>
+    <span class="token keyword">public</span> <span class="token keyword">bool</span> Visible <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//  The xy-coordinate position of the entity</span>
+    <span class="token keyword">public</span> <span class="token class-name">Vector2</span> Position<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The scene that the entity lives within</span>
+    <span class="token keyword">public</span> <span class="token class-name">Scene</span> Scene <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Creates a new entity at the xy-coordinate position given</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="position">The xy-coordinate position of the entity&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token function">Entity</span><span class="token punctuation">(</span><span class="token class-name">Vector2</span> position<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Position <span class="token operator">=</span> position<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Creates a new entity with a position of {0, 0}</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token function">Entity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">(</span>Vector2<span class="token punctuation">.</span>Zero<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Updates the entity</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Renders the entity to the screen</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="spriteBatch">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Called by the scene when this entity is added to it</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="scene">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Added</span><span class="token punctuation">(</span><span class="token class-name">Scene</span> scene<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Scene <span class="token operator">=</span> scene<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Called by the scene when this entity is removed from it</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="scene">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Removed</span><span class="token punctuation">(</span><span class="token class-name">Scene</span> scene<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Scene <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>This is the skeleton of our Entity class.  We&#39;ll be coming back to this to add more in a minute, but for now, we need to move on to our final concept, the Component</p>
+
+            <h2 id=the-component-class>The Component class</h2><hr>
+<p>The Component class is what we&#39;ll use to create the logic for our entities and/or the rendering.  Not all components need to render, so because of this we&#39;ll actually create two types of Component classes, the <code>Component</code> and the <code>GraphicalComponent</code>.</p>
+<p>To start with, lets first create the Component class. Add a new class called Component, then add the following to it</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Component</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Is the component active (updatable)</span>
+    <span class="token keyword">public</span> <span class="token keyword">bool</span> Active <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token comment">//  The entity this component is attached too</span>
+    <span class="token keyword">public</span> <span class="token class-name">Entity</span> Entity <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token comment">//  The scene this component's entity is apart of</span>
+    <span class="token keyword">public</span> <span class="token class-name">Scene</span> Scene
+    <span class="token punctuation">{</span>
+        <span class="token keyword">get</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>Entity <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> Entity<span class="token punctuation">.</span>Scene<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Creates a new component instance</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="active">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token keyword">bool</span> active<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Active <span class="token operator">=</span> active<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Updates the component. Method should be overridden</span>
+    <span class="token comment">///     by the implementing class</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Called by the entity when this component is attached</span>
+    <span class="token comment">///     to it</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="entity">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Added</span><span class="token punctuation">(</span><span class="token class-name">Entity</span> entity<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Entity <span class="token operator">=</span> entity<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Called by the entity when this component is removed from</span>
+    <span class="token comment">///     it</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="entity">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Removed</span><span class="token punctuation">(</span><span class="token class-name">Entity</span> entity<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Entity <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Next is the GraphicComponent. Create a new class called GraphicComponent and add the following</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">//  GraphicComponent inherits from Component</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">GraphicComponent</span> <span class="token punctuation">:</span> <span class="token class-name">Component</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  The xy-coordinate position of the component</span>
+    <span class="token comment">//  relative to the xy-coordinate position of the entity</span>
+    <span class="token comment">//  it is attached to</span>
+    <span class="token keyword">public</span> <span class="token class-name">Vector2</span> Position<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The xy-coordinate position to render the component at.</span>
+    <span class="token comment">//  Takes into account the position of the Entity it is attached</span>
+    <span class="token comment">//  too and the components relative position</span>
+    <span class="token keyword">public</span> <span class="token class-name">Vector2</span> RenderPosition
+    <span class="token punctuation">{</span>
+        <span class="token keyword">get</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>Entity <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> Vector2<span class="token punctuation">.</span>Zero<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> Entity<span class="token punctuation">.</span>Position <span class="token operator">+</span> Position<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//  The origin value used when rendering with the sprite batch</span>
+    <span class="token keyword">public</span> <span class="token class-name">Vector2</span> Origin<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The xy-scale of the render</span>
+    <span class="token keyword">public</span> <span class="token class-name">Vector2</span> Scale <span class="token operator">=</span> Vector2<span class="token punctuation">.</span>One<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The color mask used when rendering</span>
+    <span class="token keyword">public</span> <span class="token class-name">Color</span> Color <span class="token operator">=</span> Color<span class="token punctuation">.</span>White<span class="token punctuation">;</span>
+
+    <span class="token comment">//  Is this component visible (can it be rendered)</span>
+    <span class="token keyword">public</span> <span class="token keyword">bool</span> Visible <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Creates a new instance of a GraphicComponent</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="active">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token function">GraphicComponent</span><span class="token punctuation">(</span><span class="token keyword">bool</span> active<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token keyword">base</span><span class="token punctuation">(</span>active<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Renders the component to the screen</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="spriteBatch">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span>    
+<span class="token punctuation">}</span></code></pre><p>Now that we have the base entity and component arcitectures in place, we&#39;re almost ready to put it all together.  First we&#39;ll need some way of manging and keeping track of the components that have been added to an entity, as well as the entities that have been added to our scene. </p>
+
+            <h2 id=the-componentlist>The ComponentList</h2><hr>
+<p>The ComponentList is exactly what it sounds like. It&#39;s a class that will allow us to logically manage and track the components that have been added to an entity.  </p>
+<p>Create a new class called ComponentList.  Add the following </p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ComponentList</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  The main list of components</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Component<span class="token operator">></span> _components<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The components that need to be added to the </span>
+    <span class="token comment">//  main list</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Component<span class="token operator">></span> _toAdd<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The components that need to be removed from the</span>
+    <span class="token comment">//  main list</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Component<span class="token operator">></span> _toRemove<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The Entity this component list belongs to</span>
+    <span class="token keyword">public</span> <span class="token class-name">Entity</span> Entity <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Creates a new component list instnace</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="entity">The entity this belongs too&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token function">ComponentList</span><span class="token punctuation">(</span><span class="token class-name">Entity</span> entity<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _components <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token generic-method"><span class="token function">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Component</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        _toAdd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token generic-method"><span class="token function">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Component</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        _toRemove <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token generic-method"><span class="token function">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Component</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Entity <span class="token operator">=</span> entity<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre><p>There are three lists within here.  The <code>_components</code> list is our main list of current components.  The <code>_toAdd</code> and <code>_toRemove</code> lists track which components need to be added or removed from the main list.  This is to help prevent exceptions in instances where we are iterating the main list, but also need to add to it.  </p>
+<p>Next, lets add the method we&#39;ll use to keep these lists updated.  Add the following method to our ComponentList class</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Updates the lists of components</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">UpdateLists</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//   If we have components to add, iterate them</span>
+    <span class="token comment">//   and add them to the main list. </span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>_toAdd<span class="token punctuation">.</span>Count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> component <span class="token keyword">in</span> _toAdd<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _components<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">//  Tell the component it was added to the Entity</span>
+            component<span class="token punctuation">.</span><span class="token function">Added</span><span class="token punctuation">(</span>Entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//  Clear the _toAdd list</span>
+    _toAdd<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>_toRemove<span class="token punctuation">.</span>Count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> component <span class="token keyword">in</span> _toRemove<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _components<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">//  Tell the component it was removed from the Entity</span>
+            component<span class="token punctuation">.</span><span class="token function">Removed</span><span class="token punctuation">(</span>Entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//  Clear the _toRemove list</span>
+    _toRemove<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>This will take any components in the <code>_toAdd</code> list and add them to the main list, and remove any in the <code>_toRemove</code> list.</p>
+<p>Next lets add our helper methods for adding and removing components from the list. Add teh following methods</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Adds the given component to the list</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="component">The component to add&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    _toAdd<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Removes the given component from the list</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="component">The component to remove&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Remove</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    _toRemove<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>Now that we can successfully add and remove components, lets add the methods for updating the components in the list and rendering those that need to be rendered.  Add the following methods</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Updates the components</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  First ensure our list is up to date</span>
+    <span class="token function">UpdateLists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> component <span class="token keyword">in</span> _components<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  Only update if component is active</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>component<span class="token punctuation">.</span>Active<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            component<span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Renders the components</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="spriteBatch">&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">var</span> component <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_components<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  Only do GraphicComponents</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>component <span class="token keyword">is</span> <span class="token class-name">GraphicComponent</span> graphicComponent<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//  Only render if component is visible</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>graphicComponent<span class="token punctuation">.</span>Visible<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                graphicComponent<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>spriteBatch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>The Update method first ensures that our lists are up-to-date, then it will call the Update method on any component that is active.  The Render method will go through only the GraphicComponent types and render those that are visible</p>
+<p>The last thin we need to do is provide a way of pulling components out of the list.  To do this, we&#39;re going to make use of the <code>T</code> generic methods in C#.  Add the following two methods</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Gets the first component of type T from the list</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;typeparam name="T">The type of Component&lt;/typeparam></span>
+<span class="token comment">/// &lt;returns>The component if found; null otherwise&lt;/returns></span>
+<span class="token keyword">public</span> T <span class="token generic-method"><span class="token function">Get</span><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> Component
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Go through all of the components. Return back the </span>
+    <span class="token comment">//  first instance of a component that is of type T</span>
+    <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> component <span class="token keyword">in</span> _components<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>component <span class="token keyword">is</span> T<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> component <span class="token keyword">as</span> T<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//  If no components were found, return null</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Gets components of type T</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;typeparam name="T">The type of Component&lt;/typeparam></span>
+<span class="token comment">/// &lt;returns>&lt;/returns></span>
+<span class="token keyword">public</span> IEnumerable<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token generic-method"><span class="token function">GetAll</span><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> Component
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Go through all of the components.  Return back</span>
+    <span class="token comment">//  each instance of a component that is of type T</span>
+    <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> component <span class="token keyword">in</span> _components<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>component <span class="token keyword">is</span> T<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">yield</span> <span class="token keyword">return</span> component <span class="token keyword">as</span> T<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>The <code>Get&lt;T&gt;()</code> method will get the first component in the list that is of the type we provide for <code>T</code>.  For example, we could say <code>Get&lt;Foo&gt;()</code> and it would return the first <code>Foo</code> component in the lsit.</p>
+<p>The <code>GetAll&lt;T&gt;()</code> method uses the <code>IEnumerable&lt;T&gt;</code> return type to get all components of the given type.</p>
+<p>That&#39;s it for out ComponentList.  Now that we&#39;ve created that, lets add it into our Entity class.  Go to the Entity class and add the following property just after the Scene property and initialize it in the constructor</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">//  The list of components for this entity</span>
+<span class="token keyword">public</span> <span class="token class-name">ComponentList</span> Components <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Creates a new entity at the xy-coordinate position given</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="position">The xy-coordinate position of the entity&lt;/param></span>
+<span class="token keyword">public</span> <span class="token function">Entity</span><span class="token punctuation">(</span><span class="token class-name">Vector2</span> position<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Position <span class="token operator">=</span> position<span class="token punctuation">;</span>
+
+    <span class="token comment">//  Initilize the component list</span>
+    Components <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComponentList</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>Next modify the <code>Update</code> and <code>Draw</code> method of our Entity class to update and draw our components</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Updates the entity</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Update the components</span>
+    Components<span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Renders the entity to the screen</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="spriteBatch">&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Draw the components</span>
+    Components<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>spriteBatch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>And finally, add the <code>Add</code> and <code>Remove</code> methods so we can add and remove components from the Entity</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Adss the given component to the entity</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="component">The component to add&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Components<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Removes the given component from the entity</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="component">The component to remove&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Remove</span><span class="token punctuation">(</span><span class="token class-name">Component</span> component<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Components<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>Now that we can track and manage components form the entities using our ComponentList, we&#39;re going to do the same thing to track and manage our entities in our scenes by creating an EntityList</p>
+
+            <h2 id=the-entitylist>The EntityList</h2><hr>
+<p>The EntityList is fundimentally going to work the same way the ComponentList did.  So to save some time typeing and you reading, I&#39;ll present the code here for you and provide any explinations in the comments.</p>
+<p>Create a new class called EntltyList and add the following</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EntityList</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  The main list of entities</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Entity<span class="token operator">></span> _entities<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The entiies that need to be added to the </span>
+    <span class="token comment">//  main list</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Entity<span class="token operator">></span> _toAdd<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The entities that need to be removed from</span>
+    <span class="token comment">//  the main list</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Entity<span class="token operator">></span> _toRemove<span class="token punctuation">;</span>
+
+    <span class="token comment">//  The Scene this entity list belongs too</span>
+    <span class="token keyword">public</span> <span class="token class-name">Scene</span> Scene <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Creates  anew entity list instnace</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="scene">The scene this belongs too&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token function">EntityList</span><span class="token punctuation">(</span><span class="token class-name">Scene</span> scene<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _entities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token generic-method"><span class="token function">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Entity</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        _toAdd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token generic-method"><span class="token function">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Entity</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        _toRemove <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token generic-method"><span class="token function">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Entity</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Scene <span class="token operator">=</span> scene<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">UpdateLists</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  If we have entities to add, iterate them and </span>
+        <span class="token comment">//  add them to the main list</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>_toAdd<span class="token punctuation">.</span>Count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> entity <span class="token keyword">in</span> _toAdd<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                _entities<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token comment">//  Tell the entity it was added to the scene</span>
+                entity<span class="token punctuation">.</span><span class="token function">Added</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">//  Clear the _toAdd list</span>
+        _toAdd<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>_toRemove<span class="token punctuation">.</span>Count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> entity <span class="token keyword">in</span> _toRemove<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                _entities<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token comment">//  Tell the entity it was removed from teh scene</span>
+                entity<span class="token punctuation">.</span><span class="token function">Removed</span><span class="token punctuation">(</span>Scene<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">//  Clear the _toRemovelist</span>
+        _toRemove<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Adds the given entity to the list</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="entity">The entity to add&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token class-name">Entity</span> entity<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _toAdd<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Removes the given entity from the list</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="entity">The entity to remove&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Remove</span><span class="token punctuation">(</span><span class="token class-name">Entity</span> entity<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        _toRemove<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Updates the entities</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  First ensure our list is up to date</span>
+        <span class="token function">UpdateLists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> entity <span class="token keyword">in</span> _entities<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//  Only update if the entity is active</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>entity<span class="token punctuation">.</span>Active<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                entity<span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Renders the entities</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="spriteBatch">&lt;/param></span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> entity <span class="token keyword">in</span> _entities<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//  Only render if entity is visible</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>entity<span class="token punctuation">.</span>Visible<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                entity<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>spriteBatch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Gets the first entity of type T from the list</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;typeparam name="T">The type of entity&lt;/typeparam></span>
+    <span class="token comment">/// &lt;returns>The entity if found; null otherwise&lt;/returns></span>
+    <span class="token keyword">public</span> T <span class="token generic-method"><span class="token function">Get</span><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> Entity
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  Go through all of the entities.  Rentur back the</span>
+        <span class="token comment">//  first instance of an entity that is of type T</span>
+        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token keyword">var</span> entity <span class="token keyword">in</span> _entities<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>entity <span class="token keyword">is</span> T<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> entity <span class="token keyword">as</span> T<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">//  If no entity was found, return null</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">///     Gets entities of type T</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;typeparam name="T">The type of entity&lt;/typeparam></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> IEnumerable<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token generic-method"><span class="token function">GetAll</span><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">where</span> T <span class="token punctuation">:</span> Entity
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  Go through all of the entities.  Return back</span>
+        <span class="token comment">//  each instance of a entity that is of type T</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token keyword">var</span> entity <span class="token keyword">in</span> _entities<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>entity <span class="token keyword">is</span> T<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">yield</span> <span class="token keyword">return</span> entity <span class="token keyword">as</span> T<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre><p>Now we just need to modify the Scene class to make use of our Entitylist.  Go to the Scene class and add the following property and initilzie it in the constructor</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">//  The list of entities for this scene</span>
+<span class="token keyword">public</span> <span class="token class-name">EntityList</span> Entities <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token function">Scene</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Initilize the entity list</span>
+    Entities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EntityList</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>Next modify the <code>Update</code> and <code>Draw</code> methods of the Scene class to update and draw the entities</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Updates the scene</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Entities<span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Renders the scene</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="spriteBatch">&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">SpriteBatch</span> spriteBatch<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Entities<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>spriteBatch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>And finally create the <code>Add</code> and <code>Remove</code> methods that we can use to add and remove entities from the scene</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Adds the given entity to the scene</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="entity">The entity to add&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token class-name">Entity</span> entity<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Entities<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/// &lt;summary></span>
+<span class="token comment">///     Removes the given entity from the scene</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="entity">The entity to remove&lt;/param></span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">Remove</span><span class="token punctuation">(</span><span class="token class-name">Entity</span> entity<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Entities<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>entity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <h2 id=wrapping-it-all-up>Wrapping It All Up</h2><hr>
+<p>Now that we have all the pieces in place, we need to modify our Game1 class to use scenes.  This part will be pretty simple.  First open the Game1 class and add the following static properties</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">//  Static refrence to the instance of the Game1 class</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Game1</span> Instance <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token comment">//  The current scene that is being used</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Scene</span> CurrentScene <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token comment">//  The next scene that we want to use</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Scene</span> NextScene <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token comment">//  The delta time between updates</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">float</span> DeltaTime <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre><p>First we make create a static reference to our Game1 class called <code>Instance</code>.  This will be helpful whenever we need to change scenes from somewhere else, like within another scene</p>
+<p>Next is the <code>CurrentScene</code> and <code>NextScene</code> static properties. The CurrentScene is our current active scene.  We&#39;ll use the NextScene property as a method of switch scenes in a minute.</p>
+<p>Finally is the <code>DeltaTime</code> static property.  This will allow use to get the delta time value between updates from within our scenes instead of having to pass the GameTime object through all of the update calls</p>
+<p>Next, modify the constructor for Game1 so that we set the <code>Instance</code> property as follows</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token function">Game1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//  Cache refrence of this instance</span>
+    Instance <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+    graphics <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GraphicsDeviceManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Content<span class="token punctuation">.</span>RootDirectory <span class="token operator">=</span> <span class="token string">"Content"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>Then modify the Update method</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// Allows the game to run logic such as updating the world,</span>
+<span class="token comment">/// checking for collisions, gathering input, and playing audio.</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="gameTime">Provides a snapshot of timing values.&lt;/param></span>
+<span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token class-name">GameTime</span> gameTime<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>GamePad<span class="token punctuation">.</span><span class="token function">GetState</span><span class="token punctuation">(</span>PlayerIndex<span class="token punctuation">.</span>One<span class="token punctuation">)</span><span class="token punctuation">.</span>Buttons<span class="token punctuation">.</span>Back <span class="token operator">==</span> ButtonState<span class="token punctuation">.</span>Pressed <span class="token operator">||</span> Keyboard<span class="token punctuation">.</span><span class="token function">GetState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">IsKeyDown</span><span class="token punctuation">(</span>Keys<span class="token punctuation">.</span>Escape<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">Exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//  Update the delta time</span>
+    DeltaTime <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>gameTime<span class="token punctuation">.</span>ElapsedGameTime<span class="token punctuation">.</span>TotalSeconds<span class="token punctuation">;</span>
+
+    <span class="token comment">//  Update the current scene</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>CurrentScene <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        CurrentScene<span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//  If we have a NextScene, switch the current</span>
+    <span class="token comment">//  scene to that</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>NextScene <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//  Set the CurrentScene as the NextScene</span>
+        CurrentScene <span class="token operator">=</span> NextScene<span class="token punctuation">;</span>
+
+        <span class="token comment">//  Set the next scene as null</span>
+        NextScene <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">base</span><span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span>gameTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>First, we get the delta time value.  Next we udpate the <code>CurrentScene</code> if we have one.  And finally, if there is a <code>NextScene</code>, we swap out the <code>CurrentScene</code> for that, and set <code>NextScene</code> to null</p>
+<p>And finally, modify our Draw method so that we draw the current scene as such</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// This is called when the game should draw itself.</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token comment">/// &lt;param name="gameTime">Provides a snapshot of timing values.&lt;/param></span>
+<span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">GameTime</span> gameTime<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    GraphicsDevice<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>Black<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//  Render the current scene</span>
+    spriteBatch<span class="token punctuation">.</span><span class="token function">Begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>CurrentScene <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        CurrentScene<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>spriteBatch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    spriteBatch<span class="token punctuation">.</span><span class="token function">End</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">base</span><span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>gameTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>We begin and end our spritebatch here, and if the <code>CurrentScene</code> is not null, we tell it to draw, giving it our spritebatch to use.  (I also took the liberty of changing the Color used in the GraphicsDevice.Clear to Black...personal preference).</p>
+<p>And that&#39;s it. All of the pieces are in place now for use to use.  We have a Scene through our <code>CurrentScene</code> property in Game1.  This is Updated and Drawn, which in turn updates and draws its entities, which in turn updates and draws their components.  It&#39;s &quot;trickle down updatedrawconomics&quot;.....</p>
+<p>Now, after you&#39;ve created your first Scene class, you can start it within your Game1 by setting the CurrentScene propety to it within the <code>Initialize</code> method like so</p>
+
+            <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// Allows the game to perform any initialization it needs to before starting to run.</span>
+<span class="token comment">/// This is where it can query for any required services and load any non-graphic</span>
+<span class="token comment">/// related content.  Calling base.Initialize will enumerate through any components</span>
+<span class="token comment">/// and initialize them as well.</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">base</span><span class="token punctuation">.</span><span class="token function">Initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//  Load your first scene here</span>
+    CurrentScene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExampleScene</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>If you checked out the solution files listed at the beginning of this tutorial, I&#39;ve included and example scene that utilizes all we&#39;ve created here.  The <code>ExampleScene</code> contains one <code>PlayerEntity</code>. This entity has two components; <code>PlayerMovementComponent</code> and <code>Sprite</code>.  The PlayerMovementComponent moves the player with input, and the Sprite component will render the player.  Be sure to check it out to see how all of this wraps up </p>
+</div>
+        </main>
+
+        <footer>
+            
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <h4>ManBeardGames <span>&copy; 2019</span></h4>
+    </div>
+
+    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
+      <small>ManBeardGames logo created by <a href="https://www.twitch.tv/cookie042" target="_blank">cookie042</a></small>
+    </div>
+
+    <div class="col-md-4 social-icons justify-content-center text-center">
+      <a href="https://www.twitter.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-twitter"></i>
+      </a>
+      <a href="https://www.gitlab.com/manbeardgames" target="_blank">
+        <i class="mdi mdi-36px mdi-gitlab"></i>
+      </a>
+      <a href="https://store.steampowered.com/search/?publisher=ManBeardGames" target="_blank">
+        <i class="mdi mdi-36px mdi-steam"></i>
+      </a>
+    </div>
+  </div>
+</div>
+        </footer>
+
+        
+
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Popper JS -->
+<script type="text/javascript" src="/vendor/popper.js/js/popper.js"></script>
+
+<!-- Site JS -->
+<script type="text/javascript" src="/js/site.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+    </div>
+</body>
+
+</html>
