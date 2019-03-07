@@ -97,14 +97,14 @@
 
 
             <h1 id=overview>Overview</h1><hr>
-<p>A camera can be an essential part of your game when you need to create game worlds that expand beyond the scope of the game windows width and height.  The concept of a camera can seem overwhelming at first, but here we&#39;ll layout the groudwork as simple as possible in a way that you can expand on to suite your game project&#39;s needs.</p>
-<p>Creating a camera will require the use of vecttors math and matrices math to create a Transofmration Matrix.  It is beyond the scope of these tutorials to explain the math behind it. If you would like to further research this topic, the article <a target="_blank" href="http://www.alanzucconi.com/2016/02/10/tranfsormation-matrix/#part1">The Transform Matrix For 2D Games</a> is a good starting place.  </p>
+<p>A camera can be an essential part of your game when you need to create game worlds that expand beyond the scope of the game windows width and height.  The concept of a camera can seem overwhelming at first, but here we&#39;ll layout the groundwork as simple as possible in a way that you can expand on to suite your game project&#39;s needs.</p>
+<p>Creating a camera will require the use of vectors math and matrices math to create a Transformation Matrix.  It is beyond the scope of these tutorials to explain the math behind it. If you would like to further research this topic, the article <a target="_blank" href="http://www.alanzucconi.com/2016/02/10/tranfsormation-matrix/#part1">The Transform Matrix For 2D Games</a> is a good starting place.  </p>
 
             <h1 id=project-files>Project Files</h1><hr>
 <p>If you would like to follow along with this tutorial using the same files and assets I use, you can find them <a target="_blank" href="https://github.com/manbeardgames/manbeardgames-site-tutorials/tree/master/tutorials/2d-camera">here on github</a>.</p>
 
             <h2 id=create-the-camera-class>Create the Camera Class</h2><hr>
-<p>If you are unfamilar with the concept of a camera in game development, it is gives us someting called a Transformation Matrix, which we can then apply to our rendering.  This transformation matrix contains the information to translate, rotate, and scale what we tell to render so that it looks as if we&#39;re viewing the game from the perspective of the camera. </p>
+<p>If you are unfamiliar with the concept of a camera in game development, it is gives us something called a Transformation Matrix, which we can then apply to our rendering.  This transformation matrix contains the information to translate, rotate, and scale what we tell to render so that it looks as if we&#39;re viewing the game from the perspective of the camera. </p>
 <p>
             <div class="text-center">
             <img class="img-fluid border border-dark" src="\img\tutorials\2d-camera\tutorial-cover.png" alt="null" />
@@ -113,16 +113,16 @@
 
             <pre class="language-csharp"><code class = "language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Camera2D</span>
 <span class="token punctuation">{</span>
-    <span class="token comment">//  The tranformation matrix of the camera</span>
+    <span class="token comment">//  The transformation matrix of the camera</span>
     <span class="token keyword">private</span> <span class="token class-name">Matrix</span> _transformationMatrix <span class="token operator">=</span> Matrix<span class="token punctuation">.</span>Identity<span class="token punctuation">;</span>
 
-    <span class="token comment">//  The inverse of the transofmration matrix</span>
+    <span class="token comment">//  The inverse of the transformation matrix</span>
     <span class="token keyword">private</span> <span class="token class-name">Matrix</span> _inverseMatrix <span class="token operator">=</span> Matrix<span class="token punctuation">.</span>Identity<span class="token punctuation">;</span>
 
     <span class="token comment">//  The xy-coordinate top-left position of the camera</span>
     <span class="token keyword">private</span> <span class="token class-name">Vector2</span> _position <span class="token operator">=</span> Vector2<span class="token punctuation">.</span>Zero<span class="token punctuation">;</span>
 
-    <span class="token comment">//  The rotation of the cameara along the Z axis</span>
+    <span class="token comment">//  The rotation of the camera along the Z axis</span>
     <span class="token keyword">private</span> <span class="token keyword">float</span> _rotation <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
     <span class="token comment">//  The x and y zoom level of the camera</span>
@@ -134,13 +134,13 @@
     <span class="token comment">//  Has the position, angle, origin, or zoom of the camera changed</span>
     <span class="token keyword">private</span> <span class="token keyword">bool</span> _hasChanged<span class="token punctuation">;</span>
 
-    <span class="token comment">//  The Viewport reference for the camra</span>
+    <span class="token comment">//  The Viewport reference for the camera</span>
     <span class="token keyword">public</span> <span class="token class-name">Viewport</span> Viewport<span class="token punctuation">;</span>
 
     <span class="token comment">/// &lt;summary></span>
     <span class="token comment">///     Creates a new 2D camera instance</span>
     <span class="token comment">/// &lt;/summary></span>
-    <span class="token comment">/// &lt;param name="viewPort">The Viewport refernece for the camera&lt;/param></span>
+    <span class="token comment">/// &lt;param name="viewPort">The Viewport reference for the camera&lt;/param></span>
     <span class="token keyword">public</span> <span class="token function">Camera2D</span><span class="token punctuation">(</span><span class="token class-name">Viewport</span> viewPort<span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         Viewport <span class="token operator">=</span> viewPort<span class="token punctuation">;</span>
@@ -158,7 +158,7 @@
         Viewport<span class="token punctuation">.</span>Height <span class="token operator">=</span> height<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span></code></pre><p>Below is an explination the fields we&#39;ve added above to further clarify their purpose for our camera.  </p>
+<span class="token punctuation">}</span></code></pre><p>Below is an explanation the fields we&#39;ve added above to further clarify their purpose for our camera.  </p>
 
             <table class="table"><thead class="thead-dark"><tr>
 <th>Field</th>
@@ -193,12 +193,12 @@
 <tr>
 <td><code>_origin</code></td>
 <td>Vector2</td>
-<td>This is the origin point of our camera. By default it is Vector2.Zero, which means our camer&#39;s origin is the top-left.</td>
+<td>This is the origin point of our camera. By default, it is Vector2.Zero, which means our camera&#39;s origin is the top-left.</td>
 </tr>
 <tr>
 <td><code>_hasChanged</code></td>
 <td>bool</td>
-<td>This is a boolean value we&#39;ll set to true anytime either the position, rotation, or scale of the camera has changed, signifiying that we need to update our transformation matrix.</td>
+<td>This is a boolean value we&#39;ll set to true anytime either the position, rotation, or scale of the camera has changed, signifying that we need to update our transformation matrix.</td>
 </tr>
 <tr>
 <td><code>ViewPort</code></td>
@@ -207,7 +207,8 @@
 </tr>
 </tbody></table><p>After the fields are declared, two constructors are introduced.  The first constructor allows us to pass in a reference to an existing <code>ViewPort</code>.  This is useful because it allows us to use the Viewport from our Game1 class provided by default by MonoGame.  The second constructor allows use to supply a width and height, which will create a viewport reference for use base on these dimensions.</p>
 
-            <h2 id=updating-the-matrices>Updating The Matrices</h2><p>To keep our transformation matrix and inverse matrix updated, we&#39;ll create a method called <code>UpdateMMatrices</code>.  Calculating a new transformation matrix is done through the multiplication of a tranlation matrix of our <code>_position</code>, a rotation matrix of our <code>_rotation</code>, a scale matrix of our <code>_zoom</code>, and an additional translation matrix of our <code>_origin</code>.  Once we have each of these individual matrices, we can multiply them all together to get our final <code>_transformationMatrix</code>.  Then to get the value of our <code>_inverseMatrix</code>, we just inverse the transformation matrix.</p>
+            <h2 id=updating-the-matrices>Updating the Matrices</h2><hr>
+<p>To keep our transformation matrix and inverse matrix updated, we&#39;ll create a method called <code>UpdateMMatrices</code>.  Calculating a new transformation matrix is done through the multiplication of a translation matrix of our <code>_position</code>, a rotation matrix of our <code>_rotation</code>, a scale matrix of our <code>_zoom</code>, and an additional translation matrix of our <code>_origin</code>.  Once we have each of these individual matrices, we can multiply them all together to get our final <code>_transformationMatrix</code>.  Then to get the value of our <code>_inverseMatrix</code>, we just inverse the transformation matrix.</p>
 <p>Add the following method to our Camera2D class</p>
 
             <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
@@ -254,7 +255,7 @@
     <span class="token comment">//  Since the matrices have now been updated, set that there is no longer a change</span>
     _hasChanged <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span></code></pre><p>And that&#39;s it for the hard stuff.  This will keep the transformation and inverse matrix values udpated whenever there is a change to the position, rotation, or scale.  Next, we&#39;ll create the public properties that can be used to retrive the values needed from the camera to use witin the game.</p>
+<span class="token punctuation">}</span></code></pre><p>And that&#39;s it for the hard stuff.  This will keep the transformation and inverse matrix values updated whenever there is a change to the position, rotation, or scale.  Next, we&#39;ll create the public properties that can be used to retrieve the values needed from the camera to use within the game.</p>
 
             <h2 id=adding-camera-properties>Adding Camera Properties</h2><p>The first two properties that we are going to add are for the TransformationMatrix and the InverseMatrix.  Add the following to the Camera2D class.</p>
 
@@ -265,7 +266,7 @@
 <span class="token punctuation">{</span>
     <span class="token keyword">get</span>
     <span class="token punctuation">{</span>
-        <span class="token comment">//  If a change is detected, update matraces before</span>
+        <span class="token comment">//  If a change is detected, update matrices before</span>
         <span class="token comment">//  returning value</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>_hasChanged<span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
@@ -276,13 +277,13 @@
 <span class="token punctuation">}</span>
 
 <span class="token comment">/// &lt;summary></span>
-<span class="token comment">///     Gets the inverse of the cameras transformation matrix</span>
+<span class="token comment">///     Gets the inverse of the camera's transformation matrix</span>
 <span class="token comment">/// &lt;/summary></span>
 <span class="token keyword">public</span> <span class="token class-name">Matrix</span> InverseMatrix
 <span class="token punctuation">{</span>
     <span class="token keyword">get</span>
     <span class="token punctuation">{</span>
-        <span class="token comment">//  If a change is detected, update matraces before</span>
+        <span class="token comment">//  If a change is detected, update matrices before</span>
         <span class="token comment">//  returning value</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>_hasChanged<span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
@@ -391,7 +392,7 @@
 <span class="token punctuation">}</span>
 
 <span class="token comment">/// &lt;summary></span>
-<span class="token comment">///     Gets or Sets teh camera's y-coordinate position relative to the world</span>
+<span class="token comment">///     Gets or Sets the camera's y-coordinate position relative to the world</span>
 <span class="token comment">///     space of the game</span>
 <span class="token comment">/// &lt;/summary></span>
 <span class="token keyword">public</span> <span class="token keyword">float</span> Y
@@ -408,11 +409,11 @@
         <span class="token comment">//  Flag that a change has been made</span>
         _hasChanged <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><p>The getter for each of these properties return back their respective backing field values.  In each of the setters, first a check to see if the value has actually changed is performed.  If it is actually a new value, the the value is set to the respective backing field, and the <code>_hasChanged</code> boolean is set to true, incdicating that a change has been made.  The last two properties <code>X</code> and <code>Y</code> are mostly there for utility so we can set them individually instead of having to supply a full Vector2 each time to <code>Position</code>.  </p>
+<span class="token punctuation">}</span></code></pre><p>The getter for each of these properties return back their respective backing field values.  In each of the setters, first a check to see if the value has actually changed is performed.  If it is actually a new value, the value is set to the respective backing field, and the <code>_hasChanged</code> boolean is set to true, indicating that a change has been made.  The last two properties <code>X</code> and <code>Y</code> are mostly there for utility so we can set them individually instead of having to supply a full Vector2 each time to <code>Position</code>.  </p>
 <p>That&#39;s it for our properties.  </p>
 
             <h2 id=screen-space-to-camera-space-methods>Screen Space to Camera Space Methods</h2><hr>
-<p>By introducing a camera into our game, we&#39;ve also also created two seperate coordinate spaces.  </p>
+<p>By introducing a camera into our game, we&#39;ve also created two separate coordinate spaces.  </p>
 
             <table class="table"><thead class="thead-dark"><tr>
 <th>System</th>
@@ -431,12 +432,12 @@
             <div class="text-center">
             <img class="img-fluid border border-dark" src="\img\tutorials\2d-camera\world-to-screen-space.png" alt="null" />
             </div></p>
-<p>On the left is our game world.  The game world is 2000px wide by 2000px tall.  In this game world, our player is located at world space xy-position {1000, 900}.  On the right is our game screen that is being rendered.  The game screen is only 1280px wisde by 720px tall.  We have the mouse at screen space xy-position {1000, 650}.</p>
+<p>On the left is our game world.  The game world is 2000px wide by 2000px tall.  In this game world, our player is located at world space xy-position {1000, 900}.  On the right is our game screen that is being rendered.  The game screen is only 1280px wide by 720px tall.  We have the mouse at screen space xy-position {1000, 650}.</p>
 <p>We need something that is going to translate between these two coordinate systems. Thankfully, it&#39;s actually not too difficult.  In our Camera2D class, add the following two methods</p>
 
             <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">/// &lt;summary></span>
 <span class="token comment">///     Translate the given screen space xy-coordinate position</span>
-<span class="token comment">///     to the equivilant world space xy-coordinate position</span>
+<span class="token comment">///     to the equivalent world space xy-coordinate position</span>
 <span class="token comment">/// &lt;/summary></span>
 <span class="token comment">/// &lt;param name="position">The xy-coordinate position in screen space to translate&lt;/param></span>
 <span class="token comment">/// &lt;returns></span>
@@ -449,7 +450,7 @@
 
 <span class="token comment">/// &lt;summary></span>
 <span class="token comment">///     Translates the given world space xy-coordinate position</span>
-<span class="token comment">///     to the equivilant screen space xy-coordinate position</span>
+<span class="token comment">///     to the equivalent screen space xy-coordinate position</span>
 <span class="token comment">/// &lt;/summary></span>
 <span class="token comment">/// &lt;param name="position">The xy-coordinate position in world space to translate&lt;/param></span>
 <span class="token comment">/// &lt;returns></span>
@@ -460,7 +461,8 @@
     <span class="token keyword">return</span> Vector2<span class="token punctuation">.</span><span class="token function">Transform</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> TransformationMatrix<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre><p>With these two methods, we can translate between the two coordinate systems.  </p>
 
-            <h2 id=using-the-camera>Using The Camera</h2><p>To use our camera in our game, first we need to create a new instance of the camera.  in our Game1 class and the following field and initialize it within the constructor.</p>
+            <h2 id=using-the-camera>Using the Camera</h2><hr>
+<p>To use our camera in our game, first we need to create a new instance of the camera.  in our Game1 class and the following field and initialize it within the constructor.</p>
 
             <pre class="language-csharp"><code class = "language-csharp"><span class="token comment">//  Our camera</span>
 <span class="token class-name">Camera2D</span> _camera<span class="token punctuation">;</span>
