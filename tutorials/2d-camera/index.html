@@ -107,7 +107,7 @@
 <p>If you are unfamiliar with the concept of a camera in game development, it is gives us something called a Transformation Matrix, which we can then apply to our rendering.  This transformation matrix contains the information to translate, rotate, and scale what we tell to render so that it looks as if we&#39;re viewing the game from the perspective of the camera. </p>
 <p>
             <div class="text-center">
-            <img class="img-fluid border border-dark" src="\img\tutorials\2d-camera\tutorial-cover.png" alt="null" />
+            <img class="img-fluid border border-dark" src="\img/tutorials/2d-camera/tutorial-cover.png" alt="null" />
             </div></p>
 <p>To get started, create a new class for your camera, I&#39;ll call mine <code>Camera2D</code>.  Add the following:</p>
 
@@ -431,7 +431,7 @@
 </tbody></table><p>To further expand on this concept, take a look at the following image:</p>
 <p>
             <div class="text-center">
-            <img class="img-fluid border border-dark" src="\img\tutorials\2d-camera\world-to-screen-space.png" alt="null" />
+            <img class="img-fluid border border-dark" src="\img/tutorials/2d-camera/world-to-screen-space.png" alt="null" />
             </div></p>
 <p>On the left is our game world.  The game world is 2000px wide by 2000px tall.  In this game world, our player is located at world space xy-position {1000, 900}.  On the right is our game screen that is being rendered.  The game screen is only 1280px wide by 720px tall.  We have the mouse at screen space xy-position {1000, 650}.</p>
 <p>We need something that is going to translate between these two coordinate systems. Thankfully, it&#39;s actually not too difficult.  In our Camera2D class, add the following two methods</p>

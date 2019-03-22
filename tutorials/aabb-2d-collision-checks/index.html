@@ -107,7 +107,7 @@
 <p>Before we can get started on the fun code stuff, we first need to talk about what collision is.  At its most basic definition, it is when defined areas within your game overlap.  </p>
 <p>
             <div class="text-center">
-            <img class="img-fluid border border-dark" src="\img\tutorials\aabb-2d-collision-checks\tutorial-cover.png" alt="null" />
+            <img class="img-fluid border border-dark" src="\img/tutorials/aabb-2d-collision-checks/tutorial-cover.png" alt="null" />
             </div></p>
 <p>In the image above there are two scenarios.  The scenario on the left shows two defined rectangular areas, red and green.  These defined areas do no overlap, so this does not define a collision.  In the scenario on the right, the defined red and green areas do overlap, so this would define a collision.</p>
 <p>The method of detecting collision we&#39;ll be using, as stated previously, is called Axis-Aligned Bounding Box.  A <strong>Bounding Box</strong> is just a 2D rectangle whose position and area contain the object that is collidable.  <strong>Axis-Aligned</strong> means that our bounding boxes are aligned on the same coordinate system.   </p>
@@ -124,15 +124,15 @@
 <p>If you can answer yes to all four of these questions, then a collision is detected.  If any of those answers is no, even if it&#39;s just one of them, then no collision is detected.  Look at the following images to further illustrate this.</p>
 <p>
             <div class="text-center">
-            <img class="img-fluid border border-dark" src="\img\tutorials\aabb-2d-collision-checks\collision-fail-1.png" alt="null" />
+            <img class="img-fluid border border-dark" src="\img/tutorials/aabb-2d-collision-checks/collision-fail-1.png" alt="null" />
             </div></p>
 <p>
             <div class="text-center">
-            <img class="img-fluid border border-dark" src="\img\tutorials\aabb-2d-collision-checks\collision-fail-2.png" alt="null" />
+            <img class="img-fluid border border-dark" src="\img/tutorials/aabb-2d-collision-checks/collision-fail-2.png" alt="null" />
             </div></p>
 <p>
             <div class="text-center">
-            <img class="img-fluid border border-dark" src="\img\tutorials\aabb-2d-collision-checks\collision-success.png" alt="null" />
+            <img class="img-fluid border border-dark" src="\img/tutorials/aabb-2d-collision-checks/collision-success.png" alt="null" />
             </div></p>
 <p>Since all four of the questions we must ask are just yes/no questions, we can easily translate this into an if statement in our code to perform the check. The following is an example of this</p>
 
