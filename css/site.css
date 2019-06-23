@@ -28,7 +28,7 @@ body {
 body {
   background-color: #f8f9fa;
   -webkit-font-smoothing: antialiased;
-  padding-top: 91px;
+  padding-top: 65px;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -41,31 +41,11 @@ body {
   flex: 1;
 }
 
-footer {
-  background-color: #081E3C;
-  color: #fff;
-  padding: 15px;
+@media screen and (min-width: 768px) {
+  body {
+    padding-top: 91px;
+  }
 }
-footer h4 span {
-  font-size: 60% !important;
-}
-footer a {
-  color: #F88A00;
-  transition: 0.3s color;
-}
-footer a:hover, footer a:focus {
-  text-decoration: none;
-  color: #fff;
-}
-footer .social-icons a {
-  color: #fff;
-  transition: 0.3s color;
-}
-footer .social-icons a:hover, footer .social-icons a:focus {
-  text-decoration: none;
-  color: #F88A00;
-}
-
 #landing {
   position: absolute;
   top: 0;
@@ -196,8 +176,8 @@ footer .social-icons a:hover, footer .social-icons a:focus {
   }
 }
 nav {
+  min-height: 65px !important;
   background-color: #051326;
-  box-shadow: none;
 }
 nav a {
   color: #fff;
@@ -210,20 +190,32 @@ nav h3 {
 }
 nav .navbar-brand {
   color: #fff;
-  font-size: 1.6rem;
   background: url("../img/mbg_cookie.svg") center no-repeat;
   background-size: contain;
-  width: 75px;
-  height: 75px;
+  width: 45px;
+  height: 45px;
 }
 nav .navbar-brand:hover {
   color: #fff;
 }
-
-#topNav {
-  min-height: 91px !important;
+nav .icons a {
+  color: #fff;
+  transition: 0.3s color;
+}
+nav .icons a:hover, nav .icons a:focus {
+  text-decoration: none;
+  color: #F88A00;
 }
 
+@media screen and (min-width: 768px) {
+  nav {
+    min-height: 91px;
+  }
+  nav .navbar-brand {
+    width: 75px;
+    height: 75px;
+  }
+}
 #games {
   background-color: #f8f9fa;
   display: flex;
@@ -508,171 +500,181 @@ nav .navbar-brand:hover {
   margin-right: auto;
 }
 
+/*
+https://medium.com/wdstack/bootstrap-sidebar-examples-e363021395ff
+https://www.codeply.com/go/SufxS3ir55
+*/
+#tutorial {
+  height: calc(100vh - 65px - calc(20px + 2px + 2px));
+  min-height: calc(100vh - 65px - calc(20px + 2px + 2px));
+  max-height: calc(100vh - 65px - calc(20px + 2px + 2px));
+  font-size: calc(1rem * 0.825);
+}
 #tutorial h1,
 #tutorial h2,
 #tutorial h3,
 #tutorial h4,
-#tutorial h5,
-#tutorial h6 {
-  margin-top: 2rem;
-}
-#tutorial h1.title,
-#tutorial h2.title,
-#tutorial h3.title,
-#tutorial h4.title,
-#tutorial h5.title,
-#tutorial h6.title {
-  margin-top: 0;
-  font-size: 2rem;
-  border-bottom: 1px solid #051326;
-}
-#tutorial h1.sub-heading,
-#tutorial h2.sub-heading,
-#tutorial h3.sub-heading,
-#tutorial h4.sub-heading,
-#tutorial h5.sub-heading,
-#tutorial h6.sub-heading {
-  font-size: 1.7rem;
-}
-#tutorial h1.sub-heading,
-#tutorial h2.sub-heading,
-#tutorial h3.sub-heading,
-#tutorial h4.sub-heading,
-#tutorial h5.sub-heading,
-#tutorial h6.sub-heading {
-  font-size: 1.5rem;
+#tutorial h5 {
+  font-size: calc(1rem * 1.825);
 }
 
-.wrapper {
-  display: flex;
-  width: 100%;
+.row-offcanvas {
+  height: 100%;
+  position: relative;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+  width: calc(100% + 100vw);
+}
+
+.row-offcanvas-left {
+  left: -100vw;
+}
+.row-offcanvas-left.active {
+  left: 0;
 }
 
 #sidebar {
-  width: 250px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  z-index: 999;
-  background: #051326;
-  color: #fff;
-  transition: all 0.3s;
-}
-
-#sidebar.active {
-  margin-left: -250px;
-}
-
-a[data-toggle=collapse] {
-  position: relative;
-}
-
-.dropdown-toggle::after {
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-}
-
-.thumbnail {
-  max-width: 40%;
-}
-
-.lightbox-wrapper {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  width: 100%;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  background: #e9ecef;
+  float: left;
   height: 100%;
-  text-align: center;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.8);
-}
-.lightbox-wrapper .lightbox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.lightbox-wrapper img {
-  max-width: 90%;
-  max-height: 80%;
-}
-.lightbox-wrapper:target {
-  outline: none;
-  display: flex;
-  justify-content: center;
-}
-
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -250px;
-  }
-
-  #sidebar.active {
-    margin-left: 0;
-  }
-}
-/*
- * Sidebar
- */
-.sidebar {
-  position: fixed;
-  /* Accounting for the height of navbar */
-  top: 91px;
-  bottom: 0;
-  left: 0;
-  /* Behind the navbar */
-  z-index: 100;
-  padding: 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
-  /* Override navbar-collapse giving center */
-  align-items: flex-start;
-  min-width: 250px;
-}
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #fff;
-}
-.sidebar .nav-link:hover, .sidebar .nav-link:focus {
-  color: #F88A00;
-}
-
-.sidebar-sticky {
-  position: absolute;
-  /* Height of navbar */
-  top: 50px;
-  height: calc(100vh - 50px);
-  padding-top: 0.5rem;
-  overflow-x: hidden;
-  /* Scrollable contents if viewport is shorter than content. */
+  position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#sidebar .nav-pills .nav-link {
+  color: #081E3C;
+}
+#sidebar .nav-pills .nav-link:hover {
+  background-color: #ffb85f;
+  cursor: pointer;
+}
+#sidebar .nav-pills .nav-link.active {
+  background-color: #F88A00;
 }
 
-.sidebar-heading {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+.sidebar-offcanvas {
+  position: absolute;
+  top: 0;
 }
 
-#tutorial {
+#tutorial-main {
+  height: initial;
+  min-height: calc(100vh - 65px - calc(20px + 2px + 2px));
+  max-height: calc(100vh - 65px - calc(20px + 2px + 2px));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#tutorial-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+#prev-next-buttons {
+  height: initial;
+  min-height: 50px;
+  max-height: 50px;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -moz-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: 1px solid #081E3C;
+  padding: 5px;
+}
+#prev-next-buttons #prev {
+  margin-right: auto;
+}
+#prev-next-buttons #next {
   margin-left: auto;
 }
 
-#sidenav {
-  overflow-y: auto;
-}
-
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   #tutorial {
-    margin-left: 250px;
+    height: calc(100vh - 91px - calc(20px + 2px + 2px));
+    min-height: calc(100vh - 91px - calc(20px + 2px + 2px));
+    max-height: calc(100vh - 91px - calc(20px + 2px + 2px));
+    font-size: 1rem;
+  }
+  #tutorial h1, #tutorial h2, #tutorial h3, #tutorial h4, #tutorial h5 {
+    font-size: calc(1rem * 1.825);
   }
 
-  .sidebar {
-    max-width: 250px;
+  #tutorial-main {
+    height: calc(100vh - 91px - calc(20px + 2px + 2px));
+    min-height: calc(100vh - 91px - calc(20px + 2px + 2px));
+    max-height: calc(100vh - 91px - calc(20px + 2px + 2px));
+  }
+
+  #sidebar {
+    width: calc(300px + 15px + 15px);
+    min-width: calc(300px + 15px + 15px);
+    max-width: calc(300px + 15px + 15px);
+  }
+
+  .row-offcanvas {
+    position: initial;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    width: initial;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .sidebar-offcanvas {
+    position: initial;
+    top: initial;
   }
 }
+footer {
+  background-color: #081E3C;
+  color: #fff;
+  font-size: calc(1rem * 0.825);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 0px;
+  height: calc(20px + 2px + 2px);
+  min-height: calc(20px + 2px + 2px);
+  max-height: calc(20px + 2px + 2px);
+}
+
 @media (min-width: 992px) {
   .container {
     width: 100%;

@@ -50,6 +50,9 @@
 <!-- PrismJS Style Theme CSS -->
 <link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
 
+<!-- Animate.css Library -->
+<link rel="stylesheet" href="/vendor/animate.css/animate.min.css">
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
 <script>
@@ -70,13 +73,9 @@
 <nav class="navbar navbar-expand-lg fixed-top" id="topNav">
     <!-- Navbar brand background image is supplied by the CSS style -->
     <a class="navbar-brand" href="/"></a>
-    <!-- <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
-        aria-expanded="false" aria-label="Toggle sidebar">
-        <span class="navbar-toggler-icon"></span>
-    </button>     -->
     <h3 class="text-white">Slime Battle Royale</h3>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-        aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -84,11 +83,22 @@
             <li class="nav-item"><a class="nav-link" href="/#games">Games</a></li>
             <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
             <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
+            <li class="nav-item">
+                <div class="icons">
+                    <a href="https://www.twitter.com/manbeardgames" target="_blank">
+                        <i class="mdi mdi-36px mdi-twitter"></i>
+                    </a>
+                    <a href="https://www.gitlab.com/manbeardgames" target="_blank">
+                        <i class="mdi mdi-36px mdi-gitlab"></i>
+                    </a>
+                    <a href="https://store.steampowered.com/search/?publisher=ManBeardGames" target="_blank">
+                        <i class="mdi mdi-36px mdi-steam"></i>
+                    </a>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
-
-
         
         <header>
             
@@ -157,29 +167,7 @@
         <footer>
             
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
-      <h4>ManBeardGames <span>&copy; 2019</span></h4>
-    </div>
-
-    <div class="col-md-4 d-flex flex-column text-center justify-content-center">
-      <small>ManBeardGames logo created by <a href="https://www.twitch.tv/cookie042" target="_blank">cookie042</a></small>
-    </div>
-
-    <div class="col-md-4 social-icons justify-content-center text-center">
-      <a href="https://www.twitter.com/manbeardgames" target="_blank">
-        <i class="mdi mdi-36px mdi-twitter"></i>
-      </a>
-      <a href="https://www.gitlab.com/manbeardgames" target="_blank">
-        <i class="mdi mdi-36px mdi-gitlab"></i>
-      </a>
-      <a href="https://store.steampowered.com/search/?publisher=ManBeardGames" target="_blank">
-        <i class="mdi mdi-36px mdi-steam"></i>
-      </a>
-    </div>
-  </div>
-</div>
+<span class="footer-brand">ManBeardGames <span>&copy; 2019</span></span>
         </footer>
         
 
@@ -192,6 +180,9 @@
 <!-- Site JS -->
 <script type="text/javascript" src="/js/site.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+<!-- Tutorial JS -->
+<script type="text/javascript" src="/js/tutorials.js"></script>
+
+<!-- <script>//hljs.initHighlightingOnLoad();</script> -->
     </body>
 </html>
