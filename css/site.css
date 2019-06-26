@@ -551,6 +551,7 @@ https://www.codeply.com/go/SufxS3ir55
 }
 #sidebar .nav-pills .nav-link {
   color: #081E3C;
+  font-size: calc(1rem * 0.825);
 }
 #sidebar .nav-pills .nav-link:hover {
   background-color: #ffb85f;
