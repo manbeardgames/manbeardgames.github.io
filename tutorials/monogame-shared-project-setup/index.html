@@ -1,0 +1,577 @@
+
+<!doctype html>
+<html>
+
+<head>
+    
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Manbeardgames">
+<!-- SEO Title -->
+<meta name="title" content="ManBeardGames MonoGame Shared Project Setup">
+<!-- SEO Description -->
+<meta name="description" content="We outline the steps to setup a MonoGame Shared Project that can be used to build from one source for multiple platforms">
+
+<!-- Open Graph Type -->
+<meta property="og:type" content="website">
+<!-- Open Graph Title -->
+<meta property="og:title" content="MonoGame Shared Project Setup">
+<!-- Opeh Graph Image -->
+<meta property="og:image" content="">
+<!-- Opeh Graph Site Name -->
+<meta property="og:site_name" content="ManBeardGames">
+<!-- Open Graph Description -->
+<meta property="og:description" content="We outline the steps to setup a MonoGame Shared Project that can be used to build from one source for multiple platforms">
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+
+
+<title>MonoGame Shared Project Setup</title>
+
+<!-- Bootstrap 4.0 CSS -->
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
+
+<!-- Material Design Icons CSS -->
+<link rel="stylesheet" href="/vendor/mdi/css/materialdesignicons.css">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="/css/site.css">
+
+<!-- jQuery JS -->
+<script type="text/javascript" src="/vendor/jquery/js/jquery.js"></script>
+
+<!-- PrismJS Style Theme CSS -->
+<link rel="stylesheet" href="/vendor/prismjs/css/prism-tomorrow.css">
+
+<!-- Animate.css Library -->
+<link rel="stylesheet" href="/vendor/animate.css/animate.min.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-63802407-1');
+</script>
+</head>
+
+<body>
+    <div id="flex-wrap">
+        <header>
+            
+
+<nav class="navbar navbar-expand-lg fixed-top" id="topNav">
+    <!-- Navbar brand background image is supplied by the CSS style -->
+    <a class="navbar-brand" href="/"></a>
+    <h3 class="text-white"></h3>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/#games">Games</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
+            <li class="nav-item"><a class="nav-link" href="/dev-blog">Dev Blog</a></li>
+            <li class="nav-item">
+                <div class="icons">
+                    <a href="https://www.twitter.com/manbeardgames" target="_blank">
+                        <i class="mdi mdi-36px mdi-twitter"></i>
+                    </a>
+                    <a href="https://www.gitlab.com/manbeardgames" target="_blank">
+                        <i class="mdi mdi-36px mdi-gitlab"></i>
+                    </a>
+                    <a href="https://store.steampowered.com/search/?publisher=ManBeardGames" target="_blank">
+                        <i class="mdi mdi-36px mdi-steam"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+        </header>
+        <main id="tutorial">
+            <div class="row-offcanvas row-offcanvas-left">
+                <div id="sidebar" class="sidebar-offcanvas">
+                    <div class="col-md-12">
+                        <!-- <span class="sidebar-heading">MonoGame Shared Project Setup</span> -->
+<ul class="nav nav-pills flex-column" id="tutorial-sidebar">
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#monogame-shared-project-setup">MonoGame Shared Project Setup</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#one-incorrect-solution-and-one-correct-solution">One Incorrect Solution And One Correct Solution</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#before-we-begin">Before We Begin</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#getting-started">Getting Started</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#creating-a-shared-project">Creating A Shared Project</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#add-cross-platform-project">Add Cross Platform Project</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#connecting-to-the-shared-project">Connecting To The Shared Project</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#add-android-project">Add Android Project</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#connect-android-project-to-shared-project">Connect Android Project To Shared Project</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#sharing-content">Sharing Content</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="#wrap-up">Wrap Up</a>
+    </li>
+    
+</ul>
+
+<!--
+<span class="sidebar-heading">
+    MonoGame Shared Project Setup
+    <ul class="nav nav-pills flex-column">
+        
+        <li class="nav-item">
+            
+            <a class="nav-link active section-nav" id="section-0" data-position="0">
+                
+                    MonoGame Shared Project Setup
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-1" data-position="1">
+                    
+                    One Incorrect Solution And One Correct Solution
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-2" data-position="2">
+                    
+                    Before We Begin
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-3" data-position="3">
+                    
+                    Getting Started
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-4" data-position="4">
+                    
+                    Creating A Shared Project
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-5" data-position="5">
+                    
+                    Add Cross Platform Project
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-6" data-position="6">
+                    
+                    Connecting To The Shared Project
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-7" data-position="7">
+                    
+                    Add Android Project
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-8" data-position="8">
+                    
+                    Connect Android Project To Shared Project
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-9" data-position="9">
+                    
+                    Sharing Content
+                </a>
+        </li>
+        
+        <li class="nav-item">
+            
+                <a class="nav-link section-nav" id="section-10" data-position="10">
+                    
+                    Wrap Up
+                </a>
+        </li>
+        
+    </ul>
+
+-->
+                    </div>
+                </div>
+
+                <div id="tutorial-main">
+                    <div id="tutorial-wrapper" data-spy="scroll" data-target="#tutorial-sidebar" data-offset="106">
+                        
+                        
+    <div class="tutorial-section">
+        <h1 id=monogame-shared-project-setup>MonoGame Shared Project Setup</h1><p>When creating a new MonoGame project in Visual Studio, you have various project templates you can choose from to get started.  For desktop, you have the Windows specific projects or you can choose the Cross Platfrom Desktop Project for Windows, Linux and Mac.  You want to support multiple platforms, so you would naturally choose the Cross Platform Project template.  </p>
+<p>But wait, this is for Cross Platform <strong>Desktop</strong>.  What if you want to support desktop and mobile?. Well, there is also the MonoGame Android Project and the MonoGame iOS Project templates. You want your game avaialble on as many devices and platforms as possible, so which do you choose?</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=one-incorrect-solution-and-one-correct-solution>One Incorrect Solution And One Correct Solution</h1><p>There are two solutions to this answer; an incorrect one and a correct one.  The incorrect solution would be to create seperate projects for each project type, duplicating hte game code across each project.  Whiel this <em>technically</em> would work, it would very quickly become an absolute nightmare to manage.  Imagine you want your game to be on Windows, Mac, and Linux using the Cross Platform Desktop Project template, as well as Android and iOS using their respective project emplates. This means three seperate projects that you&#39;ll have to ensure that all of the code is the same between.  Found a bug?  Makre sure you copy/paste the fix between all three projects.  This solution leads to more work and a code base that is fragmented and harder to manage.</p>
+<p>The second, and correct, solution is to utilize the <strong>MonoGame Shared Project</strong> template.  This is that template that you may have noticed is an available one to select, but never used or knew how to use.  Using a shared project allows us to develop all of code for our game in one central project that is then, you guessed it, shared to each individual project type.  In the example above with the three projects, each of them would still exist seperately, but they would all reference the same single shared project code.  </p>
+<p>This is the solution we are going to cover in this tutorial.  We&#39;ll go over everything from setting up the shared project, to adding multiple platform projects to the solution, using one central Content Pipeline Tool for all projects, and finally building each individual project and testing them.</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h2 id=before-we-begin>Before We Begin</h2><p>If you want to follow along with this tutorial on your on computer, the following list is a few of the prerequsites you&#39;ll need to do this.</p>
+<ul>
+<li>Windows PC.  Images and instructions will be given from a Windows PC perspective.  However the concepts should apply if you are using Visual Studio for Mac.</li>
+<li>Visual Studio 2017 (Community Editiion or higher)<ul>
+<li>Ensure the <strong>Mobile Development with .NET</strong> workload is installed. See below if you are not sure</li>
+</ul>
+</li>
+<li>MonoGame 3.7.1</li>
+</ul>
+<div class="card text-white bg-dark mb-3">
+    <div class="card-header">
+        <span class="lead">Mobile Development with .NET</span>
+    </div>
+    <div class="card-body">
+        <p>
+            During part of this tutorial, we will use the MonoGame Android Project template to create a new android game project.  If you do not have the <b>Mobile Development with .NET</b> workload installed for Visual Studio, you will receive an error when attempting to create the project.  To add this workload to Visual Studio, you'll need to modify your Visual Studio installation to include this workload.         
+        </p>
+        <p>
+            For Windows 10 users, you can do this by hitting the **windows** key on your keyboard (or clicking the windows/start button at the bottom left of your taskbar). The type <b>Programs and Features</b> and select the Programs and Features result.  Next find <b>Visual Studio Community 2017</b> in the list of installed programs, then click the <b>Change</b> button at the top.  When the Visual Studio Install window opens, locate the <b>Mobile Development with .NET</b> workload, check that you want to include it, then click the <b>Modify</b> button in the bottom right.  After it finsihes, you'll have that workload installed.
+        </p>
+    </div>
+</div>
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=getting-started>Getting Started</h1><p>To get started, we&#39;re first going to need to setup some structure to our project so we can keep track of things. This is my recommendation on doing this, however feel free to use whatever directory, solution name, project name setup you are most comfortable with.</p>
+<p>Typically, when you create a new project in Visual Studio, be it for MonoGame or some other project type, Visual Studio will automatically create the solution (.sln) file for you, and create a new directory to put your project in.  This is usually ok to do when when you only have one project as part of the overall solution. However we&#39;re going to have multiple, so we need to think about doing some organiztion ourselves.</p>
+<p>First, create a new folder somewhere on your computer.  This folder is where we are going to put everything, our solution (.sln) file and our projects. For the purpose of this tutorial, I&#39;m going to call this folder <strong>my-awesome-game</strong></p>
+<p>Next, open Visual Studio if you do not already have it open, and select <strong>File &gt; New &gt; Project</strong> from the menu at the top.  In the <em>New Project</em> window that opens, type <strong>Blank Solution</strong> into the search box at the top right. This should give you only one result called <em>Blank Solution</em>.  Click this to choose it.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\blank-solution.png" alt="null" />
+        </div></p>
+<p>At the bottom of the <em>New Project</em> window, enter a name for our solution. I&#39;m going to enter <strong>MyAwesomeGame</strong>.  Next, click the <strong>Browse</strong> button and choose the folder that we just created previously.  Make sure that the <strong>Create directory for solution</strong> is NOT checked. Then click the <strong>Ok</strong> button.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\blank-solution-name.png" alt="null" />
+        </div></p>
+<p>Once this is finished, in Visual Studio you should see that we have the solution you just created open with no projects listed in the <em>Solution Explorer</em> window.  Next we&#39;ll start adding and setting up the projects.</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=creating-a-shared-project>Creating A Shared Project</h1><p>The first project that we need to add to our solution is a <strong>Shared Project</strong>.  To do this, right-click on the solution in the <em>Solution Explorer</em> window, and select <strong>Add &gt; New Project</strong>.  This will open the <em>New Project</em> window. </p>
+<p>In here, select <strong>Visual C#</strong> on the left, the scroll down to find and click the <strong>Shared Project</strong> template.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\monogame-shared-project.png" alt="null" />
+        </div></p>
+<p>Next, give the shared project a name.  To help stay organized, lets name this <strong>MyAwesomeGame.Shared</strong>.  Note that I added the <strong>.Shared</strong> as part of the name.  This helps us to visually identify which project is our <em>Shared</em> project once we start adding others.  Click the <strong>Browse</strong> button and choose the directory we created before that we put our solution (.sln) file in.  </p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\monogame-shared-project-name.png" alt="null" />
+        </div></p>
+<p>Once you&#39;ve finished, click the <strong>Ok</strong> button.  This will generate a shared project for us in our Solution. This project is where we are going to write all of the code for our game.  For now, lets move on and add our first MonoGame project.</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=add-cross-platform-project>Add Cross Platform Project</h1><p>The first project type that we&#39;re going to add is a <strong>MonoGame Cross Platform Desktop Project</strong>.  To do this, right-click the solution in the <em>Solution Explorer</em> and select <strong>Add &gt; New Project</strong>.  In the <em>New Project</em> window that opens, click <strong>MonoGame</strong> on the left under <em>Visual C#</em>, then select the <strong>MonoGame Cross Platform Desktop Project</strong> template.  </p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\choose-cross-platform-project.png" alt="null" />
+        </div></p>
+<p>Next, just like before, we need to give our project a name.  This time, I&#39;m going to use the name <strong>MyAwesomeGame.Desktop</strong>.  I&#39;m adding the <strong>.Desktop</strong> at the end since this is the project for Desktop builds.  After giving it a name, click the <strong>Browse</strong> button and select the folder we setup at the beginning of the tutorial.  Then click <strong>Ok</strong> to create the project.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\cross-platform-name.png" alt="null" />
+        </div></p>
+<p>You should now see the <em>MyAwesomeGame.Desktop</em> project added to the solution in the <em>Solution Explorer</em> window. Next we need to &quot;connect the wires&quot; so to speak between this project and the shared project.</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=connecting-to-the-shared-project>Connecting To The Shared Project</h1><p>To connect <strong>MyAwesomeGame.Desktop</strong> to <strong>MyAwesomeGame.Shared</strong> is actual pretty simple. We need to add the reference to the shared project and then do some small adjustments to the Desktop project.  So lets start with adding the refrence first.</p>
+<p>Expand <strong>MyAwesomeGame.Desktop</strong> in the <em>Solution Explorer</em> window if it isn&#39;t already.  Then right-click on <strong>References</strong> and select <strong>Add Reference...</strong> to open then <em>Reference Manager</em> window.  Next click <strong>Shared Projects</strong> on the left, and then check the box for <strong>MyAwesomeGame.Shared</strong>. Finally, click <strong>Ok</strong> to finish.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\reference-manager-window.png" alt="null" />
+        </div>;</p>
+<p>After clicking the Ok button, if you expand the References section, you should now see <em>MyAwesomeGame.Shared</em> listed as a reference for the Desktop project.</p>
+<p>Now, since we are going to be doing all of our game logic from the Shared project, we don&#39;t need the <strong>Game1.cs</strong> file in our Desktop project.  Before we delete it, lets first copy it to our Shared project.  Right-click <strong>Game1.cs</strong> in the Desktop project and select <strong>Copy</strong>.  Then right-click the Shared project in the <em>Solution Explorer</em> window and select <strong>Paste</strong>.  Open the <strong>Game1.cs</strong> we just pasted in the Shared project, and change the namespace from <strong>MyAwesomeGame.Desktop</strong> to <strong>MyAwesomeGame.Shared</strong>.  Then save and close the file.</p>
+<p>Next we need to make sure that our Desktop project calls the <strong>Game1</strong> class that is located in our Shared project when it runs, and not its own.  So to do this, first delete the <strong>Game1.cs</strong> file that is in the <strong>MyAwesomeGame.Desktop</strong> project.  Next, open <strong>Program.cs</strong>. Immediatly, it should have an error saying it cannot find <em>Game1</em>.  This is expected since we just deleted it.  Instead, we need to tell it to use the <em>Game1</em> from the Shared project.  To do this, just add <code>using MyAwesomeGame.Shared</code> to the top.  Once you&#39;ve done this, <strong>Program.cs</strong> should look similar to the following</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">using</span> System<span class="token punctuation">;</span>
+<span class="token comment">//  Add reference to MyAwesomeGame.Shared so we can use the Game1 class from there</span>
+<span class="token keyword">using</span> MyAwesomeGame<span class="token punctuation">.</span>Shared<span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> MyAwesomeGame<span class="token punctuation">.</span>Desktop
+<span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// The main class.</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">/// &lt;summary></span>
+        <span class="token comment">/// The main entry point for the application.</span>
+        <span class="token comment">/// &lt;/summary></span>
+        <span class="token punctuation">[</span><span class="token class-name">STAThread</span><span class="token punctuation">]</span>
+        <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//  This is calling Game1 from MyAwsomeGame.Shared now.</span>
+            <span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token keyword">var</span> game <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Game1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                game<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>Once you&#39;ve made this change, be sure to save the file and then close it.  Now we need to test to show that this is in fact using Game1 from the Shared project.  To test this, open <strong>Game1.cs</strong> in the <strong>MyAwesomeGame.Shared</strong> project. In the constructor, find the following</p>
+<pre class="language-csharp"><code class="language-csharp">graphics<span class="token punctuation">.</span>IsFullScreen <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span></code></pre><p>and change it to</p>
+<pre class="language-csharp"><code class="language-csharp">graphics<span class="token punctuation">.</span>IsFullScreen <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span></code></pre><p>This way we can test without having to go into full screen.  Next scroll down to the <code>Draw</code> method and change the following</p>
+<pre class="language-csharp"><code class="language-csharp">GraphicsDevice<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>CornflowerBlue<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre><p>to the following</p>
+<pre class="language-csharp"><code class="language-csharp">GraphicsDevice<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>Orange<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>Now click the <strong>Start</strong> button at the top in Visual Studio to run the game. You should get a nice orange window that opens up. </p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\orange-game-window.png" alt="null" />
+        </div></p>
+<p>Close the game window and got back to the <code>Draw</code> method and just like before, change the clear color, only this time, change it to <code>Color.Black</code>.  Click <strong>Start</strong> again, and this time, we should get the game window, only as a black screen.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\black-game-window.png" alt="null" />
+        </div></p>
+<p>Perfect, now we know that the Desktop project is indeed using the Game1 from the Shared Project.  We&#39;ve successfully connect the Desktop project to the Shared project.  Now, lets get adventureous.  </p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=add-android-project>Add Android Project</h1><p>We want our game to be avaialble on Android devices as well right? Lets add an Android project to our solution. Just like before, right-click the solution in the <em>Solution Explorer</em> window and select <strong>Add &gt; New Project</strong>.  In the <em>New Project</em> window, select <strong>MonoGame</strong> on the left under <em>Visual C#</em>, the select the <strong>MonoGame Android Project</strong>.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\choose-android-project.png" alt="null" />
+        </div></p>
+<p>Again, just as before, give the project a name.  I&#39;m going to call it <strong>MyAwesomeGame.Android</strong> using the <strong>.Android</strong> in the name so I know this is the Android project.  Be sure to click the <strong>Browse</strong> button and select the directory that we created at the beginning of the tutorial.  Then click the <strong>Ok</strong> button to create the project.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\android-project-name.png" alt="null" />
+        </div></p>
+<p>Once you click Ok, the <strong>MyAwesomeGame.Android</strong> project will be added to your solution.  Since this is an Android project, we have to create an Androidmanifest.  What this file is is not within the scope of this project, but regardless we need to create one really quickly anyway.  To do this, right-click the <strong>MyAwesomeGame.Android</strong> project in the <em>Solution Explorer</em> window and select <strong>Properties</strong>  On the left side of the properties windows click <strong>Android Manifest</strong>, then click the <strong>No AndroidManifest.xml found. Click to add one</strong> link.  See the image below for reference.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\android-manifest.png" alt="null" />
+        </div></p>
+<p>Once it&#39;s been added, you may receive a notification about the project being modified outside the environment.  This is normal, just click <strong>Reload All</strong>.  Then close the properties window.</p>
+<p>Next, we need to correct a line of code that is generated from the Android Project template.  Open the <strong>Activity1.cs</strong> file in your Android project.  Find the following line (it should be the one with an error)</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token punctuation">,</span> LaunchMode <span class="token operator">=</span> Android<span class="token punctuation">.</span>Content<span class="token punctuation">.</span>PM<span class="token punctuation">.</span>LaunchMode<span class="token punctuation">.</span>SingleInstance</code></pre><p>and change it to </p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token punctuation">,</span> LaunchMode <span class="token operator">=</span> LaunchMode<span class="token punctuation">.</span>SingleInstance</code></pre><p><strong>Note the , at the beginning of the line, be sure to keep that</strong></p>
+<p>Next, just like with the Desktop project, we need to connect the Android project to our Shared project.</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=connect-android-project-to-shared-project>Connect Android Project To Shared Project</h1><p>Connecting the Android project to the Shared project is almost identicial to how we did it for the Desktop project.  First, we need to add the reference to the Shared Project.</p>
+<p>Just like before, right-click <strong>References</strong> in the <em>Solution Explorer</em> for the Android project and select <strong>Add Reference...</strong>. In the <em>Reference Manager</em> window, click <strong>Shared Projects</strong> on the left, then check the box for <strong>MyAwesomeGame.Shared</strong>, and finally click the <strong>Ok</strong> button</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\android-add-reference.png" alt="null" />
+        </div></p>
+<p>Now that we have the reference, we need to make sure that the <strong>Game1.cs</strong> from the Shared project is the one being loaded for the Android project.  Before we do this though, lets open <strong>Game1.cs</strong> in the Android project really quick and take a look at something.  In the constructor for Game1, we see a few extra properties being set for <code>PreferredBackBufferWidth</code> and <code>PreferredBackBufferHeight</code> as well as <code>SupportedOrientations</code>.  These properties are important things for us to set for an Android game, so we need to make sure they are included in the <strong>Game1.cs</strong> file in the Shared project as well.</p>
+<p>But how are we going to use those settings for the android project, but have different settings for our Desktop project. Obviously, we might not want to limit our Desktop project to the same width and height resolution as our Android project.  This is where the <code>#if</code> preprocessor directive I mentioned before comes into play.  Using this lets us defined code that will only be compiled for a project <em>if</em> the symbol we check for exists. </p>
+<p>So how do we know which symbols to use in the <code>#if</code> statement?  Easy, these are already setup for your when you created the projects using the MonoGame templates.  To check what they are for each project, just right-click the project in the <em>Solution Explorer</em> window and select <strong>Properties</strong>.  Then click the <strong>Build</strong> option on the left side and look at the defined symbol at the top.  For exmaple, the image below shows the defined symbol for the Android project.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\android-symbol.png" alt="null" />
+        </div></p>
+<p>If you check the symbol for the Desktop project you can see that it is actually <strong>LINUX</strong>.  This is the symbol used by the <strong>MonoGame Cross Platform Desktop Project</strong> template.  </p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\desktop-symbol.png" alt="null" />
+        </div></p>
+<p>So now that we know this information, close any property windows or files that you might have open at the moment in Visual Studio, and then open the <strong>Game1.cs</strong> file that is located in the <strong>MyAwesomeGame.Shared</strong> project.  Find the constructor method and change it so it looks like the following</p>
+<pre class="language-csharp"><code class="language-csharp">        <span class="token keyword">public</span> <span class="token function">Game1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            graphics <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GraphicsDeviceManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Content<span class="token punctuation">.</span>RootDirectory <span class="token operator">=</span> <span class="token string">"Content"</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span>IsFullScreen <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+
+<span class="token preprocessor property">#<span class="token directive keyword">if</span> ANDROID</span>
+            graphics<span class="token punctuation">.</span>IsFullScreen <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span>PreferredBackBufferWidth <span class="token operator">=</span> <span class="token number">800</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span>PreferredBackBufferHeight <span class="token operator">=</span> <span class="token number">480</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span>SupportedOrientations <span class="token operator">=</span> DisplayOrientation<span class="token punctuation">.</span>LandscapeLeft <span class="token operator">|</span> DisplayOrientation<span class="token punctuation">.</span>LandscapeRight<span class="token punctuation">;</span>
+<span class="token preprocessor property">#<span class="token directive keyword">elif</span> LINUX</span>
+            graphics<span class="token punctuation">.</span>PreferredBackBufferWidth <span class="token operator">=</span> <span class="token number">1280</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span>PreferredBackBufferHeight <span class="token operator">=</span> <span class="token number">720</span><span class="token punctuation">;</span>
+            graphics<span class="token punctuation">.</span>IsFullScreen <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+<span class="token preprocessor property">#<span class="token directive keyword">endif</span></span>
+        <span class="token punctuation">}</span></code></pre><p>Once you&#39;ve made the change, be sure to save the file.</p>
+<p>So let&#39;s discuss really quickly what this does.  By using the <code>#if ANDROID</code> directive, when the <strong>MyAwesomeGame.Android</strong> project is built, it will pass along the <strong>ANDROID</strong> symbol that we saw in it&#39;s properties.  Since this is the symbol set, only the code for the ANDROID section will be compiled, and the LINUX seciton will be skipped compeltely.  Next, when the <strong>MyAwesomeGame.Desktop</strong> project is built, it will pass along the <strong>LINUX</strong> symbol. Just like how the ANDROID symbol worked, the LINUX symbol will only compile the code in the LINUX section.</p>
+<p>Okay, now that we have the Game1.cs in the <strong>Shared</strong> project setup, we can delete the Game1.cs in the <strong>Android</strong> project, just like we did in the Desktop project.  So go ahead and delete that.  Then, similar to what we had to do in the Desktop project, for the <strong>Android</strong> project, open the <strong>Activity1.cs</strong> file and add the following using statement to the top</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">using</span> MyAwesomeGame<span class="token punctuation">.</span>Shared<span class="token punctuation">;</span></code></pre><p>Now, the Android project is using the Game1 class from the Shared project just like the desktop project.</p>
+<p>If you have an android device, you build and run the game directly on your device.  Pretty cool huh?  If you don&#39;t know how to do this, it&#39;s pretty simple.  First, you need to make sure you have the <strong>Developer Options</strong> enabled on your android device.  To do this, on the android device, go to <strong>Settings &gt; About Phone &gt; Software Information</strong>, then find the <strong>Build Number</strong> and tap it 7 times.  This will unlock the <strong>Developer Options</strong> for you in the Settings.  </p>
+<p>On the Android device, open <strong>Settings &gt; Developer Options</strong>, the scroll down to <strong>USB debugging</strong> and enable it.  Now that you have this enabled, just connect the Android device to your PC via the USB cable.  Once you do, you should get a pop up on your phone asking for permission for USB debugging for your computer.  Click <strong>Allow</strong>.</p>
+<p>Finally, in Visual Studio, right-click <strong>MyAwesomeGame.Android</strong> in the <em>Solution Explorer</em> window, and choose <strong>Set as StartUp Project</strong>.  Alternativly, you can change the startup project via the dropdown at the top of Visual Studio.  Once you do this, the <strong>Start</strong> button in Visual Studio will change to show your Android Device like below.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\start-android.png" alt="null" />
+        </div></p>
+<p>Click this, and Visual Studio will build the apk and push it to your phone, install it, and automatically launch it on your phone for you. Pretty sweet huh?</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=sharing-content>Sharing Content</h1><p>So now we have our Android project and Desktop project both using the same code base from our Shared project.  The only riddle left to solve is, how do we get them to share the content added using the Content Pipeline Tool. Solving this would allow us to also have a central base for the content instead of having to add all of the content into each project&#39;s <em>Content.mgcb</em> file.</p>
+<p>First, we need to add one final project to our solution.  We&#39;re going to add a <strong>MonoGame Windows Project</strong>.  So, just like we&#39;ve done before, right-click the solution in the <em>Solution Explorer</em> window and select <strong>Add &gt; New Project...</strong>.  Click <strong>MonoGame</strong> on the left under <em>Visual C#</em>, then select the <strong>MonoGame Windows Project</strong> template.  Name this one <strong>MyAwesomeGame.Content</strong>, click <strong>Browse</strong> and choose the our folder, then click <strong>Ok</strong>.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\add-content-project.png" alt="null" />
+        </div></p>
+<p>Once you have created the project, in the <em>Solution Explorer</em> window, delete everything EXCEPT for the <strong>Content</strong> directory. Once you do this, your <strong>MyAwesomeGame.Content</strong> project should only contain the <strong>Content</strong> directory with the <strong>Content.mgcb</strong> file inside it like below</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\content-only.png" alt="null" />
+        </div></p>
+<p>Next, in the <em>Solution Explorer</em> window, locate the <strong>Content.mgcb</strong> file for the <strong>MyAwesomeGame.Desktop</strong> project and delete it. Then, still in teh <strong>MyAwesomeGame.Desktop</strong> project, right-click the <em>Content</em> directory and select <strong>Add &gt; Existing Item...</strong>.  Navigate to the root directory that contains all of the projects, the one that we setup at the very beginning of this tutorial.  In this directory, open the <strong>MyAwesomeGame.Content</strong> directory, then open the <strong>Content</strong> directory inside of it.  In the bottom right of the window, change the file type from <strong>Visual C# files</strong> to <strong>All Files</strong>. When you do this, you should now see the <strong>Content.mgcb</strong> file.  Single click the file, do not double click. Finally, click the down arrow that is beside the <strong>Add</strong> button in the bottom right, and select <strong>Add As Link...</strong></p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\add-as-link.png" alt="null" />
+        </div></p>
+<p>Once you do this, you should now see the <strong>Content.mgcb</strong> file located in the <em>Content</em> directory again for the <strong>MyAwesomeGame.Desktop</strong> project in the <em>Solution Explorer</em> window.  Only the icon for it looks a tad different. It now has a small square with a small arrow in it at the bottom right of its icon. This is to let you know that this file is actually a link to the file located somewhere else, in this case to the <em>Content.mgcb</em> file from the <em>MyAwesomeGame.Content</em> project.</p>
+<p>One last thing we need to do now for the <strong>Content.mgcb</strong> we just added to the Desktop project is to change its build action.  To do this, click the <strong>Content.mgcb</strong> file in the Desktop project, then in the <em>Properties</em> window, for <strong>Build Action</strong> change it to <strong>MonoGameContentReference</strong>.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\monogame-content-reference.png" alt="null" />
+        </div></p>
+<p>Now, perform the same steps we just did, deleting the Content.mgcb file then adding it back as as link, but do it this time for the <strong>MyAwesomeGame.Android</strong> project instead.</p>
+<p>Once you&#39;ve done that, lets add some content.  Open the <strong>Content.mgcb</strong> file from either the Android, Desktop, or Content project.  It doesn&#39;t matter which, they will all open the same single one from the Content project. In the <em>MonoGame Pipeline Tool</em> window that opens, add a new <strong>SpriteFont Description</strong> item called <strong>game_font</strong>.</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\add-font.png" alt="null" />
+        </div></p>
+<p>Once you&#39;ve added it, click the save button, then close the window.</p>
+<p>Next open <strong>Game1.cs</strong> in the Shared project. At the top, find where the GraphicsDeviceManager and SpriteBatch fields are created. 
+Add the following field under the SpriteBatch one.</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token class-name">SpriteFont</span> font<span class="token punctuation">;</span></code></pre><p>Next, scroll down to the <code>LoadContent</code> method and change it to the following so we load in our game font.</p>
+<pre class="language-csharp"><code class="language-csharp">        <span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">LoadContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// Create a new SpriteBatch, which can be used to draw textures.</span>
+            spriteBatch <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SpriteBatch</span><span class="token punctuation">(</span>GraphicsDevice<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Load the game font</span>
+            font <span class="token operator">=</span> Content<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Load</span><span class="token punctuation">&lt;</span><span class="token class-name">SpriteFont</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"game_font"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre><p>Finally, scroll down to the <code>Draw</code> method and change it to the following</p>
+<pre class="language-csharp"><code class="language-csharp">        <span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token keyword">void</span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token class-name">GameTime</span> gameTime<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            GraphicsDevice<span class="token punctuation">.</span><span class="token function">Clear</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>Black<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            spriteBatch<span class="token punctuation">.</span><span class="token function">Begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token preprocessor property">#<span class="token directive keyword">if</span> ANDROID</span>
+            spriteBatch<span class="token punctuation">.</span><span class="token function">DrawString</span><span class="token punctuation">(</span>font<span class="token punctuation">,</span> <span class="token string">"Hello from the Android Project"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Vector2</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Color<span class="token punctuation">.</span>White<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token preprocessor property">#<span class="token directive keyword">elif</span> LINUX</span>
+            spriteBatch<span class="token punctuation">.</span><span class="token function">DrawString</span><span class="token punctuation">(</span>font<span class="token punctuation">,</span> <span class="token string">"Hello from the Desktop Project"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Vector2</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Color<span class="token punctuation">.</span>White<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token preprocessor property">#<span class="token directive keyword">endif</span></span>
+
+            spriteBatch<span class="token punctuation">.</span><span class="token function">End</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">base</span><span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span>gameTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre><p>Once again, we&#39;re going to make use of the <code>#if</code> preprocessor directive.  This is so we can display a seperate message on the screen depending on if its the Android project or the Desktop project that is running.</p>
+<p>Now, right-click the <strong>MyAwesomeGame.Desktop</strong> project in the <em>Solution Explorer</em> window and choose <strong>Set as StartUp Project</strong>. Then click the <strong>Start</strong> button at the top of Visual Studio.  Once the game builds and launches, you should see the following</p>
+<p>
+        <div class="text-center">
+        <img class="img-fluid border border-dark" src="\img\tutorials\monogame-shared-project\desktop-project-final.png" alt="null" />
+        </div></p>
+<p>If you have an android device to test with, perform the steps we did earlier in when setting up the Android project and test the game on your device.  You should see the same game, only with the message stating <em>Hello from the Android Project</em> instead.</p>
+
+    </div>
+
+    <div class="tutorial-section">
+        <h1 id=wrap-up>Wrap Up</h1><p>That&#39;s all you need to do to start developing your game for multiple platforms.  From this point on, you&#39;ll develop the game inside the Shared project just as you would normally.  Use the <strong>.Content</strong> project when you need to add content items with the Pipeline Tool. When you build the Desktop and/or Android projects, they&#39;ll refrence the code from the Shared project for their build.  Make use of the <code>#if</code> preprocessor directive for any sections of code that you need to be different between platforms, and you&#39;ll be good to go.</p>
+<p>Happy dev-ing!</p>
+
+    </div>
+
+                    </div>
+                    
+                        
+                        
+                        
+                        
+
+                        
+                    
+        </main>
+
+        <footer>
+            
+
+<span class="footer-brand">ManBeardGames <span>&copy; 2019</span></span>
+        </footer>
+
+        
+
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+
+<!-- Popper JS -->
+<script type="text/javascript" src="/vendor/popper.js/js/popper.js"></script>
+
+<!-- Site JS -->
+<script type="text/javascript" src="/js/site.js"></script>
+
+<!-- Tutorial JS -->
+<!-- <script type="text/javascript" src="/js/tutorials.js"></script> -->
+
+<!-- <script>//hljs.initHighlightingOnLoad();</script> -->
+    </div>
+</body>
+
+</html>
