@@ -510,12 +510,14 @@ https://www.codeply.com/go/SufxS3ir55
   max-height: calc(100vh - 65px - calc(20px + 2px + 2px));
   font-size: calc(1rem * 0.825);
 }
-#tutorial h1,
+#tutorial h1 {
+  font-size: calc(1rem * 1.825);
+}
 #tutorial h2,
 #tutorial h3,
 #tutorial h4,
 #tutorial h5 {
-  font-size: calc(1rem * 1.825);
+  font-size: calc(1rem * 1.412);
 }
 
 .row-offcanvas {
@@ -623,6 +625,10 @@ https://www.codeply.com/go/SufxS3ir55
   margin-left: auto;
 }
 
+.tutorial-section.container {
+  margin-left: 0px !important;
+}
+
 @media screen and (min-width: 768px) {
   #tutorial {
     height: calc(100vh - 91px - calc(20px + 2px + 2px));
@@ -630,8 +636,14 @@ https://www.codeply.com/go/SufxS3ir55
     max-height: calc(100vh - 91px - calc(20px + 2px + 2px));
     font-size: 1rem;
   }
-  #tutorial h1, #tutorial h2, #tutorial h3, #tutorial h4, #tutorial h5 {
+  #tutorial h1 {
     font-size: calc(1rem * 1.825);
+  }
+  #tutorial h2,
+#tutorial h3,
+#tutorial h4,
+#tutorial h5 {
+    font-size: calc(1rem * 1.412);
   }
 
   #tutorial-main {
