@@ -526,8 +526,7 @@
                                 <strong>MonoGame.Framework.Portable</strong> item in the list of results that is by the
                                 <strong>MonoGame Team</strong>, then to the right of it, click the <em>Install</em>
                                 button.</p>
-                            <p>add-monogame-pcl-package.png
-
+                            <p>
                                 <div class="text-center">
                                     <img class="img-fluid border border-dark"
                                         src="\img\tutorials\multiplatform-game-development-with-monogame\add-monogame-pcl-package.png"
@@ -648,7 +647,7 @@
                             </p>
                             <p>Once you click the Ok button, you should now see <strong>MyAwesomeGame.Shared</strong>
                                 listed under the references for the project.</p>
-                            <p>Next, in the <strong>Program.cs</strong> file, only line 2, add the following</p>
+                            <p>Next, in the <strong>Program.cs</strong> file, on line 2, add the following</p>
                             <pre
                                 class="language-csharp"><code class="language-csharp"><span class="token keyword">using</span> MyAwesomeGame<span class="token punctuation">.</span>Shared<span class="token punctuation">;</span></code></pre>
                             <p>Now, the call to <code>new Game1()</code> on line 16 will no longer have an error.
@@ -750,8 +749,7 @@
                                 scroll down and locate the <strong>Code File</strong> item and select it. Next, give it
                                 a name at the bottom, lets call it <strong>Platforms</strong>. When finished click the
                                 <em>Ok</em> button to create the file.</p>
-                            <p>add-code-file.png
-
+                            <p>
                                 <div class="text-center">
                                     <img class="img-fluid border border-dark"
                                         src="\img\tutorials\multiplatform-game-development-with-monogame\add-code-file.png"
@@ -767,7 +765,7 @@
         OpenGL
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-                            <p>When finished save and close the file. Next, open locate and open
+                            <p>When finished save and close the file. Next, locate and open
                                 <strong>Game1.cs</strong> under <strong>MyAwesomeGame.Shared</strong> in the
                                 <em>Solution Explorer</em> panel. Create a new line after line 13 where the SpriteBatch
                                 object is declared and type the following on line 14</p>
@@ -936,19 +934,18 @@
                             <p>By clicking the <em>Add As Link</em> option, we&#39;re not actually adding the
                                 <em>Content.mgcb</em> file to our Android project. Instead, anytime the Android project
                                 references the Content.mgcb file, for instance when it compiles, it will instead now use
-                                the Content.mgcb file located in our Content project. So now, do the same steps we did
-                                just now to add the <strong>Content.mgcb</strong> file to the
+                                the Content.mgcb file located in our Content project. So now, do the same steps we just did
+                                to add the <strong>Content.mgcb</strong> file to the
                                 <strong>MyAwesomeGame.OpenGL</strong> project, but remember to use the <strong>Add As
                                     Link</strong> option.</p>
                             <p>There is one last thing we need to do. When we added the <strong>Content.mgcb</strong>
-                                files back to the projects as <em>Exiting Items</em>, they no longer contain the correct
+                                files back to the projects as <em>Existing Items</em>, they no longer contain the correct
                                 <strong>Build Action</strong> property, so we need to set that. First, select the
                                 <strong>Content.mgbc</strong> file under the <strong>MyAwesomeGame.Android</strong>
                                 project in the <em>Solution Explorer</em> panel. Then in the <em>Properties</em> panel,
                                 for the <strong>Build Action</strong>, change it to
                                 <strong>MonoGameContentReference</strong>.</p>
-                            <p>build-action.png
-
+                            <p>
                                 <div class="text-center">
                                     <img class="img-fluid border border-dark"
                                         src="\img\tutorials\multiplatform-game-development-with-monogame\build-action.png"
@@ -1042,14 +1039,14 @@
                                 </div>
                             </p>
                             <p>Pretty cool huh? If you have an android device, we can also test the Android project
-                                directly on you device. If you do not have an android device, feel free to skip to the
+                                directly on the device. If you do not have an android device, feel free to skip to the
                                 next section. </p>
                             <p>To test on your android device, first you need to make sure you have <strong>Deveioper
                                     Options</strong> unlocked and <strong>USB Debugging</strong> enabled. To do this, on
                                 your device go to <strong>Settings &gt; About Phone &gt; Software Information</strong>.
                                 Scroll down to where it lists the <strong>Build Number</strong> and tape the
                                 <strong>Build Number</strong> seven times. Once finished, you&#39;ll receive a message
-                                about the <strong>Developer Options</strong> now being avaialble. Next go to
+                                about the <strong>Developer Options</strong> now being available. Next go to
                                 <strong>Settings &gt; Developer Options</strong> and scroll down to <strong>USB
                                     Debugging</strong> and toggle it on. This allows us to perform application debugging
                                 using our Android device when it&#39;s connected to a computer via USB. </p>
@@ -1064,6 +1061,13 @@
                                 button now, Visual Studio will build the android apk, push it to your android device and
                                 automatically launch it. When it does, you should see the game with the Android message
                                 this time.</p>
+                            <p>
+                                <div class="text-center">
+                                    <img class="img-fluid border border-dark"
+                                        src="\img\tutorials\multiplatform-game-development-with-monogame\start-android.png"
+                                        alt="null" />
+                                </div>
+                            </p>                                
                             <h2 class="mt-5" id=conclusion-1>Conclusion</h2>
                             <p>In this approach, we created a C# class library that uses the MonoGame.Framework.Portable
                                 package. This class library is where we will develop all of our game code for our game.
@@ -1081,7 +1085,7 @@
                                 distributed with it. What a hassle.</p>
                             <p>In the next approach, we&#39;ll look at using a C# Shared Project. Using this will give
                                 the same ultimate goal of keeping our game logic in once project that our platform
-                                specific projects reference. However, the difference here will be that with the user of
+                                specific projects reference. However, the difference here will be that with the use of
                                 a preprocessor directive, any time code is written specifically for one project type,
                                 only that code will be complied instead of all of it. Plus, we won&#39;t have to include
                                 dll files in our final distribution.</p>
@@ -1346,7 +1350,7 @@
                             <p>Well, this is where the <code>#if</code> preprocessor directive comes into play. If
                                 you&#39;re not familiar with what that is, you can read up on it at <a target="_blank"
                                     href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if">https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if</a>.
-                                Basically, it allows use to use a <em>Symbol</em> to define blocks of code that will
+                                Basically, it allows us to use a <em>Symbol</em> to define blocks of code that will
                                 only be compiled if the symbol exists. These Symbols are passed to the compiler by our
                                 individual platform projects when they are built. If you right-click on the
                                 <strong>MyAwesomeGame.Android</strong> project in the <em>Solution Explorer</em> window,
@@ -1373,7 +1377,7 @@
                             </p>
                             <p>In the Class Library approach previously, we had to setup an enum that would be passed to
                                 the Game1 constructor, its value cached, and then referenced throughout our project.
-                                Using the preprocess directives, we don&#39;t need to do this anymore. So, in the
+                                Using the preprocessor directives, we don&#39;t need to do this anymore. So, in the
                                 <strong>Game1.cs</strong> file for the <strong>MyAwesomeGame.Shared</strong> project,
                                 change the constructor to the following</p>
                             <pre class="language-csharp"><code class="language-csharp">        <span class="token keyword">public</span> <span class="token function">Game1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1446,7 +1450,7 @@
                             <p>Next, give it a name at the bottom. Let&#39;s call this one
                                 <strong>MyAwesomeGame.Content</strong>, appending the <em>.Content</em> since this is
                                 where we&#39;ll be adding all of our game content. As always, be sure to click the
-                                <em>Browse</em> button and select the <strong>class-library-example</strong> directory
+                                <em>Browse</em> button and select the <strong>shared-project-example</strong> directory
                                 we created at the beginning of the tutorial, the click the <em>Ok</em> button.</p>
                             <p>
                                 <div class="text-center">
@@ -1502,19 +1506,18 @@
                             <p>By clicking the <em>Add As Link</em> option, we&#39;re not actually adding the
                                 <em>Content.mgcb</em> file to our Android project. Instead, anytime the Android project
                                 references the Content.mgcb file, for instance when it compiles, it will instead now use
-                                the Content.mgcb file located in our Content project. So now, do the same steps we did
-                                just now to add the <strong>Content.mgcb</strong> file to the
+                                the Content.mgcb file located in our Content project.  So now, do the same steps we just did
+                                to add the <strong>Content.mgcb</strong> file to the
                                 <strong>MyAwesomeGame.OpenGL</strong> project, but remember to use the <strong>Add As
                                     Link</strong> option.</p>
                             <p>There is one last thing we need to do. When we added the <strong>Content.mgcb</strong>
-                                files back to the projects as <em>Exiting Items</em>, they no longer contain the correct
+                                files back to the projects as <em>Existing Items</em>, they no longer contain the correct
                                 <strong>Build Action</strong> property, so we need to set that. First, select the
                                 <strong>Content.mgbc</strong> file under the <strong>MyAwesomeGame.Android</strong>
                                 project in the <em>Solution Explorer</em> panel. Then in the <em>Properties</em> panel,
                                 for the <strong>Build Action</strong>, change it to
                                 <strong>MonoGameContentReference</strong>.</p>
-                            <p>build-action.png
-
+                            <p>
                                 <div class="text-center">
                                     <img class="img-fluid border border-dark"
                                         src="\img\tutorials\multiplatform-game-development-with-monogame\build-action.png"
@@ -1603,7 +1606,7 @@
                                         alt="null" />
                                 </div>
                             </p>
-                            <p>If you have an android device, we can also test the Android project directly on you
+                            <p>If you have an android device, we can also test the Android project directly on the
                                 device. If you do not have an android device, feel free to skip to the next section.
                             </p>
                             <p>To test on your android device, first you need to make sure you have <strong>Developer
@@ -1741,7 +1744,7 @@
                                 Game1 file, with one exception. Scroll down to line 61, which is inside the
                                 <code>Update</code> method. Here, there is already an <code>#if</code> preprocessor
                                 directive being used similar to what we did in the previous section. This one only
-                                compiles the section of code between #if and #endif if the platform project is NOT IOS
+                                compiles the section of code between #if and #endif if the platform project is not IOS
                                 and is also not a TVOS platform. If you don&#39;t remember what the <code>#if</code>
                                 preprocessor directive is for, don&#39;t worry. We&#39;ll cover it again in a few
                                 moments.</p>
@@ -1924,7 +1927,7 @@
                             <p>Well, this is where the <code>#if</code> preprocessor directive comes into play. If
                                 you&#39;re not familiar with what that is, you can read up on it at <a target="_blank"
                                     href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if">https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if</a>.
-                                Basically, it allows use to use a <em>Symbol</em> to define blocks of code that will
+                                Basically, it allows us to use a <em>Symbol</em> to define blocks of code that will
                                 only be compiled if the symbol exists. These Symbols are passed to the compiler by our
                                 individual platform projects when they are built. If you right-click on the
                                 <strong>MyAwesomeGame.Android</strong> project in the <em>Solution Explorer</em> window,
@@ -1951,7 +1954,7 @@
                             </p>
                             <p>In the Class Library approach previously, we had to setup an enum that would be passed to
                                 the Game1 constructor, its value cached, and then referenced throughout our project.
-                                Using the preprocess directives, we don&#39;t need to do this anymore. So, in the
+                                Using the preprocessor directives, we don&#39;t need to do this anymore. So, in the
                                 <strong>Game1.cs</strong> file for the <strong>MyAwesomeGame.Shared</strong> project,
                                 change the constructor to the following</p>
                             <pre class="language-csharp"><code class="language-csharp">        <span class="token keyword">public</span> <span class="token function">Game1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -2011,7 +2014,7 @@
                             <p>Remember the <strong>Content</strong> directory in our Shared project I said we&#39;d
                                 come back to. If you look at it in the <em>Solution Explorer</em> panel, you&#39;ll see
                                 that there&#39;s no files in it. However, there actually is. Like other projects, it
-                                contains a <em>Content.mgcb</em> file, it&#39;s just not been included in the project.
+                                contains a <em>Content.mgcb</em> file, it&#39;s just not included in the project.
                                 If you click the <strong>Show All Files</strong> button at the top of the <em>Solution
                                     Explorer</em> panel, you can see it.</p>
                             <p>
@@ -2082,7 +2085,7 @@
                                         alt="null" />
                                 </div>
                             </p>
-                            <p>If you have an android device, we can also test the Android project directly on you
+                            <p>If you have an android device, we can also test the Android project directly on the
                                 device. If you do not have an android device, feel free to skip to the next section.
                             </p>
                             <p>To test on your android device, first you need to make sure you have <strong>Developer
@@ -2123,7 +2126,7 @@
                                 to use. We don&#39;t have to compile and include .dll class libraries. We also can
                                 selectively compile sections of code using the <code>#if</code> preprocessor directive
                                 keeping out build sizes efficient. And the best part, we can manage the content directly
-                                from the Shared project instead of another separately project.</p>
+                                from the Shared project instead of another separate project.</p>
                             <p>Ultimately, which one you decide to use, if any, is up to you and the needs of your
                                 project. I hope this tutorial has provided the information you came here to seek Be sure
                                 to let me know on <a target="_blank"
