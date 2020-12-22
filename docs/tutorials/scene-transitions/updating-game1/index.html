@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.0-alpha.69">
 <title data-react-helmet="true">Scene Transitions: Updating Game1 | ManBeardGames</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docusaurus_language" content="en"><meta data-react-helmet="true" name="docusaurus_version" content="current"><meta data-react-helmet="true" name="docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="Scene Transitions: Updating Game1 | ManBeardGames"><meta data-react-helmet="true" name="description" content="A tutorial on create scene transition effects in a MonoGame project."><meta data-react-helmet="true" property="og:description" content="A tutorial on create scene transition effects in a MonoGame project."><meta data-react-helmet="true" name="keywords" content="monogame tutorial,monogame framework,monogame,tutorial,scene transition,scene,scenes"><meta data-react-helmet="true" property="og:url" content="https://manbeardgames.com/docs/tutorials/scene-transitions/updating-game1"><link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.ico"><link data-react-helmet="true" rel="canonical" href="https://manbeardgames.com/docs/tutorials/scene-transitions/updating-game1"><link rel="stylesheet" href="/styles.50dc20de.css">
-<link rel="stylesheet" href="/main.ecf36203.css">
+<link rel="stylesheet" href="/main.678feeac.css">
 <link rel="preload" href="/styles.809cde45.js" as="script">
-<link rel="preload" href="/runtime~main.371bc6f1.js" as="script">
+<link rel="preload" href="/runtime~main.8d75fbd3.js" as="script">
 <link rel="preload" href="/main.c29e5183.js" as="script">
-<link rel="preload" href="/1.26b21ab8.js" as="script">
-<link rel="preload" href="/45.6d2dd9be.js" as="script">
-<link rel="preload" href="/46.d9333a94.js" as="script">
+<link rel="preload" href="/1.4245c2e3.js" as="script">
+<link rel="preload" href="/45.d1138a7c.js" as="script">
+<link rel="preload" href="/46.a0fd8918.js" as="script">
 <link rel="preload" href="/f976f453.55ce4c98.js" as="script">
-<link rel="preload" href="/44.60dafa2a.js" as="script">
+<link rel="preload" href="/44.b06ca34a.js" as="script">
 <link rel="preload" href="/f4de6f05.c3f0a99e.js" as="script">
 </head>
 <body>
@@ -44,13 +44,13 @@
 </span></div><div class="token-line" style="color:#393A34"><span class="token plain">    if (_transitionOut != null)</span></div><div class="token-line" style="color:#393A34"><span class="token plain">    {</span></div><div class="token-line" style="color:#393A34"><span class="token plain">        _transitionOut.HandleGraphicsReset();</span></div><div class="token-line" style="color:#393A34"><span class="token plain">    }</span></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block">
 </span></div><div class="token-line" style="color:#393A34"><span class="token plain">    if (_transitionIn != null)</span></div><div class="token-line" style="color:#393A34"><span class="token plain">    {</span></div><div class="token-line" style="color:#393A34"><span class="token plain">        _transitionIn.HandleGraphicsReset();</span></div><div class="token-line" style="color:#393A34"><span class="token plain">    }</span></div><div class="token-line" style="color:#393A34"><span class="token plain">}</span></div></div></div><button type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button></div></div><p>In both of these, we tell the current active screen and any transitions to handle the event.</p><p>And that&#x27;s it for all of the <code>Game1</code> updates. Now lets actually create a transition effect to test this with.</p></div></article><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/docs/tutorials/scene-transitions/transition-class"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">« The Transition Class</div></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/docs/tutorials/scene-transitions/fade-transition"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Scene Transitions: The Fade Transition »</div></a></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_3SO_ thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#transition-fields" class="table-of-contents__link">Transition Fields</a></li><li><a href="#changescenescene-transition-transition" class="table-of-contents__link">ChangeScene(Scene, Transition, Transition)</a></li><li><a href="#transitionoutcompletedobject-eventargs" class="table-of-contents__link">TransitionOutCompleted(object, EventArgs)</a></li><li><a href="#transitionincompletedobject-eventargs" class="table-of-contents__link">TransitionInCompleted(object, EventArgs)</a></li><li><a href="#change-updategametime" class="table-of-contents__link">Change Update(GameTime)</a></li><li><a href="#change-drawgametime" class="table-of-contents__link">Change Draw(GameTime)</a></li><li><a href="#graphicsdevice-created-and-reset-events" class="table-of-contents__link">GraphicsDevice Created and Reset Events</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="text--center"><div>Copyright © 2020 Christopher Whitley.<br> Built with Docusaurus.</div></div></div></footer></div>
 <script src="/styles.809cde45.js"></script>
-<script src="/runtime~main.371bc6f1.js"></script>
+<script src="/runtime~main.8d75fbd3.js"></script>
 <script src="/main.c29e5183.js"></script>
-<script src="/1.26b21ab8.js"></script>
-<script src="/45.6d2dd9be.js"></script>
-<script src="/46.d9333a94.js"></script>
+<script src="/1.4245c2e3.js"></script>
+<script src="/45.d1138a7c.js"></script>
+<script src="/46.a0fd8918.js"></script>
 <script src="/f976f453.55ce4c98.js"></script>
-<script src="/44.60dafa2a.js"></script>
+<script src="/44.b06ca34a.js"></script>
 <script src="/f4de6f05.c3f0a99e.js"></script>
 </body>
 </html>
