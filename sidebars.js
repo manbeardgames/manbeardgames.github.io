@@ -21,32 +21,32 @@ module.exports = {
         'tutorials/tutorials',
         {
           type: 'category',
-          label: 'MonoGame Tutorials',
+          label: 'MonoGame 3.8 Tutorials',
           items: [
             {
               type: 'category',
               label: 'Scenes',
               items: [
-                'tutorials/scenes/tutorials-scenes-introduction',
-                'tutorials/scenes/tutorials-scenes-what-is-a-scene',
-                'tutorials/scenes/tutorials-scenes-scene-class',
-                'tutorials/scenes/tutorials-scenes-updating-game1',
-                'tutorials/scenes/tutorials-scenes-testing-our-setup',
-                'tutorials/scenes/tutorials-scenes-conclusion'
+                'tutorials/monogame-3-8/scenes/introduction',
+                'tutorials/monogame-3-8/scenes/what-is-a-scene',
+                'tutorials/monogame-3-8/scenes/scene-class',
+                'tutorials/monogame-3-8/scenes/updating-game1',
+                'tutorials/monogame-3-8/scenes/testing-our-setup',
+                'tutorials/monogame-3-8/scenes/conclusion'
               ]
             },
             {
               type: 'category',
               label: 'Scene Transitions',
               items: [
-                'tutorials/scene-transitions/tutorials-scene-transitions-introduction',
-                'tutorials/scene-transitions/tutorials-scene-transitions-rendertarget-overview',
-                'tutorials/scene-transitions/tutorials-scene-transitions-updating-scene-class',
-                'tutorials/scene-transitions/tutorials-scene-transitions-transition-class',
-                'tutorials/scene-transitions/tutorials-scene-transitions-updating-game1',
-                'tutorials/scene-transitions/tutorials-scene-transitions-fade-transition',
-                'tutorials/scene-transitions/tutorials-scene-transitions-even-odd-transition',
-                'tutorials/scene-transitions/tutorials-scene-transitions-conclusion'
+                'tutorials/monogame-3-8/scene-transitions/introduction',
+                'tutorials/monogame-3-8/scene-transitions/rendertarget-overview',
+                'tutorials/monogame-3-8/scene-transitions/updating-scene-class',
+                'tutorials/monogame-3-8/scene-transitions/transition-class',
+                'tutorials/monogame-3-8/scene-transitions/updating-game1',
+                'tutorials/monogame-3-8/scene-transitions/fade-transition',
+                'tutorials/monogame-3-8/scene-transitions/even-odd-transition',
+                'tutorials/monogame-3-8/scene-transitions/conclusion'
               ]
             }
           ]

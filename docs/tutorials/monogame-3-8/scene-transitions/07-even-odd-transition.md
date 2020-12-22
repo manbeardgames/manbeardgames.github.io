@@ -1,7 +1,7 @@
 ---
-id: tutorials-scene-transitions-even-odd-transition
+id: even-odd-transition
 title: 'Scene Transitions: The EvenOddTransition'
-hide_title: false
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: The EvenOddTransition
 custom_edit_url: null
@@ -13,19 +13,20 @@ keywords:
     - 'scene transition'
     - 'scene'
     - 'scenes'
-description: 'A tutorial on create scene transition effects in a MonoGame project.'
-image:
-slug: /tutorials/scene-transitions/even-odd-transition
+description: 'A tutorial on creating scene transition effects in a MonoGame project.'
+image: /img/mgb_cookie.svg
+slug: /tutorials/monogame-3-8/scene-transitions/even-odd-transition
 ---
 
-## EvenOddTileTransition
+# The EvenOddTileTransition
 Now that we've created a simple fade transition, lets create one that really stands out. Imagine a grid, like a chess board.  In this grid, we're going to group each odd grid cell together and each even grid cell together.  To help visualize this, see the image below.  The gray grid cells are the even ones and the white grid cells are the odd ones.
 
 ![](/img/tutorials/scene-transitions/even-odd-grid.png)
 
 What were going to do with this transition effect take our scene and theoretically split it up into a grid like this.  For the transition out, we are going first take all of the odd grid cells and shrink + rotate them out of the scene. Then we are going to take all of the even grid cells and shrink + rotate them out of the scene  For the transition in, we'll do the reverse, growing + rotating the cells into the screen.
 
-Create a new class file in your project called **EvenOddTileTransition.cs**.  Then add the following code
+:::note Perform the Following
+Create a new class file in your project called **EvenOddTileTransition.cs**, then add the following code. We'll go over the code in the sections after.
 
 **using statements**
 ```csharp
@@ -205,6 +206,7 @@ public class EvenOddTileTransition : Transition
     }
 }
 ```
+:::
 
 ### Fields
 The `EvenOddTileTransition` class has the following fields
@@ -423,7 +425,10 @@ private bool IsOdd(int column, int row)
 And odd cell is one were either both the row and column are even numbers, or both the row and column are odd numbers.
 
 ### Testing the Transition.
-Now let's test our transition out.  First, open the `GreenCircleScene` class file.  In the `Update(GameTime)` method, change the transition effects we are using from `FadeTransition` to `EvenOddTileTransition`
+Now let's test our transition out.  
+
+:::note Perform the Following
+Open the `GreenCircleScene` class file.  Locate the `Update(GameTime)` method, and change it to the following.
 
 ```csharp
 /// <summary>
@@ -443,10 +448,14 @@ public override void Update(GameTime gameTime)
     }
 }
 ```
+:::
 
-Here, when creating the new `EventOddTileTransition` instances I used a tile size of `32`, but you can use whatever value you'd like. Experiment with it.
+This changes it from using the `FadeTransition` to our new `EvenOddTileTransition`. when creating the new `EventOddTileTransition` instances I used a tile size of `32`, but you can use whatever value you'd like. Experiment with it.
 
-Nest, open the `OrangeCircleScene` class file and change the `Update(GameTime)` method there as well to use the new `EvenOddTileTransition` class.  Remember to have this one create a ne `GreenCircleScene` to switch to.
+
+:::note Perform the Following
+Open the `OrangeCircleScene` class file and change the `Update(GameTime)` method there as well to use the new `EvenOddTileTransition`.  Remember to have this one create a new `GreenCircleScene` to switch to.
+:::
 
 Once you've made these changes, run the game.  As usual, you should see the green circle scene appear first.  Press the space key to switch scenes and watch the magic happen. 
 

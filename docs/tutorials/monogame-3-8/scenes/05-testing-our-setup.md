@@ -1,7 +1,7 @@
 ---
-id: tutorials-scenes-testing-our-setup
-title: Testing Our Setup
-hide_title: false
+id: testing-our-setup
+title: "Scenes: Testing Our Setup"
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: Testing Our Setup
 custom_edit_url: null
@@ -13,32 +13,38 @@ keywords:
     - 'scene transition'
     - 'scene'
     - 'scenes'
-description: 'A tutorial on create scene transition effects in a MonoGame project.'
-image:
-slug: /tutorials/scenes/testing-our-setup
+description: 'A tutorial on creating scenes in a MonoGame project.'
+image: /img/mgb_cookie.svg
+slug: /tutorials/monogame-3-8/scenes/testing-our-setup
 ---
 
+# Testing Our Setup
 Now that we've created the `Scene` class and integrated it into our `Game1` class, it's time to test the setup.  
 
 ### Add The Content
-First, we're going to add the content to our project that we'll use in each scene.  The content we're adding is
+Before we can test the setup, we're going to create a few assets to use in our game.
 
-* [A SpriteFont that we can use to render text.](/assets/tutorials/scenes/font.spritefont)
-* [A 64 x 64 orange circle image.](/assets/tutorials/scenes/orange_circle.png)
-* [A 64px x 64px green circle image.](/assets/tutorials/scenes/green_circle.png)
+:::note Perform the Following
+Create or Download the following assets and add them to your project using the MGCB Editor.  If downloading them, you can just **right-click > Save As** on each link below.
+
+* [A SpriteFont that we can use to render text. (Consolas, 12pt)](https://raw.githubusercontent.com/manbeardgames/monogame-scene-demo/develop/SceneDemo/Content/font.spritefont)
+* [A 64 x 64 orange circle image.](https://raw.githubusercontent.com/manbeardgames/monogame-scene-demo/develop/SceneDemo/Content/orange_circle.png)
+* [A 64px x 64px green circle image.](https://raw.githubusercontent.com/manbeardgames/monogame-scene-demo/develop/SceneDemo/Content/green_circle.png)
 
 You can create these content files yourself, or you can click them below to download them.
 
-Once you have the files, use the MGCB Editor (aka Content Pipeline Tool) to add the files to the games content.
+Once you have the files, use the MGCB Editor (aka Content Pipeline Tool) to add them to the game content.
+:::
 
 :::note  
 If you are unfamiliar with adding new content such as a SpriteFont, please see the official [MonoGame Documentation](https://docs.monogame.net/articles/getting_started/4_adding_content.html)
 :::  
 
 ### Load the Global Content
-We discussed previously how we can use the `ContentManager` in the Game1 class to load content that can be used globally in any scene.  The SpriteFont we added as content is an excellent example of this, as well be using it in both of the test scenes we create.
+We discussed previously how we can use the `ContentManager` in the `Game1` class to load content that can be used globally in any scene.  The SpriteFont we added as content is an excellent example of this, as well be using it in both of the test scenes we create.
 
-So open Game1.cs and add the following to the `LoadContent()` method
+:::note Perform the Following
+Open the `Game1` class file. Locate the `LoadContent()` method and change it to the following.
 
 ```csharp
 protected override void LoadContent()
@@ -49,6 +55,7 @@ protected override void LoadContent()
     Content.Load<SpriteFont>("font");
 }
 ```
+:::
 
 Now, some of you have a sharp eye and you noticed something a little strange here.  We're loading the SpriteFont using the `ContentManager`, but we're not storing it anywhere. We just load it and move on.  
 
@@ -63,7 +70,8 @@ The particular bit of code you'd be looking for is https://github.com/MonoGame/M
 ### Create the Green Circle Scene
 Next we're going to create the scene that displays the green circle image.  
 
-Add a new class file to your project called **GreenCircleScene.cs** then add the following code to the file. We'll go over in after the code.
+:::note Perform the Following
+Add a new class file to your project called **GreenCircleScene.cs** then add the following code to the file. We'll go over it after the code.
 
 **using statements**
 ```csharp
@@ -127,6 +135,7 @@ public class GreenCircleScene : Scene
     }
 }
 ```
+:::
 
 From the code above, you can see that our `GreenCircleScene` class is inheriting from the `Scene` class
 
@@ -144,7 +153,7 @@ private SpriteFont _font;
 private Texture2D _greenCircle;
 ```
 
-After that is the constructor.  It just takes in the single `Game1` parameter and passes it to the base scene constructor
+After that is the constructor.  It just takes in the single `Game1` parameter and passes it to the `base` scene constructor
 
 ```csharp
 /// <summary>
@@ -156,7 +165,7 @@ After that is the constructor.  It just takes in the single `Game1` parameter an
 public GreenCircleScene(Game1 game):base(game) { }
 ```
 
-Following that is the `LoadContent()` method. This is where some magic happens.  We use `_game.Content.Load<T>(string)` to load the font since we know it is stored in our global content manager.  Remember, we loaded this previously in the Game1 LoadContent method, so when we load it a second time here, it's loading the cached asset and not from the disk.  After loading the font, we load our scene specific asset, the **green_circle** texture using the scene's `ContentManager`.
+Following that is the `LoadContent()` method. This is where some magic happens.  We use `_game.Content.Load<T>(string)` to load the font since we know it is stored in our global content manager.  Remember, we loaded this previously in the `Game1.LoadContent()` method, so when we load it a second time here, it's loading the cached asset and not from the disk.  After loading the font, we load our scene specific asset, the **green_circle** texture using the scene's `ContentManager`.
 
 ```csharp
 /// <summary>
@@ -207,7 +216,10 @@ That's it for the Green Circle Scene. Next let's create the Orange Circle Scene
 ### Create the Orange Circle Scene
 The orange circle scene is pretty much identical to the Green Circle Screen, only it loads the **orange_circle.png** content and displays the text "Orange Circle Scene" when rendered.  
 
-Because of this, we won't discuss the code directly, as we already did that above.  Instead I'll just add it here for you to copy and paste.  Add a new class file to your project called **OrangeCircleScene.cs**, then add the following code to it
+Because of this, we won't discuss the code directly, as we already did that above.  Instead I'll just add it here for you to copy and paste.  
+
+:::note Perform the Following
+Add a new class file to your project called **OrangeCircleScene.cs**, then add the following code to it.
 
 **using statements**
 ```csharp
@@ -272,9 +284,13 @@ public class OrangeCircleScene : Scene
     }
 }
 ```
+:::
 
 ### Loading the Starting Scene
-Now that we have added our two test scene classes, we need to tell the Game1 class which scene to use as the starting scene.  To do this, open **Game1.cs** and locate the `Initialize()` method.  We're going to tell it to load the `GreenCircleScene` directly after it finishes it's called to `base.Initialize()`.  
+Now that we have added our two test scene classes, we need to tell the `Game1` class which scene to use as the starting scene.  
+
+:::note Perform the Following
+Open **Game1.cs** and locate the `Initialize()` method.  Change the `Initialize()` method to the following.
 
 Change the `Initialize()` method to the following
 
@@ -287,6 +303,9 @@ protected override void Initialize()
     ChangeScene(new GreenCircleScene(this));
 }
 ```
+:::
+
+By doing this, we're telling `Game1` to load and switch to the `GreenCircleScene` directly after it finishes its call to `base.Initialize()`.
 
 if you run the game now, you should see the following displayed.
 
@@ -295,9 +314,10 @@ if you run the game now, you should see the following displayed.
 Fantastic, the game is now loading our initial scene and rendering it.  Next, let's add some code to make it switch between our two scenes.
 
 ### Switching Scenes
-In order to switch scenes at the press of a button, we're going to need to do some initial input state setup in our game.  Since input state is something that is global across the entire game, and not scene specific, it makes more sense for us to do this in our `Game1` class.
+In order to switch scenes at the press of a button, we're going to need to do some initial input state management in our game.  Since input state is something that is global across the entire game, and not scene specific, it makes more sense for us to do this in our `Game1` class.
 
-So first, open **Game1.cs** and add the following to the class
+:::note Perform the Following
+Open the **Game1.cs**  class file and add the following to the class
 
 **using statement**
 ```csharp
@@ -316,8 +336,12 @@ public KeyboardState PrevKeyboardState { get; private set; }
 /// </summary>
 public KeyboardState CurKeyboardState { get; private set; }
 ```
+:::
 
-These two properties will be used to track the state of keyboard input between the previous and current frames in our game.  Now we need to make sure these have the proper values each frame. So scroll down to the `Update(GameTime)` method and add the following to the top of the method. Input states should be the first thing updated.
+These two properties will be used to track the state of keyboard input between the previous and current frames in our game.  Next, we need to make sure these have the proper values each frame. 
+
+:::note Perform the Following
+Scroll down to the `Update(GameTime)` method and add the following to the top of the method. Input states should be the first thing updated. 
 
 ```csharp
 public override void Update(GameTime gameTime)
@@ -328,12 +352,12 @@ public override void Update(GameTime gameTime)
     // ... other code removed for brevity   
 }
 ```
+:::
 
-Now that we are managing input states in `Game1`, we can do some input checking in the `GreenCircleScene.Update(GameTime)` method to see if we should switch scenes.  To do this, first open **GreenCircleScene.cs**. 
+Now that we are managing input states in `Game1`, we can do some input checking in the `GreenCircleScene.Update(GameTime)` method to see if we should switch scenes.  We're going to need to add an override to the `Update(GameTime)` method since we did not add one previously. In this update method, we need to tell it that if the space key is pressed, the game should switch to a new `OrangeCircleScene`.
 
-Now we need to add an update method to the scene.  We did not add one previously because we didn't need it at the time.  In this update method, we need to tell it that if the space key is pressed, the game should switch to a new OrangeCircleScene.
-
-To do this, add the following code to the GreenCircleScene class.
+:::note Perform the Following
+Open the **GreenCircleScene.cs** class file and add the following code.
 
 **using statement**
 ```csharp
@@ -357,12 +381,35 @@ public override void Update(GameTime gameTime)
     }
 }
 ```
+:::
 
-Now run the game.  You should first be presented with the GreenCircleScene.  When you press the space key, the game will switch to the OrangeCircleScene.  Pretty nifty ya?
+Now run the game.  You should first be presented with the `GreenCircleScene`.  When you press the space key, the game will switch to the `OrangeCircleScene`.  Pretty nifty ya?  Unfortunately, we can't switch back to the `GreenCircleScene` from the `OrangeCircleScene`.  Let's fix this.
 
-Now we need to tell the OrangeCircleScene to do the same thing, only to switch to the GreenCircleScene.  Use the code above to update the **OrangeCircleScene.cs** class file in the same way that we did for the GreenCircleScene.  The only different is in the `Update(GameTime)` method, when we change scenes, make sure it's changing to the GreenCircleScene instead.
+:::note Perform the Following
+Open the **OrangeCircleScene.cs** class file and add the following code.
 
+**using statement**
 ```csharp
-//  Tell the game to change to the GreenCircleScene
-_game.ChangeScene(new GreenCircleScene(_game));
+using Microsoft.Xna.Framework.Input;
 ```
+
+**Update(GameTime) Method**
+```csharp
+/// <summary>
+///     Updates this scene.
+/// </summary>
+/// <param name="gameTime">
+///     A snapshot of the frame specific timing values.
+/// </param>
+public override void Update(GameTime gameTime)
+{
+    if(_game.CurKeyboardState.IsKeyDown(Keys.Space) && _game.PrevKeyboardState.IsKeyUp(Keys.Space))
+    {
+        //  Tell the game to change to the OrangeCircleScene
+        _game.ChangeScene(new GreenCircleScene(_game));
+    }
+}
+```
+:::
+
+If you run the game now, you'll be presented initially with the `GreenCircleScene`.  Pressing the space key will switch scenes to the `OrangeCircleScene` as before, only this time if you press the space key again, it will switch back to the `GreenCircleScene`.

@@ -1,7 +1,7 @@
 ---
-id: tutorials-scenes-scene-class
-title: The Scene Class
-hide_title: false
+id: scene-class
+title: "Scenes: The Scene Class"
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: The Scene Class
 custom_edit_url: null
@@ -13,14 +13,24 @@ keywords:
     - 'scene transition'
     - 'scene'
     - 'scenes'
-description: 'A tutorial on create scene transition effects in a MonoGame project.'
-image:
-slug: /tutorials/scenes/the-scene-class
+description: 'A tutorial on creating scenes in a MonoGame project.'
+image: /img/mgb_cookie.svg
+slug: /tutorials/monogame-3-8/scenes/scene-class
 ---
 
-Before we dive into discussing what each section of the Scene class is for, I'm going to post the full class here. First, create a new class file in the project called **Scene.cs**. Then add the following code to it.
+# The Scene Class
+
+:::note  
+If you haven't created a new Monogame 3.8 game project yet to follow along with this tutorial, now would be the time to do it.  For more information on creating a new project, check out the official documentation at https://docs.monogame.net/articles/getting_started/2_creating_a_new_project_vs.html.
+:::
 
 ### The Code
+In this part of the tutorial, we are going to create the code necessary for our `Scene` class. This class will be the foundation for all scenes we could create in our game.  
+
+:::note Perform the Following
+In your project, create a new class file called **Scene.cs** and add the code found below.  In the sections of this page after the code, we'll go over each of the aspects of this class file and what all of it is doing.
+
+
 **using statements**
 ```csharp
 using Microsoft.Xna.Framework;
@@ -147,9 +157,9 @@ public abstract class Scene
     }
 }
 ```
+:::
 
-
-As you can see, the stricture of it is pretty much the same as our Game1 class, with the exception of the two fields and the `BeginDraw(SpriteBatch)` and `EndDraw(SpriteBatch)` methods.
+As you can see, the structure of it is pretty much the same as our Game1 class, with the exception of the two fields and the `BeginDraw(SpriteBatch)` and `EndDraw(SpriteBatch)` methods.
 
 So lets break this down section by section and discuss what each part of this is doing.
 
@@ -196,7 +206,7 @@ public Scene(Game1 game)
 }
 ```
 
-As far as constructors go, this a pretty simple one.  It takes an instance of Game1 as the only parameter.  An `ArgumentNullException` is thrown if the value given is `null`. From here we just cache the reference into the `_game` field.
+As far as constructors go, this a pretty simple one.  It takes an instance of `Game1` as the only parameter.  An `ArgumentNullException` is thrown if the value given is `null`. From here we just cache the reference into the `_game` field.
 
 ### Initialize()
 The Initialize method is where all initializations will be performed for our scene.  
@@ -238,7 +248,7 @@ public virtual void LoadContent() { }
 As we went over in the Initialize section, `LoadContent()` is called from within the `Initialize()` method.
 
 ### UnloadContent()
-The `UnloadContent()` allows us to dispose of any content loaded when the scene ends to ensure we clear any from memory that no longer needs to be there.
+The `UnloadContent()` allows us to unload any content loaded by the scene when the scene ends.
 
 ```csharp
 /// <summary>
@@ -311,7 +321,7 @@ Immediately after `BeforeDraw(SpriteBatch, Color)` is call, we'll call `Draw(Spr
 public virtual void Draw(SpriteBatch spriteBatch) { }
 ```
 
-This will take in the same `SpriteBatch` instance that we can use to rendering visual assets to the screen.
+This will take in the same `SpriteBatch` instance that was used in `BeforeDraw(SpriteBatch, Color)` so we can use it to render visual assets to the screen.
 
 ### AfterDraw(SpritBatch)
 Finally, we have `AfterDraw(SpriteBatch)`, which will be called immediately after `Draw(SpriteBatch)` is called.
@@ -332,7 +342,6 @@ public virtual void AfterDraw(SpriteBatch spriteBatch)
     spriteBatch.End();
 }
 ```
-
-Here we just end the spritebatch.
+This takes the same `SpriteBatch` instance that was used in `BeforeDraw(SpriteBatch, Color)` and `Draw(SpriteBatch)` so that we can call the `SpriteBatch.End()` method so signal that we are done drawing.
 
 On the next page, we're going to update our `Game1` class to make use of the `Scene` class we just created.

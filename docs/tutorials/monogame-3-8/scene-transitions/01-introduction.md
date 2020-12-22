@@ -1,7 +1,7 @@
 ---
-id: tutorials-scenes-introduction
-title: Introduction
-hide_title: false
+id: introduction
+title: 'Scene Transitions: Introduction'
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: Introduction
 custom_edit_url: null
@@ -13,20 +13,22 @@ keywords:
     - 'scene transition'
     - 'scene'
     - 'scenes'
-description: 'A tutorial on create scene transition effects in a MonoGame project.'
-image:
-slug: /tutorials/scenes/introduction
+description: 'A tutorial on creating scene transition effects in a MonoGame project.'
+image: /img/mgb_cookie.svg
+slug: /tutorials/monogame-3-8/scene-transitions/introduction
 ---
+# Introduction
+In the previous tutorial, we went through the steps of adding a `Scene` class and implementing it in to our `Game1` class. With this, we were able to change from one scene to another using the `ChangeScene(Scene)` method we created.  However, when we changed scenes, visually, it was less than impressive. One scene pops out and the new one pops in almost instantly.
 
-In this tutorial series, we'll go over the concept of a game *scene*, what it means for our game, and how we can implement the idea in code.
+In this tutorial, we're going to fix that. We're going to adjust what we did previous so that we can have different effects to transition our scenes out and in.  
 
 ## Prerequisites
 The following are the prerequisites if you plan to follow along with this tutorial in code.
 
 * MonoGame 3.8
     * The code has not been tested against **MonoGame 3.7.1**.  It should still function the same, however no guarantees are given.
-* A new game project
-    * This tutorial starts with a fresh **MonoGame Cross-Platform Desktop Application (OpenGL)** project.
+* Completion of the previous [Scenes](../scenes/introduction) tutorial.
+    * This tutorial builds off the code that was created in the previous tutorial series.
 
 ## Tutorial Structure
 Due to the size of this tutorial, I have opted to break it down into smaller pages.  At the bottom of each page in this tutorial, you'll find a button to click which will take you to the next page in the series, or the previous page if you wish to go back one.
@@ -35,10 +37,15 @@ Due to the size of this tutorial, I have opted to break it down into smaller pag
 Users using a desktop or larger screen device can use the side bar on the left to jump to different pages within the tutorial.  There is also a table of contents on the left of each page if you wish to jump to a difference section in a page.
 
 ### Mobile Users
-users using a mobile device can use the side bar that would normally be on the left by clicking the menu button positioned in the bottom right corner of your screen.  Due to the limited screen real estate of a mobile device, no table of contents for each page will appear.
+users using a mobile device can use the side bar that would normally be on the left by clicking the menu button positioned in the bottom right corner of your screen.  Due to the limited screen real estate of a mobile device, no table of contents for each page will appear. 
 
 ## Project Files
-You can find the completed version of the project created with this demo at https://github.com/manbeardgames/monogame-scene-demo
+You can find the completed version of the project created with this demo at https://github.com/manbeardgames/monogame-scene-transition-demo
+
+## Credits
+Before we get started, I would like to acknowledge [PorbleG](https://www.twitter.com/PorbleG).  Some time ago, I reached out to them regarding the scene transition effects they were using in their game [Wark & Wimble](https://warkandwimble.com).  They were kind enough to provide me with some source code examples of the transition effects they used in game.  
+
+With permission, I have created this tutorial series to show how anyone can implement them into a MonoGame game project.
 
 ## Code License
 All code written in this **Scene Transitions** tutorial series, unless otherwise stated, is licensed under The UnLicense.  This license extends to only the code written, not the tutorial documentation.  The license text is as follows:

@@ -74,6 +74,8 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
           'https://github.com/manbeardgames/manbeardgames.github.io/tree/gh-pages-develop',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true
         },
         blog: {
           showReadingTime: true,

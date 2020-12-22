@@ -1,7 +1,7 @@
 ---
-id: tutorials-scene-transitions-updating-game1
+id: updating-game1
 title: 'Scene Transitions: Updating Game1'
-hide_title: false
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: Updating Game1
 custom_edit_url: null
@@ -13,12 +13,12 @@ keywords:
     - 'scene transition'
     - 'scene'
     - 'scenes'
-description: 'A tutorial on create scene transition effects in a MonoGame project.'
-image:
-slug: /tutorials/scene-transitions/updating-game1
+description: 'A tutorial on creating scene transition effects in a MonoGame project.'
+image: /img/mgb_cookie.svg
+slug: /tutorials/monogame-3-8/scene-transitions/updating-game1
 ---
-
-Now that we have updating our `Scene` class and created the `Transition` class, we need to update our `Game1` class to use the transitions when switching scenes. There are a few things we'll need
+# Updating Game1
+We updated our `Scene` class and created the `Transition` class. Now we need to update our `Game1` class to use the transitions when switching scenes. There are a few things we'll need
 
 * A reference to the transition out effect being used.
 * A reference to the transition in effect being used.
@@ -26,10 +26,13 @@ Now that we have updating our `Scene` class and created the `Transition` class, 
 * A method to handle changing scenes using transitions
 * An implementation of subscribing to the graphics device **reset** and **created** events so that we can pass this along to the scene and any transitions.
 
-With those points defined, let's get started updating our `Game1` class.  Open the **Game1.cs** class file.
+With those points defined, let's get started updating our `Game1` class.
 
 ### Transition Fields
-First, we need to add three new fields to our `Game1` class.  
+The first thing we'll need to do is add a couple of fields to keep track of our transitions.
+
+:::note Perform the Following
+Open the **Game1.cs** class file and add the following fields.
 
 ```csharp
 //   The Transition Out instance.
@@ -41,6 +44,7 @@ private Transition _transitionIn;
 //  The current transition being used.
 private Transition _currentTransition;
 ```
+:::
 
 `_transitionOut` will be our reference to the transition effect that is transitioning the current scene *out*.
 
@@ -49,7 +53,10 @@ private Transition _currentTransition;
 `_currentTransition` will hold a reference to either `_transitionOut` or `_transitionIn` depending on which transition is the current one that is transitioning.
 
 ### ChangeScene(Scene, Transition, Transition)
-Next, we're going to add an overload method of the `ChangeScene` method.  Add the following method to `Game1`.
+Next, we're going to add an overload method of the `ChangeScene` method.  
+
+:::note Perform the following
+Add the following method to `Game1`.
 
 ```csharp
 /// <summary>
@@ -88,6 +95,7 @@ public void ChangeScene(Scene to, Transition tOut, Transition tIn)
     }
 }
 ```
+:::
 
 This `ChangeScene(Scene, Transition, Transition)` method takes three parameters.  A `Scene` instance of the scene that we are transitioning **to**, a `Transition` instance that we can use to transition the current scene **out** with, and finally a `Transition` instance that we can use to transition the next scene **in** with.
 
@@ -98,7 +106,10 @@ Next we check to make sure that the scene to switch **to** is not the same insta
 If these checks pass, then we cache the references to the next scene, the transition out and the transition in instances.  We then subscribe to the `TransitionCompleted` events for both the `_transitionOut` and `_transitionIn` instances. Next we set the `_currentTransition` as the `_transitionOut` and tell it to start, giving it the reference to the current active scene's render target.
 
 ### TransitionOutCompleted(object, EventArgs)
-In the `ChangeScene(Scene, Transition, Transition)` method, we subscribed to the `TransitionCompleted` event of the `_transitionOut` instance.  So we need to add that method now. Add the following method to the `Game1` class.
+In the `ChangeScene(Scene, Transition, Transition)` method, we subscribed to the `TransitionCompleted` event of the `_transitionOut` instance.  So we need to add that method now. 
+
+:::note Perform the Following
+Add the following method to the `Game1` class.
 
 ```csharp
 /// <summary>
@@ -121,13 +132,17 @@ private void TransitionOutCompleted(object sender, EventArgs e)
     _currentTransition.Start(_activeScene.RenderTarget);
 }
 ```
+:::
 
 So, whenever the transition out is completed, this gets called.  The first thing we do is unsubscribe from the event.  This is so we don't leave any hanging reference to the `_transitionOut`.  Next we dispose of the `_transitionOut` instance since we no longer need it and can free up its resources.
 
 After this, we call the `TransitionScene()` method we setup in the previous tutorial to gracefully handle changing from the current active scene to the next. Then we set the `_currentTransition` to the `_transitionIn` instance and tell it to start transitioning in.
 
 ### TransitionInCompleted(object, EventArgs)
-As with the transition out, we subscribed to the `TransitionCompleted` event of the `_transitionIn` instance. So we need to add the method for that next.  Add the following method to the `Game1` class.
+As with the transition out, we subscribed to the `TransitionCompleted` event of the `_transitionIn` instance. So we need to add the method for that next.  
+
+:::note Perform the Following
+Add the following method to the `Game1` class.
 
 ```csharp
 /// <summary>
@@ -144,11 +159,15 @@ private void TransitionInCompleted(object sender, EventArgs e)
     _currentTransition = null;
 }
 ```
+:::
 
 This one is pretty simple and just does some basic cleanup of resources. First we unsubscribe to the `TransitionCompleted` event.  Then we dispose of `_transitionIn` and set both it and `_currentTransition` to `null` since they are no longer needed.
 
 ### Change Update(GameTime)
-Now we need to change the `Update(GameTime)` method. The following is what this method should look like now.
+The transitions will need to be updated each frame. 
+
+:::note Perform the Following
+Locate the `Update(GameTime)` method and change it to the following.
 
 ```csharp
 protected override void Update(GameTime gameTime)
@@ -177,6 +196,7 @@ protected override void Update(GameTime gameTime)
     base.Update(gameTime);
 }
 ```
+:::
 
 The change we have made is right in the middle of it. Previously we were just checking if there was a next scene to switch to, and if so, we immediately switched to that scene. 
 
@@ -185,9 +205,10 @@ With the new change, instead we first check if there is a current transition and
 By setting it up this way, it allows us to switch scenes using transition effects, but if we want to simply switch without them by using the old `ChangeScene(Scene)` method, we can still do that to instantly switch.
 
 ### Change Draw(GameTime)
-Finally, we need to change the `Draw(GameTime)` method to handle not only drawing the current transition, but also to handle using the render targets we created for the transitions and the scenes.
+Finally, we need to draw the transitions. When rendering, we need to handle not only drawing the current transition, but also handle using the render targets we created for the transition and the scene.
 
-The following is what the `Draw(GameTime)` method should be updated to.
+:::note Perform the Following
+Locate the  `Draw(GameTime)` method and change it to the following. 
 
 ```csharp
 protected override void Draw(GameTime gameTime)
@@ -235,6 +256,7 @@ protected override void Draw(GameTime gameTime)
     base.Draw(gameTime);
 }
 ```
+:::
 
 There is a bit to digest here, so let's break it down.
 
@@ -256,7 +278,8 @@ Do note however, that when clearing the backbuffer for the final draw, I do use 
 ### GraphicsDevice Created and Reset Events
 Finally, we need to make sure that we are handling the `GraphicsDevice.DeviceCreated` and `GraphicsDevice.DeviceReset` events so we can pass this along and handle them in the current active scene and any transitions.
 
-To do this, first locate the `Initialize()` method in the `Game1` class and change it to the following.
+:::note Perform the Following
+First locate the `Initialize()` method in the `Game1` class and change it to the following.
 
 ```csharp
 protected override void Initialize()
@@ -271,8 +294,12 @@ protected override void Initialize()
     ChangeScene(new GreenCircleScene(this));
 }
 ```
+:::
 
-Here we subscribe the necessary events.  Next, let's add the `GraphicsDeviceCreated(object, EventArgs)` and `GraphicsDeviceReset(object, EventArgs)` methods.  Add the following methods to the `Game1` class.
+Here we subscribe the necessary events.  Next, let's add the `GraphicsDeviceCreated(object, EventArgs)` and `GraphicsDeviceReset(object, EventArgs)` methods.  
+
+:::note Perform the Following
+Add the following two methods to the `Game1` class.
 
 **GraphicsDeviceCreated(object, EventArgs)***
 ```csharp
@@ -321,7 +348,8 @@ protected virtual void GraphicsDeviceReset(object sender, EventArgs e)
     }
 }
 ```
+:::
 
 In both of these, we tell the current active screen and any transitions to handle the event.
 
-And that's it for all of the `Game1` updates. Now lets actually create a transition effect to test this with.
+And that's it for all of the `Game1` updates. On the next page of this tutorial, we'll actually create a transition effect to these this all with.

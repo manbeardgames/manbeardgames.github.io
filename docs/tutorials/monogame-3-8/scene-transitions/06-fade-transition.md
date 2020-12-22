@@ -1,7 +1,7 @@
 ---
-id: tutorials-scene-transitions-fade-transition
+id: fade-transition
 title: 'Scene Transitions: The Fade Transition'
-hide_title: false
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: The Fade Transition
 custom_edit_url: null
@@ -13,17 +13,17 @@ keywords:
     - 'scene transition'
     - 'scene'
     - 'scenes'
-description: 'A tutorial on create scene transition effects in a MonoGame project.'
-image:
-slug: /tutorials/scene-transitions/fade-transition
+description: 'A tutorial on creating scene transition effects in a MonoGame project.'
+image: /img/mgb_cookie.svg
+slug: /tutorials/monogame-3-8/scene-transitions/fade-transition
 ---
-
-## Fade Transition Effect
+# The Fade Transition
 The first transition effect we'll create is going to be the most command and simplest one of all, a fade effect.  This transition will simply fade out the current scene and then fade in the next one.
 
-Create a new class file called **FadeTransition.cs** in your project then add the following code.
+:::note Perform the Following
+In the game project, reate a new class file called **FadeTransition.cs**, then add the following code.  We'll go over the code in the sections below.
 
-**using statements
+**using statements**
 ```csharp
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -87,6 +87,7 @@ public class FadeTransition : Transition
     }
 }
 ```
+:::
 
 ### Constructor
 The constructor of our `FadeTransition` is pretty simple. 
@@ -161,7 +162,10 @@ Depending on if the fade transition is fading in or out, we interpolate the alph
 
 
 ### Testing The Transition
-Now let's test the transition. Open the **GreenCircleScene.cs** class file and locate the `Update(GameTime)` method.  Change the method to the following.
+Now let's test the transition. 
+
+:::note Perform the Following
+Open the **GreenCircleScene.cs** class file and locate the `Update(GameTime)` method.  Change the method to the following.
 
 ```csharp
 /// <summary>
@@ -181,11 +185,16 @@ public override void Update(GameTime gameTime)
     }
 }
 ```
+:::
 
 We've updated it so that when we call `_game.ChangeScene` we are now using the `(Scene, Transition Transition)` overload.  We pass to it a new `OrangeCircleScene` instance, a `FadeTransition` instance that is fading out and a `FadeTransition` instance that is fading in.
 
+:::note Perform the Following
 Next, open the **OrangeCircleScene.cs** class file and make the same change to it's `Update(GameTime)` method as we did above to. Only for this one, make sure we are changing to the `GreenCircleScene` instead.
+:::
 
 If you run the game now, you should see the green circle scene first. Then if you press the space key to change scenes, the green circle scene will fade out, then the orange circle scene will fade in.  It's magic!!!
 
 ![](/img/tutorials/scene-transitions/fade-transition.gif)
+
+The fade transition effect is nice and all, but we can create something even fancier.  In the next page of this tutorial, we'll create the even-odd tile transition effect.

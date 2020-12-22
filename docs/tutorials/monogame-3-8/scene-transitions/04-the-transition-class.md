@@ -1,7 +1,7 @@
 ---
-id: tutorials-scene-transitions-transition-class
-title: The Transition Class
-hide_title: false
+id: transition-class
+title: 'Scene Transitions: The Transition Class'
+hide_title: true
 hide_table_of_contents: false
 sidebar_label: The Transition Class
 custom_edit_url: null
@@ -13,12 +13,12 @@ keywords:
     - 'scene transition'
     - 'scene'
     - 'scenes'
-description: 'A tutorial on create scene transition effects in a MonoGame project.'
-image:
-slug: /tutorials/scene-transitions/transition-class
+description: 'A tutorial on creating scene transition effects in a MonoGame project.'
+image: /img/mgb_cookie.svg
+slug: /tutorials/monogame-3-8/scene-transitions/transition-class
 ---
-
-Now that we have updated our `Scene` class, the next thing we need to do is create the `Transition` class.  A transition, like a scene, is an abstract concept that is implemented by the different type of transitions, such as fade, swipes, etc.  So before we get to the code of the `Transition` class, let's first define what we'll need.
+# The Transition Class
+Now that we have updated our `Scene` class, the next thing we need to do is create the `Transition` class.  A transition, like a scene, is an abstract concept that is implemented by the different types of transitions, such as fade, swipes, etc.  So before we get to the code of the `Transition` class, let's first define what we'll need.
 
 * A way of specifying if the transition is **in** or **out** (i.e. fade in vs fade out).
 * A render target to draw the transition too.
@@ -29,10 +29,11 @@ Now that we have updated our `Scene` class, the next thing we need to do is crea
 * A way of telling the transition when to start.
 * A way of knowing exactly when the transition has ended so we can handle anything in code
 
-So now that we have defined what we'll need, let's take a look at the code.
+Now that we have defined what we'll need, let's take a look at the code.
 
 ### The Code
-Below is the entire code needed for the transition class. First create add a new class file to the project called **Transition.cs**, then add the following code to it. We'll go over each section of the code in a moment.
+:::note Perform the Following
+In your project, create a new class file called **Transition.cs** and add the code below to the file.  In the sections of this page after the code, we'll go over each of the aspects of the class file and what it is all doing.
 
 **using statements**
 ```csharp
@@ -284,6 +285,7 @@ public abstract class Transition : IDisposable
     }
 }
 ```
+:::
 
 ### IDisposable
 The first thing to pay attention to in the code is that we are using the `IDisposable` interface.  
@@ -292,7 +294,7 @@ The first thing to pay attention to in the code is that we are using the `IDispo
 public abstract class Transition : IDisposable
 ```
 
-This means we have a Dispose method that we can call manually, or can be called by the garbage collector automatically when there is no reference to a transition object instance. By having this, we can ensure that resources are cleaned up, like the render target.
+This means we have a Dispose method that we can call manually, or can be called by the garbage collector automatically when there is no reference to a `Transition` object instance. By having this, we can ensure that resources are cleaned up, like the render target.
 
 The implementation here for the `IDisposable` interface is pretty simple.  First we have the following field
 
@@ -381,7 +383,7 @@ protected bool _disposed;
 protected Game1 _game; 
 ```
 
-We talked previously about the `_disposed` field in the IDisposable section above.  The `_game` field is to store a cached reference to the `Game1` instance, just like we did in the Scene class.
+We talked previously about the `_disposed` field in the IDisposable section.  The `_game` field is to store a cached reference to the `Game1` instance, just like we did in the Scene class.
 
 ### Properties
 The following are the properties of our `Transition` class.
@@ -470,7 +472,7 @@ public Transition(Game1 game, TimeSpan transitionTime, TransitionKind kind)
 }
 ```
 
-When creating a new `Transition` instance, this is the constructor that is called.  It requires a reference to `Game1`, a TimeSpan indicating how long the transition will take, and a `TransitionKind` value to indicate if this transition is going *in* or *out.
+When creating a new `Transition` instance, this is the constructor that is called.  It requires a reference to `Game1`, a `TimeSpan` indicating how long the transition will take, and a `TransitionKind` value to indicate if this transition is going *in* or *out.
 
 After caching these values, we create the RenderTarget for the transition.
 
@@ -666,3 +668,5 @@ private void CreateRenderTarget()
 ```
 
 Just like with the `Scene` class, we first check if the render target needs to be disposed of, and if so, we dispose it. Then we create the instance.
+
+Now tha we have our base `Transition` class, on the next page, we'll update the `Game1` class to use the transitions.

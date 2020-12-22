@@ -16,7 +16,11 @@ I am currently in the process of migrating all tutorials I've written from my pr
 ## MonoGame Tutorials
 Below you can find a table of all the MonoGame specific tutorials I have written.  
 
+:::note
+These tutorials are written using MonoGame 3.8 and the Cross-Platform Desktop (OpenGL) project template.
+:::
+
 |Name|Description|
 |---|---|
-| [Scenes](scenes/introduction) | In this first of two part tutorial, we discuses and define the concept of Scenes in our game and implement the base structure into our project. |
-| [Scene Transition](scene-transitions/introduction) | In this second of two part tutorial, we expand the Scenes that we created in the previous tutorial to add transition effects when switching scenes in our game. |
+| [Scenes](monogame-3-8/scenes/introduction) | In this first of two part tutorial, we discuses and define the concept of Scenes in our game and implement the base structure into our project. |
+| [Scene Transition](monogame-3-8/scene-transitions/introduction) | In this second of two part tutorial, we expand the Scenes that we created in the previous tutorial to add transition effects when switching scenes in our game. |
