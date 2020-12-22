@@ -13,7 +13,6 @@ function Main() {
             <div id="game">
                 <Header game={Game}></Header>
                 <Description game={Game}></Description>
-                <Platform game={Game}></Platform>
             </div>
         </Layout>
     )

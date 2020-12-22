@@ -4,11 +4,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Games from './data/_masterlist';
 
 function Badge({platform}) {
+    const badgeUrl = useBaseUrl('img/badges/' + platform.name + '-badge-dark.png');
     const badgeClass = 'platform-badge ' + platform.name + '-badge';
     return (
         <div className="platform">
             <a href={platform.url} target="_blank">
-                <div className={badgeClass}></div>
+                <img className="platform-badge" src={badgeUrl} />
             </a>
         </div>
     )

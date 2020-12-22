@@ -1,5 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function Platform({game}) {
     return (
@@ -8,11 +8,11 @@ function Platform({game}) {
                 <div class="block-platforms">
                     {game && game.platforms.length > 0 && (
                         game.platforms.map((props, idx) => (
-                            <div class="platform">
-                                <a href={props.url} target="_blank">
-                                    <div className={clsx('platform-badge', props.name + '-badge')}></div>
-                                </a>
-                            </div>
+                                <div class="platform">
+                                    <a href={props.url} target="_blank">
+                                        <img className="" src={useBaseUrl('img/badges/' + props.name + '-badge-dark.png')} />
+                                    </a>&nbsp;
+                                </div>
                         ))
                     )}                  
                 </div>

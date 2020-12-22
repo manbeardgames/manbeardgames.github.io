@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import Platform from './_gameplatform'
 
 function Header({game}) {
     const visibility = game.trailer.length == 0 ? 'no-trailer' : 'has-trailer';
@@ -15,6 +16,11 @@ function Header({game}) {
                             )}
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col center-div">
+                    <Platform game={game}></Platform>
                 </div>
             </div>
         </div>
