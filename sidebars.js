@@ -45,7 +45,8 @@ module.exports = {
                 'tutorials/scene-transitions/tutorials-scene-transitions-transition-class',
                 'tutorials/scene-transitions/tutorials-scene-transitions-updating-game1',
                 'tutorials/scene-transitions/tutorials-scene-transitions-fade-transition',
-                'tutorials/scene-transitions/tutorials-scene-transitions-even-odd-transition'
+                'tutorials/scene-transitions/tutorials-scene-transitions-even-odd-transition',
+                'tutorials/scene-transitions/tutorials-scene-transitions-conclusion'
               ]
             }
           ]

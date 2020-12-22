@@ -1772,4 +1772,4 @@ Once you've made thse changes, run the game.  As usual, you should see the green
 
 
 ## Conclusion
-In this tutorial, we have added the ability to change scenes in our game with transition effects.  We updated the code from the previous [Scenes](/scenes) tutorial to use `RenderTaget2D`'s and added in the `Transition` class that we can build upon to make neat transitions.  We updated the `Game1` class to handle switching the scens with the transitions.
+In this tutorial, we have added the ability to change scenes in our game with transition effects.  We updated the code from the previous  tutorial to use `RenderTaget2D`'s and added in the `Transition` class that we can build upon to make neat transitions.  We updated the `Game1` class to handle switching the scens with the transitions.
