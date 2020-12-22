@@ -1,0 +1,37 @@
+// --------------------------------
+//  Navbar
+// --------------------------------
+html[data-theme='light'] {
+    .navbar {
+      background-color: $ophidianblue;
+     
+      .navbar__brand{
+        color: $white
+      }
+      .navbar__link {
+        color: $white;
+      }
+  
+      .navbar__link:hover,
+      .navbar__link--active {
+        color: $ophidianorange;
+      }
+    }
+  }
+  
+  html[data-theme='dark'] {
+    .navbar {   
+      background-color: $mgb-color-dark;
+      .navbar__brand {
+        color: $white;
+      }
+  
+      .navbar__item {
+        color: $white;
+      }
+      .navbar__link:hover,
+      .navbar__link--active {
+        color: $ophidianorange;
+      }
+    }
+  }

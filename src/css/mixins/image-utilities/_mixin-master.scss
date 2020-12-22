@@ -1,0 +1,12 @@
+@mixin div-same-size-as-background-img($url, $padding) {
+    background-image: url($url);
+    background-size: contain;
+    background-repeat:  no-repeat;
+    width: 100%;
+    height: 0;
+    padding-top: $padding;
+}
+
+@mixin darken-background-image($url, $alpha) {
+    background-image: linear-gradient(rgba(0, 0, 0, $alpha), rgba(0, 0, 0, $alpha)), url($url);
+}

@@ -1,0 +1,14 @@
+// --------------------------------
+//  Footer
+// --------------------------------
+html[data-theme='light'] {
+    .footer {
+      background-color: $mgb-color-blue;
+    }
+  }
+  
+  html[data-theme='dark'] {
+    .footer {
+      background-color: $mgb-color-dark;
+    }
+  }

@@ -1,0 +1,109 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+@import './mixins/mixins';
+@import '_variables';
+@import '_embed';
+@import '_navbar';
+@import '_menu';
+@import '_table_of_contents';
+@import '_footer';
+@import '_badges';
+@import '_games_list';
+@import '_game';
+@import '_landing';
+@import '_buttons';
+@import '_blog';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: rgb(33, 175, 144);
+  --ifm-color-primary-darker: rgb(31, 165, 136);
+  --ifm-color-primary-darkest: rgb(26, 136, 112);
+  --ifm-color-primary-light: rgb(70, 203, 174);
+  --ifm-color-primary-lighter: rgb(102, 212, 189);
+  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-code-font-size: 95%;
+}
+
+html[data-theme='dark'] {
+  a {
+      color: $white;
+
+      &[class*="--active"],
+      &.active,
+      &:hover{
+      color: $ophidianorange;
+    }
+  }
+}
+
+html[data-theme='light'] {
+  a {  
+      color: $ophidianblue;
+      &.active,
+      &:hover {
+        color: $ophidianblue-lighten-50;
+      }
+    }
+  }
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.mr-auto {
+  margin-right: auto !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+
+
+
+
+
+
+.center-div {
+  margin: auto;
+  border: 1px solid black;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}

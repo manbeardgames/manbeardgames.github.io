@@ -1,0 +1,25 @@
+html[data-theme="light"] {
+    .blog-wrapper {
+        a[class^="sidebarItemLink"] {
+                color: $ophidianblue;
+
+                &:hover {
+                    color: $ophidianblue-lighten-50;
+                }
+            }
+    }
+}
+
+html[data-theme="dark"] {
+    .blog-wrapper {
+        a[class^="sidebarItemLink"] {
+                color: white;
+
+                &:hover {
+                    color: $ophidianorange;
+                }
+        }
+
+
+    }
+}
