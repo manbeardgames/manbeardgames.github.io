@@ -27,7 +27,7 @@ The following are the prerequisites if you plan to follow along with this tutori
 
 * MonoGame 3.8
     * The code has not been tested against **MonoGame 3.7.1**.  It should still function the same, however no guarantees are given.
-* Completion of the previous [Scenes](/scenes) tutorial.
+* Completion of the previous [Scenes](scenes/introduction) tutorial.
     * This tutorial builds off the code that was created in the previous tutorial series.
 
 ## Tutorial Structure
