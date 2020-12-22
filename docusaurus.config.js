@@ -42,14 +42,20 @@ module.exports = {
         },
         {
           href: 'https://github.com/manbeardgames',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub Repository'
         },
       ],
     },
     footer: {
       style: 'dark',
       links: [],
+      logo: {
+        alt: 'Sponsor me on GitHub',
+        src: 'img/github_sponsor.png',
+        href: 'https://github.com/sponsors/manbeardgame'
+      },
       copyright: `Copyright © ${new Date().getFullYear()} Christopher Whitley.<br/> Built with Docusaurus.`,
     },
     prism: {
