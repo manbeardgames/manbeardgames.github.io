@@ -39,6 +39,8 @@ Users using a desktop or larger screen device can use the side bar on the left t
 ### Mobile Users
 users using a mobile device can use the side bar that would normally be on the left by clicking the menu button positioned in the bottom right corner of your screen.  Due to the limited screen real estate of a mobile device, no table of contents for each page will appear. 
 
+## Project Files
+You can find the completed version of the project created with this demo at https://github.com/manbeardgames/monogame-scene-transition-demo
 
 ## Credits
 Before we get started, I would like to acknowledge [PorbleG](https://www.twitter.com/PorbleG).  Some time ago, I reached out to them regarding the scene transition effects they were using in their game [Wark & Wimble](https://warkandwimble.com).  They were kind enough to provide me with some source code examples of the transition effects they used in game.  

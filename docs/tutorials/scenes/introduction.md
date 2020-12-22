@@ -37,6 +37,9 @@ Users using a desktop or larger screen device can use the side bar on the left t
 ### Mobile Users
 users using a mobile device can use the side bar that would normally be on the left by clicking the menu button positioned in the bottom right corner of your screen.  Due to the limited screen real estate of a mobile device, no table of contents for each page will appear.
 
+## Project Files
+You can find the completed version of the project created with this demo at https://github.com/manbeardgames/monogame-scene-demo
+
 ## Code License
 All code written in this **Scene Transitions** tutorial series, unless otherwise stated, is licensed under The UnLicense.  This license extends to only the code written, not the tutorial documentation.  The license text is as follows:
 
