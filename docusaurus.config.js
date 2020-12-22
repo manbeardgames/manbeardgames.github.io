@@ -46,16 +46,17 @@ module.exports = {
           className: 'header-github-link',
           'aria-label': 'GitHub Repository'
         },
+        {
+          href: 'https://twitter.com/manbeardgames',
+          position: 'right',
+          className: 'header-twitter-link',
+          'aria-label': 'Twitter Profile'
+        }
       ],
     },
     footer: {
       style: 'dark',
       links: [],
-      logo: {
-        alt: 'Sponsor me on GitHub',
-        src: 'img/github_sponsor.png',
-        href: 'https://github.com/sponsors/manbeardgame'
-      },
       copyright: `Copyright © ${new Date().getFullYear()} Christopher Whitley.<br/> Built with Docusaurus.`,
     },
     prism: {
