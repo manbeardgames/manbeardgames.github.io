@@ -1,20 +1,11 @@
 import React from 'react';
-import Layout from '@theme/Layout';
-import Header from './_gameheader';
-import Description from './_gamedescription';
-import Platform from './_gameplatform'
-import Game from './data/_droplet';
+import GameLayout from './_game';
+import Droplet from './data/_droplet';
+
 
 function Main() {
     return (
-        <Layout
-            title={Game.name}
-            description={Game.shortDescription}>
-            <div id="game">
-                <Header game={Game}></Header>
-                <Description game={Game}></Description>
-            </div>
-        </Layout>
+        <GameLayout game={Droplet}></GameLayout>
     )
 }
 

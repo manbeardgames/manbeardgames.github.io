@@ -1,12 +1,29 @@
+
+
 #games {
     background-color: $gray-100;
     display: flex;
     flex-direction: column;
     padding-top: 65px;
 
+    .platform-button {
+        max-width: 280px;
+    }
+
+    .more-info-button {
+        background-color: $ophidianblue;
+        color: $white;
+
+        &:hover {
+            background-color: $ophidianblue-lighten-50;
+            color: $white;
+        }
+    }
+
     .button--ophidian-blue {
         background-color: $ophidianblue;
         color: $white;
+        font-size: 1rem;
     
         &:hover{
             background-color: $ophidianblue-lighten-50;
@@ -29,6 +46,7 @@
             padding: 15px 15px;
             display: flex;
             flex-direction: column;
+            @include align-items(center);
             // .game-preview-container,
             // .game-overview-container {
             //     flex-basis: 100%;
@@ -121,6 +139,7 @@
                     padding-top: 0px;
                     padding-left: 2rem;
                     max-width: initial;
+                    width: 100%;
 
                     .block-platforms {
                         @include flex-wrap(nowrap);

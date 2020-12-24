@@ -1,22 +1,53 @@
+import React from 'react';
+
 const ophidian = 
 {
-    "name": "Ophidian",
-    "slug": "ophidian",
-    "trailer": "https://www.youtube.com/embed/OHsSIbKU-SQ",
-    "imageCover": "/img/games/ophidian/cover.png",
-    "imagePreview": "/img/games/ophidian/game_preview.png",
-    "shortDescription": "Arcade puzzle game insprited by classic snake gameplay.",
-    "description": [
-        "Ophidian is an arcade puzzle game inspired by a great classic. In Ophidian, players navigate the play area to consume food blocks, while avoiding any obstacles set in the way. Featuring multiple game modes for players to enjoy.",
-        "Arcade mode features a classic style of game play with newly added features. Play solo to eat as much food as you can to get a high score, or go head to head locally with up to four players total. Try out trash mode, where each time you eat a food block, a wall block takes its place. Or challenge yourself in Ghost mode, where each level pits you against the ghost of your previous level.",
-        "Challenge mode features 100 puzzles designed for players to navigate the ophidian through in order to consume all of the food in each level. Puzzles include various specials blocks to interact with including wall blocks, portal blocks, bounce blocks, bomb blocks, and more. Complete each challenge, or replay them to go for a faster record time."
+    name: 'Ophidian',
+    slug: 'ophidian',
+    shortDescription: 'Arcade puzzle game inspired by classic snake game play.',
+    trailer: 'https://www.youtube.com/embed/OHsSIbKU-SQ',
+    mediaPath: 'img/games/ophidian/',
+    coverImage: 'cover.png',
+    preview: 'game_preview.png',
+    screenshots:[
+        'screenshot_01.png',
+        'screenshot_02.png',
+        'screenshot_03.png',
+        'screenshot_04.png',
+        'screenshot_05.png',
+        'screenshot_06.png',
+        'screenshot_07.png',
+        'screenshot_08.png',
+        'screenshot_10.png',
     ],
-    "platforms": [
+    platforms: [
         {
-            "name": "steam",
-            "url": "https://store.steampowered.com/app/697710/Ophidian/"
+            name: 'steam',
+            url: 'https://store.steampowered.com/app/697710/Ophidian/',
+            label: 'Available on Steam'
         }
-    ]
+    ],   
+    description:
+    <span>
+        <p>
+            Ophidian is an arcade puzzle game inspired by classic snake games.  In Ophidian, players navigate the player area to consume food blocks, while avoiding any obstacles set in the way.  Ophidian features multiple game modes for players to enjoy. 
+        </p> 
+        <p>Arcade features a classic style of game play with newly added features.</p>
+        <ul>
+            <li>Enjoy classic solo snake game play. How high of a score can you achieve.</li> 
+            <li>Go head-to-head with up to four total players locally.</li>
+            <li>Try Trash Mode, where each time you eat a food block, a wall black takes its place.</li>
+            <li>Challenge yourself in Ghost Mode, where each level pits you against the ghost of yourself from the previous level.</li>
+        </ul>
+        <p>
+            Challenge Mode features levels designed for players to navigate the ophidian through to consume all of the food blocks.  
+        </p>
+        <ul>
+            <li>100 hand crafted levels</li>
+            <li>Special block types the player can interact with to complete the levels.</li>
+            <li>Replay challenges to compete against your fastest time.</li>
+        </ul>
+    </span>
 }
 
 export default ophidian;

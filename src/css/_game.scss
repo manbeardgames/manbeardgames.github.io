@@ -144,6 +144,7 @@ html[data-theme="dark"] {
                 height: 0;
                 padding-bottom: 56.25%;
                 border: 1px solid $white;
+                background: $white;
         
                 .video {
                     position: absolute;
@@ -158,7 +159,8 @@ html[data-theme="dark"] {
             
         }
 
-        .game-info {
+        &.game-info {
+
 
         }
 
@@ -167,47 +169,12 @@ html[data-theme="dark"] {
                 color: $white;
             }
 
-            .platform-button {
-                width: 100%;
-                height: 60px;
-                padding: 10px;
-                box-sizing: border-box;
-                margin-bottom: 10px;
-                border-radius: 8px;
-                color: $white;
-                display: block;
 
-                &.button-steam {
-                    background-color: black;
-                }
-
-                &.button-itch {
-                    background-color: #fa5c5c;
-                }
-
-                &.button-ludum,
-                &.button-gdq-omgjam {
-                    background-color: #1f2429;
-                }
-
-                img {
-                    height: 100%;
-                    vertical-align: middle;
-                    display: inline-block;
-                    margin-right: 10px;
-                }
-
-                .label {
-                    vertical-align: middle;
-                    display: inline-block;
-                    color: $white;
-                    text-decoration: none;
-                }
-            }
 
         }
 
         &.game-screenshots {
+
 
             a{
                 display: block;
@@ -218,7 +185,7 @@ html[data-theme="dark"] {
             width: 90%;
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 0 40px 0;
+            padding: 40px 0 10px 0;
             display: inline-block;
             overflow-x: hidden;
     
@@ -232,12 +199,26 @@ html[data-theme="dark"] {
                 color: $white;
             }
         }
-    }
 
+        img {
+            -webkit-filter: brightness(85%);
+            filter: brightness(85%);
+            transition-duration: 300ms;
+        }
     
+        img:hover {
+            -webkit-filter: brightness(100%);
+            filter: brightness(100%);
+        }
+    }
+}
 
-
-
-
-
+@media(min-width: 992px) {
+    #game {
+        .wrapper {
+            &.game-cover {
+                min-height: 650px;
+            }
+        }
+    }   
 }
