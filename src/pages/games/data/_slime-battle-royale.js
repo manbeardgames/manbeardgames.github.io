@@ -9,7 +9,12 @@ const slime_battle_royale =
     mediaPath: 'img/games/slime-battle-royale/',
     coverImage: 'cover.png',
     preview: 'game_preview.png',
-    screenshots:[ ],
+    screenshots:[ 
+        'screenshot_01.png',
+        'screenshot_02.png',
+        'screenshot_03.png',
+        'screenshot_04.png',
+    ],
     platforms: [
         {
             name: 'itch',

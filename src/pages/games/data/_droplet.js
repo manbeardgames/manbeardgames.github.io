@@ -9,7 +9,14 @@ const droplet =
     mediaPath: 'img/games/droplet/',
     coverImage: 'cover.png',
     preview: 'game_preview.png',
-    screenshots:[ ],
+    screenshots:[
+        'screenshot_01.png',
+        'screenshot_02.png',
+        'screenshot_03.png',
+        'screenshot_04.png',
+        'screenshot_05.png',
+        'screenshot_06.png',
+     ],
     platforms: [
         {
             name: 'itch',

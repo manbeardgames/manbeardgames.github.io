@@ -9,7 +9,11 @@ const echo =
     mediaPath: 'img/games/echo/',
     coverImage: 'cover.png',
     preview: 'game_preview.png',
-    screenshots:[ ],
+    screenshots:[
+        'screenshot_01.png',
+        'screenshot_02.png',
+        'screenshot_03.png',
+     ],
     platforms: [
         {
             name: 'itch',
