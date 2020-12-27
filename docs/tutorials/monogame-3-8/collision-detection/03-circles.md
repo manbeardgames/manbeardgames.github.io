@@ -188,17 +188,11 @@ Once downloaded or created, add the the image to the game project using the MGCB
 Now that we have the white circle image added that we can draw to represent our circle, we need to update `Game1`.
 
 :::note Perform the Following
-Open the `Game1` class file. Remove the two `Rectangle` fields we ere using before for AABB collision
+Open the `Game1` class file. 
 
-```csharp
-//  Represents bounding box [A]
-private Rectangle _boxA;
+Remove the two `Rectangle` fields we ere using before for AABB collision
 
-//  Represents bounding box [B]
-private Rectangle _boxB;
-```
-
-And replace them with the following two `Circle` fields
+Add the following new fields.
 
 ```csharp
 //  Represents the first circle (A).
