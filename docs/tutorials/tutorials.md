@@ -27,5 +27,6 @@ These tutorials are written using MonoGame 3.8 and the Cross-Platform Desktop (O
 
 |Name|Description|
 |---|---|
+| [Collision Detection](monogame-3-8/collision-detection/introduction) | In this tutorial series we discuss collision detection between two rectangles using AABB collision detection as well as how to detect collisions between two circles.  We then implement both of these into a Monogame game project. |
 | [Scenes](monogame-3-8/scenes/introduction) | In this first of two part tutorial, we discuses and define the concept of Scenes in our game and implement the base structure into our project. |
 | [Scene Transition](monogame-3-8/scene-transitions/introduction) | In this second of two part tutorial, we expand the Scenes that we created in the previous tutorial to add transition effects when switching scenes in our game. |

@@ -25,6 +25,16 @@ module.exports = {
           items: [
             {
               type: 'category',
+              label: 'Collision Detection',
+              items: [
+                'tutorials/monogame-3-8/collision-detection/introduction',
+                'tutorials/monogame-3-8/collision-detection/aabb',
+                'tutorials/monogame-3-8/collision-detection/circles',
+                'tutorials/monogame-3-8/collision-detection/conclusion'
+              ]
+            },
+            {
+              type: 'category',
               label: 'Scenes',
               items: [
                 'tutorials/monogame-3-8/scenes/introduction',
