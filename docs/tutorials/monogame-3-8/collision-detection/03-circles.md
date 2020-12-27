@@ -224,7 +224,7 @@ protected override void Initialize()
 ```
 :::
 
-Here we removed the initializations of the two rectangles and instead are now initializing our two circles.  We set the x and y locations for both, and the radius of both is `16`. We used `16` because the image we created is 32px x 32px and half of 32px is 16.
+Here we removed the initializations of the two rectangles and instead are now initializing our two circles.  We set the x and y locations for both, and the radius of both is `32`. We used `32` because the image we created is 64px x 64px and half of 64px is 32.
 
 :::note Perform the Following
 Locate the `LoadContent()` method and change it to the following.
