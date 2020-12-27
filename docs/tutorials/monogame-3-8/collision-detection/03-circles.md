@@ -277,7 +277,7 @@ Locate the `MoveBoxB()` method and **remove it** completely.
 
 Add the following methods to the `Game1` class.
 
-***MoveCircleA()**
+**MoveCircleA()**
 ```csharp
 /// <summary>
 ///     Moves circle (A) based on keyboard input.
