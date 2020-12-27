@@ -10,6 +10,9 @@ module.exports = {
   projectName: 'manbeardgames.github.io', // Usually your repo name.
   plugins: [ 'docusaurus-plugin-sass' ],
   themeConfig: {
+    googleAnalytics: {
+      trackingID: 'UA-63802407-1'
+    },
     gtag: {
       trackingID: 'UA-63802407-1'
     },
