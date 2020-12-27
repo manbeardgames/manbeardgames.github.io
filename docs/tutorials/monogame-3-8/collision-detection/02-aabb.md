@@ -124,7 +124,7 @@ private KeyboardState _curKeyboardState;
 `_prevKeyBoardState` and `_curKeyboardState` are used to track the state of keyboard input so we can move the rectangles around the screen.
 
 
-Next, let's define the initialize values for `_boxA` and `_boxB`.
+Next, let's define the initial values for `_boxA` and `_boxB`.
 
 :::note Perform the Following
 Locate the `Initialize()` method in the `Game1` class and change it to the following.
