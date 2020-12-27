@@ -9,15 +9,15 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63802407-1"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-63802407-1",{})</script><title data-react-helmet="true">2D Camera | ManBeardGames</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docusaurus_language" content="en"><meta data-react-helmet="true" name="docusaurus_version" content="current"><meta data-react-helmet="true" name="docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="2D Camera | ManBeardGames"><meta data-react-helmet="true" name="description" content="A camera can be an essential part of your game when you need to create game worlds that expand beyond the scope of the game windows width and height. The concept of a camera can seem overwhelming at first, but here we&#x27;ll layout the groundwork as simple as possible in a way that you can expand on to suite your game project&#x27;s needs."><meta data-react-helmet="true" property="og:description" content="A camera can be an essential part of your game when you need to create game worlds that expand beyond the scope of the game windows width and height. The concept of a camera can seem overwhelming at first, but here we&#x27;ll layout the groundwork as simple as possible in a way that you can expand on to suite your game project&#x27;s needs."><meta data-react-helmet="true" property="og:url" content="https://manbeardgames.com/docs/tutorials/2d-camera"><link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.ico"><link data-react-helmet="true" rel="canonical" href="https://manbeardgames.com/docs/tutorials/2d-camera"><link rel="stylesheet" href="/styles.50dc20de.css">
 <link rel="stylesheet" href="/main.876691c5.css">
-<link rel="preload" href="/styles.577f1152.js" as="script">
-<link rel="preload" href="/runtime~main.179566da.js" as="script">
-<link rel="preload" href="/main.b5047bcd.js" as="script">
-<link rel="preload" href="/1.b02d9b13.js" as="script">
-<link rel="preload" href="/46.a8e0b125.js" as="script">
-<link rel="preload" href="/47.4c883408.js" as="script">
-<link rel="preload" href="/f976f453.bf96ee48.js" as="script">
-<link rel="preload" href="/45.09bf6d6b.js" as="script">
-<link rel="preload" href="/532d9d9c.e7420b5b.js" as="script">
+<link rel="preload" href="/styles.eb132f83.js" as="script">
+<link rel="preload" href="/runtime~main.13d7ec11.js" as="script">
+<link rel="preload" href="/main.144442e9.js" as="script">
+<link rel="preload" href="/1.1db58ff6.js" as="script">
+<link rel="preload" href="/50.be7afa20.js" as="script">
+<link rel="preload" href="/51.aa4199a6.js" as="script">
+<link rel="preload" href="/f976f453.55f59cb7.js" as="script">
+<link rel="preload" href="/49.343f3c4a.js" as="script">
+<link rel="preload" href="/532d9d9c.6c876cf6.js" as="script">
 </head>
 <body>
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"dark")}()</script><div id="__docusaurus">
@@ -62,14 +62,14 @@
 </span></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span></div><div class="token-line" style="color:#393A34"><span class="token plain">    //  Create our camera with 1280 with and 720 height</span></div><div class="token-line" style="color:#393A34"><span class="token plain">    _camera = new Camera2D(1280, 720);</span></div><div class="token-line" style="color:#393A34"><span class="token plain">}</span></div></div></div><button type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button></div></div><div class="admonition admonition-note alert alert--secondary"><div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</h5></div><div class="admonition-content"><p> If you would like to instead create the camera using the <code>GraphicsDevice.ViewPort</code> from within Game1, you can do this, but you&#x27;ll need to create the camera instead in the <code>Initialize()</code> method.  This is because you need the <code>GraphicsDevice</code> property to be set, which it will not be until Initialize is called.</p></div></div><p>Now, in our <code>Draw()</code> method, we need to pass the transformation matrix from the camera into the spritebatch when we call <code>sprtiebatch.Begin()</code> like so</p><div class="mdxCodeBlock_1XEh"><div class="codeBlockContent_1u-d"><div tabindex="0" class="prism-code language-csharp codeBlock_3iAC thin-scrollbar"><div class="codeBlockLines_b7E3" style="color:#393A34;background-color:#f6f8fa"><div class="token-line" style="color:#393A34"><span class="token plain">spriteBatch.Begin(transformMatrix: _camera.TransformationMatrix);</span></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block">
 </span></div><div class="token-line" style="color:#393A34"><span class="token plain">//  Draw things here</span></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block">
 </span></div><div class="token-line" style="color:#393A34"><span class="token plain">spriteBatch.End();</span></div></div></div><button type="button" aria-label="Copy code to clipboard" class="copyButton_10dd">Copy</button></div></div><p>And that&#x27;s it.  You now have a 2D camera that you can use in you game projects.  Don&#x27;t stop here though, get creative. Think of some other things to add to your camera, like a way to smoothly move it from one position to another, or a way to &quot;shake&quot; it to give that sweet sweet screen shake effect. If you have some interesting things you added, let me know on <a href="http://www.twitter.com/manbeardgames" target="_blank" rel="noopener noreferrer">Twitter</a> and I&#x27;ll add them here (with your permission of course). </p><p>And be sure to check out the project files for this tutorial on <a href="https://github.com/manbeardgames/manbeardgames-site-tutorials/tree/master/tutorials/2d-camera" target="_blank" rel="noopener noreferrer">Github</a> for to see a completed example of using the camera and moving it around with the keyboard.</p></div></article><div class="margin-vert--xl"><div class="row"><div class="col"></div><div class="col text--right"><em><small>Last updated on <time datetime="2020-12-22T04:14:11.000Z" class="docLastUpdatedAt_217_">12/21/2020</time> by <strong>Christopher Whitley</strong></small></em></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_3SO_ thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#project-files" class="table-of-contents__link">Project Files</a></li><li><a href="#create-the-camera-class" class="table-of-contents__link">Create the Camera Class</a></li><li><a href="#updating-the-matrices" class="table-of-contents__link">Updating the Matrices</a></li><li><a href="#adding-camera-properties" class="table-of-contents__link">Adding Camera Properties</a></li><li><a href="#screen-space-to-camera-space-methods" class="table-of-contents__link">Screen Space to Camera Space Methods</a></li><li><a href="#using-the-camera" class="table-of-contents__link">Using the Camera</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="text--center"><div>Copyright © 2020 Christopher Whitley.<br> Built with Docusaurus.</div></div></div></footer></div>
-<script src="/styles.577f1152.js"></script>
-<script src="/runtime~main.179566da.js"></script>
-<script src="/main.b5047bcd.js"></script>
-<script src="/1.b02d9b13.js"></script>
-<script src="/46.a8e0b125.js"></script>
-<script src="/47.4c883408.js"></script>
-<script src="/f976f453.bf96ee48.js"></script>
-<script src="/45.09bf6d6b.js"></script>
-<script src="/532d9d9c.e7420b5b.js"></script>
+<script src="/styles.eb132f83.js"></script>
+<script src="/runtime~main.13d7ec11.js"></script>
+<script src="/main.144442e9.js"></script>
+<script src="/1.1db58ff6.js"></script>
+<script src="/50.be7afa20.js"></script>
+<script src="/51.aa4199a6.js"></script>
+<script src="/f976f453.55f59cb7.js"></script>
+<script src="/49.343f3c4a.js"></script>
+<script src="/532d9d9c.6c876cf6.js"></script>
 </body>
 </html>
