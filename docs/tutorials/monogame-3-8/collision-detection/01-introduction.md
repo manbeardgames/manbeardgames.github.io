@@ -19,11 +19,10 @@ slug: /tutorials/monogame-3-8/collision-detection/introduction
 ---
 
 # Introduction
-In this tutorial series, we are going to discuss  the different methods of collision detection used in 2D games. These methods are
+In this tutorial series, we are going to discuss two different methods of collision detection used in 2D games. These methods are
 
 * Axis-Aligned Bounding Box
 * Circle Collision
-* Separating Axis Theorem
 
 As we discuss each of these methods, we're going ot create an implementation fo them into a new MonoGame 3.8 game project.
 
