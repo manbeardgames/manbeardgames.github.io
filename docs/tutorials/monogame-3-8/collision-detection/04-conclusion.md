@@ -27,4 +27,4 @@ To perform these collision detections, you would most likely use what is called 
 
 * [Separating Axis Theorem (SAT) Explanation](https://www.sevenson.com.au/actionscript/sat/)
 * [Collision Detection Using the Separating Axis Theorem](https://gamedevelopment.tutsplus.com/tutorials/collision-detection-using-the-separating-axis-theorem--gamedev-169) by Kah Shiu Chong
-* [N Tutorial A - Collision Detection and Response](http://www.metanetsoftware.com/technique/tutorialA.html#section2)
+* [N Tutorial A - Collision Detection and Response](http://www.metanetsoftware.com/technique/tutorialA.html)
