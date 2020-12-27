@@ -8,7 +8,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'manbeardgames', // Usually your GitHub org/user name.
   projectName: 'manbeardgames.github.io', // Usually your repo name.
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: [ 'docusaurus-plugin-sass' ],
   themeConfig: {
     gtag: {
       trackingID: 'UA-63802407-1'
