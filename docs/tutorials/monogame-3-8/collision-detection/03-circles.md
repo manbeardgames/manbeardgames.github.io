@@ -271,9 +271,9 @@ protected override void Update(GameTime gameTime)
 We've removed the input handling for the rectangles from the previous page and adding two calls to `MoveCircleA()` and `MoveCircleB()`.  These will be use to move our circles in much the same way we did the rectangles.  Next, we are calling `CollisionChecks.Circle(Circle, Circle)` to check for collision between our two circles, and storing the value in the `_areColliding` field.
 
 :::note Perform the Following
-Locate the `MoveBoxA()` method and remove it completely.
+Locate the `MoveBoxA()` method and **remove it** completely.
 
-Locate the `MoveBoxB()` method and remove it completely.
+Locate the `MoveBoxB()` method and **remove it** completely.
 
 Add the following methods to the `Game1` class.
 
