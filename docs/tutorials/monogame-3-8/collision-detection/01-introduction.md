@@ -24,7 +24,7 @@ In this tutorial series, we are going to discuss two different methods of collis
 * Axis-Aligned Bounding Box
 * Circle Collision
 
-As we discuss each of these methods, we're going ot create an implementation fo them into a new MonoGame 3.8 game project.
+As we discuss each of these methods, we're going to create an implementation of them in a new MonoGame 3.8 game project.
 
 ## Prerequisites
 The following are the prerequisites if you plan to follow along with this tutorial in code.
